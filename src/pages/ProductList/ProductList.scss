@@ -1,0 +1,211 @@
+.ProductList {
+  z-index: 90;
+  font-family: sans-serif;
+
+  .listWrapper {
+    margin: 5% 5%;
+
+    .modal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 100;
+
+      .modalWrapper {
+        width: 800px;
+        height: 500px;
+        background-color: white;
+        margin: 50px auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 5px;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+        position: relative;
+
+        .modalHeader {
+          display: flex;
+          justify-content: space-between;
+          font-size: 20px;
+          font-family: sans-serif;
+          font-weight: 700;
+
+          .closeBtn {
+            cursor: pointer;
+          }
+        }
+
+        .modalBody {
+          margin-top: 5%;
+          display: flex;
+
+          button {
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid black;
+          }
+        }
+        .modalFooter {
+          position: absolute;
+          bottom: 40px;
+          right: 220px;
+
+          button {
+            color: white;
+            background-color: black;
+            border: solid black;
+            border-radius: 5px;
+            padding: 2.5% 200px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .listHeader {
+      .listTitle {
+        font-family: sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+
+        .btnWrapper {
+          border-bottom: 2px solid black;
+          margin-right: 5px;
+          cursor: pointer;
+
+          button {
+            border: none;
+            background-color: white;
+            font-size: 28px;
+            font-weight: 700;
+          }
+
+          .icon {
+            color: gainsboro;
+          }
+        }
+      }
+
+      .filterBtn {
+        margin: 3% 0;
+
+        button {
+          border: solid 1px black;
+          border-radius: 17px;
+          background-color: white;
+          padding: 0.8% 1.5%;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .listContent {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 2px;
+      // justify-items: center;
+      justify-content: space-between;
+
+      .listCard {
+        margin: 0 0.5%;
+
+        .imgWrapper {
+          width: 250px;
+          height: 250px;
+          margin-bottom: 5%;
+          overflow: hidden;
+          position: relative;
+
+          .listImg {
+            width: 100%;
+          }
+
+          .likeBtnWrapper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .likeBtn {
+              border-radius: 100%;
+              width: 32px;
+              height: 32px;
+              border: none;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+
+              .unliked {
+                width: 18px;
+                height: 18px;
+                color: gainsboro;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+              }
+
+              .liked {
+                width: 18px;
+                height: 18px;
+                color: red;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+              }
+            }
+          }
+
+          .itemStatusSoldOut {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: gray;
+            border-radius: 0 0 4px 0;
+            padding: 2px 6px;
+            color: white;
+            font-size: 15px;
+            display: flex;
+          }
+
+          .itemStatusLessTen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: green;
+            border-radius: 0 0 4px 0;
+            padding: 2px 6px;
+            color: white;
+            font-size: 15px;
+            display: flex;
+          }
+        }
+
+        .itemTitle {
+          font-size: 15px;
+          margin-bottom: 5%;
+
+          a {
+            color: black;
+            text-decoration: none;
+          }
+        }
+
+        .itemPrice {
+          font-size: 14px;
+          margin-bottom: 7%;
+        }
+      }
+    }
+  }
+}
