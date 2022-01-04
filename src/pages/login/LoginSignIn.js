@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import LoginModal from '../../components/LoginModal';
 function LoginSignIn() {
   const [validation, setValidation] = useState(false);
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [token, setToken] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleIdInput = event => {
     setEmailInput(event.target.value);
@@ -43,6 +44,12 @@ function LoginSignIn() {
     navigate('/');
   };
 
+  const isToken = validation && token !== undefined;
+
+  const modalClose = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <div id="loginSignInContainer">
       <div className="inputWrapper">
@@ -58,9 +65,14 @@ function LoginSignIn() {
         />
       </div>
       <div className="submit">
-        <button className="btn" type="submit" onClick={token ? goToHome : null}>
+        <button
+          className="btn"
+          type="submit"
+          onClick={isToken ? goToHome : modalClose}
+        >
           로그인
         </button>
+        {modalOpen && <LoginModal modalClose={modalClose} />}
       </div>
       <div className="forgotPassword">
         <span id="emailPassword">아이디 / 비밀번호 찾기</span>
