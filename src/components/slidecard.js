@@ -2,22 +2,16 @@ import { useState } from 'react/cjs/react.development';
 import { Link } from 'react-router-dom';
 import './slidecard.scss';
 
-const SlideCard = ({ i, id, imgUrl, title, description }) => {
+const SlideCard = ({ i, imgUrl, title, description }) => {
   return (
     <div className="slide-card-wrapper" key={i}>
-      <div className="card-img">
-        <Link to="/detail">
-          <img src={imgUrl} />
-        </Link>
-      </div>
-
-      <div className="card-title">
-        <Link to="/detail">{title}</Link>
-      </div>
-
-      <div className="card-description">
-        <Link to="/detail">{description}</Link>
-      </div>
+      <Link to="/detail">
+        <div className="card-img">
+          <img src={imgUrl} alt={title} width="300px" height="250px" />
+        </div>
+        <div className="card-title">{title}</div>
+        <div className="card-description">{description}</div>
+      </Link>
     </div>
   );
 };
