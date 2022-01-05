@@ -1,0 +1,69 @@
+.navContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid rgb(238, 238, 238);
+
+  a > div {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 5px;
+  }
+
+  .navCategory {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 70px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: gray;
+      font-size: 13px;
+
+      .shoppingMenu {
+        background-image: url('https://img.icons8.com/small/32/000000/small-business.png');
+      }
+
+      .liveMenu {
+        background-image: url('https://img.icons8.com/small/32/000000/time-machine.png');
+      }
+
+      .searchMenu {
+        background-image: url('https://img.icons8.com/small/32/000000/search.png');
+      }
+
+      .reviewMenu {
+        background-image: url('https://img.icons8.com/small/32/000000/speech-bubble.png');
+      }
+
+      .myPageMenu {
+        background-image: url('https://img.icons8.com/small/32/000000/user-male-circle.png');
+      }
+    }
+  }
+
+  .navLogoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+  }
+
+  .navLogoImg {
+    background-image: url('https://img.icons8.com/small/32/000000/globe.png');
+  }
+}
