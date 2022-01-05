@@ -1,17 +1,75 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import LoginModal from '../../components/LoginModal';
+
 function LoginSignUp() {
+  const [validation, setValidation] = useState(false);
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [nameInput, setNameInput] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // 이름/아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
+  const handleIdInput = event => {
+    setEmailInput(event.target.value);
+  };
+  const handlePwInput = event => {
+    setPasswordInput(event.target.value);
+  };
+  const handleNameInput = event => {
+    setNameInput(event.target.value);
+  };
+  // End
+
+  useEffect(() => {
+    const emailValidation = emailInput.includes('@');
+    const passwordValidation = passwordInput.length > 6;
+
+    if (emailValidation && passwordValidation) {
+      setValidation(true);
+    } else {
+      setValidation(false);
+    }
+  }, [emailInput, passwordInput]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json', mode: 'cors' },
+      body: JSON.stringify({
+        name: nameInput,
+        email: emailInput,
+        password: passwordInput,
+      }),
+    });
+  });
+
+  const navigate = useNavigate();
+  const goToHome = () => {
+    navigate('/');
+  };
+
+  const modalClose = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <div id="loginSignUpContainer">
       <div className="inputWrapper">
         <p className="inputTitle">이름</p>
-        <input type="text" placeholder="이름" />
+        <input type="text" placeholder="이름" onChange={handleNameInput} />
       </div>
       <div className="inputWrapper">
         <p className="inputTitle">이메일</p>
-        <input type="email" placeholder="이메일" />
+        <input type="email" placeholder="이메일" onChange={handleIdInput} />
       </div>
       <div className="inputWrapper">
         <p className="inputTitle">비밀번호 (6자리 이상)</p>
-        <input type="password" placeholder="비밀번호 (6자리 이상)" />
+        <input
+          type="password"
+          placeholder="비밀번호 (6자리 이상)"
+          onChange={handlePwInput}
+        />
       </div>
       <div className="agreeEmail">
         <label>
@@ -38,7 +96,15 @@ function LoginSignUp() {
         </label>
       </div>
       <div className="submit">
-        <button className="btn">회원가입</button>
+        {/* 회원가입 완료시 새로운 모달창(회원가입 축하) 구현하고, 다시 로그인 화면으로 가던가 혹은 token 받아서 메인페이지로 바로 갈수 있도록 구현해야함 */}
+        <button
+          className="btn"
+          type="submit"
+          onClick={validation ? goToHome : modalClose}
+        >
+          회원가입
+        </button>
+        {modalOpen && <LoginModal modalClose={modalClose} />}
       </div>
     </div>
   );

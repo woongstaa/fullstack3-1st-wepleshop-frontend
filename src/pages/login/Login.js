@@ -34,7 +34,7 @@ function Login() {
       prev.style.borderBottom = '1px solid #ddd';
     }
   }, [currentClick]);
-  // 로그인/회원가입 CSS 변경하는 코드(리팩토링 필요 : boolean, useState 사용)
+  // End
 
   return (
     <div id="loginContainer">
