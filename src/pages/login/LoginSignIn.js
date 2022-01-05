@@ -26,6 +26,7 @@ function LoginSignIn() {
     }
   }, [emailInput, passwordInput]);
 
+  // DB에서 해당 사용자에 대한 token 받아오는 코드(리팩토링 필요)
   useEffect(() => {
     fetch('http://localhost:8000/users/signin', {
       method: 'POST',
@@ -38,6 +39,7 @@ function LoginSignIn() {
       .then(res => res.json())
       .then(data => setToken(data.token));
   });
+  // DB에서 해당 사용자에 대한 token 받아오는 코드(리팩토링 필요) - End
 
   const navigate = useNavigate();
   const goToHome = () => {
@@ -49,7 +51,7 @@ function LoginSignIn() {
   const modalClose = () => {
     setModalOpen(!modalOpen);
   };
-
+  // 로그인/회원가입 버튼 클릭시 해당 화면 렌더링하는 코드(리팩토링 필요 : 중복 UI)
   return (
     <div id="loginSignInContainer">
       <div className="inputWrapper">
@@ -80,5 +82,6 @@ function LoginSignIn() {
     </div>
   );
 }
+// 로그인/회원가입 버튼 클릭시 해당 화면 렌더링하는 코드(리팩토링 필요 : 중복 UI) - End
 
 export default LoginSignIn;

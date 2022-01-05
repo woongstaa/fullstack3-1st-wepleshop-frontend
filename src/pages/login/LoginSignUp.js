@@ -23,13 +23,6 @@ function LoginSignUp() {
         </label>
         <label>
           <input className="check" type="checkbox" name="checkAgree" />
-          <span className="agree">이용약관 동의</span>
-          <span>
-            <a href="text">보기</a>
-          </span>
-        </label>
-        <label>
-          <input className="check" type="checkbox" name="checkAgree" />
           <span className="agree">개인정보수집·이용 동의</span>
           <span>
             <a href="text">보기</a>
