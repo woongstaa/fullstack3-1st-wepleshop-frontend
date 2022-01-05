@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { IoCloseSharp } from 'react-icons/io5';
 import ItemCard from './ItemCard';
 import './ProductList.scss';
 
@@ -107,7 +108,7 @@ const CategoryModal = ({ isOpen, modal }) => {
             <div className="modalHeader">
               <div>카테고리 선택</div>
               <div className="closeBtn" onClick={isOpen}>
-                X
+                <IoCloseSharp />
               </div>
             </div>
             <div className="modalBody">
