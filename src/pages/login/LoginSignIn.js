@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginModal from '../../components/LoginModal';
+import ModalLogin from '../../components/ModalLogin';
 
 function LoginSignIn() {
   const [validation, setValidation] = useState(false);
@@ -8,6 +8,15 @@ function LoginSignIn() {
   const [passwordInput, setPasswordInput] = useState('');
   const [token, setToken] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+
+  // 리팩토링
+  // const [inputs, setInputs] = useState({
+  //   email: '',
+  //   password: '',
+  // });
+
+  // const { email, password } = inputs;
+  // 리팩토링 - End
 
   // const onKeyPress = event => {
   //   if (event.key === 'Enter') {
@@ -90,7 +99,7 @@ function LoginSignIn() {
         >
           로그인
         </button>
-        {modalOpen && <LoginModal modalClose={modalClose} />}
+        {modalOpen && <ModalLogin modalClose={modalClose} />}
       </div>
       <div className="forgotPassword">
         <span id="emailPassword">아이디 / 비밀번호 찾기</span>

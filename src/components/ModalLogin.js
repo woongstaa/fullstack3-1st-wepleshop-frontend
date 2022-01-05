@@ -1,6 +1,6 @@
-import './LoginModal.scss';
+import './ModalLogin.scss';
 
-function LoginModal({ modalClose }) {
+function ModalLogin({ modalClose }) {
   const onCloseModal = event => {
     if (event.target === event.currentTarget) {
       modalClose();
@@ -8,7 +8,7 @@ function LoginModal({ modalClose }) {
   };
 
   return (
-    <div className="modalContainer" onClick={onCloseModal}>
+    <div className="modalLoginContainer" onClick={onCloseModal}>
       <div className="modal">
         <p className="text">이메일 또는 비밀번호를 확인해 주세요.</p>
         <button className="modalButton" onClick={modalClose}>
@@ -19,4 +19,4 @@ function LoginModal({ modalClose }) {
   );
 }
 
-export default LoginModal;
+export default ModalLogin;

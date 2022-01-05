@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginModal from '../../components/LoginModal';
+import ModalLogin from '../../components/ModalLogin';
+import ModalPersonal from '../../components/ModalPersonal';
+import ModalTerms from '../../components/ModalTerms';
 
 function LoginSignUp() {
   const [validation, setValidation] = useState(false);
@@ -8,6 +10,8 @@ function LoginSignUp() {
   const [passwordInput, setPasswordInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const [personalModalOpen, setPersonalModalOpen] = useState(false);
 
   // 이름/아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
   const handleIdInput = event => {
@@ -53,6 +57,14 @@ function LoginSignUp() {
     setModalOpen(!modalOpen);
   };
 
+  const termsModalClose = () => {
+    setTermsModalOpen(!termsModalOpen);
+  };
+
+  const personalModalClose = () => {
+    setPersonalModalOpen(!personalModalOpen);
+  };
+
   return (
     <div id="loginSignUpContainer">
       <div className="inputWrapper">
@@ -75,16 +87,20 @@ function LoginSignUp() {
         <label>
           <input className="check" type="checkbox" name="checkAgree" />
           <span className="agree">이용약관 동의</span>
-          <span>
-            <a href="text">보기</a>
+          <span className="agreeContents" onClick={termsModalClose}>
+            보기
           </span>
+          {termsModalOpen && <ModalTerms termsModalClose={termsModalClose} />}
         </label>
         <label>
           <input className="check" type="checkbox" name="checkAgree" />
           <span className="agree">개인정보수집·이용 동의</span>
-          <span>
-            <a href="text">보기</a>
+          <span className="agreeContents" onClick={personalModalClose}>
+            보기
           </span>
+          {personalModalOpen && (
+            <ModalPersonal personalModalClose={personalModalClose} />
+          )}
         </label>
         <label>
           <input className="check" type="checkbox" name="checkAgree" />
@@ -104,7 +120,7 @@ function LoginSignUp() {
         >
           회원가입
         </button>
-        {modalOpen && <LoginModal modalClose={modalClose} />}
+        {modalOpen && <ModalLogin modalClose={modalClose} />}
       </div>
     </div>
   );
