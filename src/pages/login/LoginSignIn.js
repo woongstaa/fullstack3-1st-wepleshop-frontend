@@ -44,18 +44,19 @@ function LoginSignIn() {
     }
   }, [emailInput, passwordInput]);
 
-  // DB에서 해당 사용자에 대한 token 받아오는 코드(리팩토링 필요 : 현재 아이디/비밀번호 타이핑시 계속 서버 통신 --> 로그인 버튼 클릭시 한번만 통신하도록 개선 필요)
   useEffect(() => {
-    fetch('http://localhost:8000/users/signin', {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json', mode: 'cors' },
-      body: JSON.stringify({
-        email: emailInput,
-        password: passwordInput,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => setToken(data.token));
+    if (validation === true) {
+      fetch('http://localhost:8000/users/signin', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json', mode: 'cors' },
+        body: JSON.stringify({
+          email: emailInput,
+          password: passwordInput,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => setToken(data.token));
+    }
   });
   // End
 

@@ -28,15 +28,17 @@ function LoginSignUp() {
   useEffect(() => {
     const emailValidation = emailInput.includes('@');
     const passwordValidation = passwordInput.length > 6;
+    const nameValidation = nameInput;
 
-    if (emailValidation && passwordValidation) {
+    if (emailValidation && passwordValidation && nameValidation) {
       setValidation(true);
     } else {
       setValidation(false);
     }
-  }, [emailInput, passwordInput]);
+  }, [nameInput, emailInput, passwordInput]);
 
-  useEffect(() => {
+  const navigate = useNavigate();
+  const goToHome = () => {
     fetch('http://localhost:8000/users/signup', {
       method: 'POST',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
@@ -46,10 +48,7 @@ function LoginSignUp() {
         password: passwordInput,
       }),
     });
-  });
 
-  const navigate = useNavigate();
-  const goToHome = () => {
     navigate('/');
   };
 
