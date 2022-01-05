@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import { React, useState } from "react";
 import "./Detail.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faShareSquare as regularShare } from "@fortawesome/free-regular-svg-icons";
-import { faChevronLeft as Left } from "@fortawesome/free-solid-svg-icons";
-import { faChevronRight as Right } from "@fortawesome/free-solid-svg-icons";
+import ImageSlider from "./ImageSlider";
+import { SliderData } from "./SliderData";
 
 function Detail() {
   const [quantity, quantityUpdate] = useState(1);
@@ -31,40 +30,12 @@ function Detail() {
   }
 
   return (
-    <>
+    <div className='body'>
       <div>
         <div className='DetailBody'>
           <div className='DetailContent'>
             <div className='DetailPreview'>
-              <div className='ProductImages'>
-                <input type='radio' name='slide' id='slide01' checked />
-                <input type='radio' name='slide' id='slide02' />
-                <input type='radio' name='slide' id='slide03' />
-
-                <div className='slidewrap'>
-                  <ul className='slidelist'>
-                    <li>
-                      <label for='slide03' className='Left'>
-                        <img src='/images/left.png' alt='왼쪽 방향' />
-                      </label>
-
-                      <img
-                        src='/images/1.jpeg'
-                        alt='후드티'
-                        className='ProductImg'
-                      />
-                      <label for='slide03' className='Right'>
-                        <img src='/images/right.png' alt='오른쪽 방향' />
-                      </label>
-
-                      <div class='NumberPerNumber'>
-                        <span class='FirstNumber'>1</span> /{" "}
-                        <span class='SecondNumber'>3</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <ImageSlider slides={SliderData} />
 
               <div className='DetailSeller'>
                 <a href='#' className='DetailSellerLink'>
@@ -178,7 +149,9 @@ function Detail() {
 
               <div className='DetailPrice'>
                 <div className='PricePerItem'>{quantity}개 상품 금액</div>
-                <div className='Price'>{58000 * quantity} 원</div>
+                <div className='Price'>
+                  {(58000 * quantity).toLocaleString()} 원
+                </div>
               </div>
             </div>
 
@@ -196,7 +169,7 @@ function Detail() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
