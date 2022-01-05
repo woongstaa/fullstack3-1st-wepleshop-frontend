@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 import SlideCard from '../../components/slidecard';
+import './slide.scss';
 
 export default function Slide() {
   //카드 정보
@@ -27,20 +28,20 @@ export default function Slide() {
       .then(data => setSlideInfo(data));
   }, []);
 
-  // useEffect(() => {
-  //   if (index === imgList.length - 1) {
-  //     setImgList(prevList => [
-  //       ...prevList,
-  //       imgList[index - (originalSize - 1)],
-  //     ]);
+  useEffect(() => {
+    if (index === imgList.length - 1) {
+      setImgList(prevList => [
+        ...prevList,
+        imgList[index - (originalSize - 1)],
+      ]);
 
-  //     return;
-  //   }
-  //   if (index === 0) {
-  //     setImgList(prevList => [imgList[3], ...prevList]);
-  //     setIndex(1);
-  //   }
-  // }, [index]);
+      return;
+    }
+    if (index === 0) {
+      setImgList(prevList => [imgList[3], ...prevList]);
+      setIndex(1);
+    }
+  }, [index]);
 
   const goLeft = () => {
     setX(x => x + 100);
@@ -54,31 +55,29 @@ export default function Slide() {
   return (
     <div className="slide-section">
       <div className="slide-showbox">
-        <div className="slide-container">
-          <ul className="slide-wrapper">
-            <li className="slide-list">
-              {slideInfo.productSlide &&
-                slideInfo.productSlide.map((e, i) => {
-                  return (
-                    <SlideCard
-                      key={i}
-                      imgUrl={e.img_url}
-                      title={e.title}
-                      description={e.description}
-                    />
-                  );
-                })}
-            </li>
-          </ul>
-          <div className="slide-controller">
-            <button type="button" className="prev" onClick={goLeft}>
-              &lang;
-            </button>
-            <button type="button" className="next" onClick={goRight}>
-              &rang;
-            </button>
-          </div>
-        </div>
+        <ul className="slide-wrapper">
+          <li className="slide-list">
+            {slideInfo.productSlide &&
+              slideInfo.productSlide.map((e, i) => {
+                return (
+                  <SlideCard
+                    key={i}
+                    imgUrl={e.img_url}
+                    title={e.title}
+                    description={e.description}
+                  />
+                );
+              })}
+          </li>
+        </ul>
+      </div>
+      <div className="slide-controller">
+        <button type="button" className="prev" onClick={goLeft}>
+          &lang;
+        </button>
+        <button type="button" className="next" onClick={goRight}>
+          &rang;
+        </button>
       </div>
     </div>
   );
