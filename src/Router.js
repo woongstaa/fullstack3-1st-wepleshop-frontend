@@ -1,12 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-// import LoginWoong from './pages/woong/Login/Login_woong';
+import SlideCard from './components/slidecard';
+import FlowCard from './pages/flowcard/folwcard';
+import Slide from './pages/slide/slide';
 
 function Router() {
   return (
     <BrowserRouter>
-      <Routes>{/* <Route path="/" element={<LoginWoong />} /> */}</Routes>
+      <Routes>
+        {/* <Route path="/" element={<TopNav />} /> */}
+        <Route path="/" element={<Slide />} />
+        <Route path="/flow" element={<FlowCard />} />
+      </Routes>
     </BrowserRouter>
   );
 }
