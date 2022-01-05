@@ -31,9 +31,12 @@
   font-weight: 400;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .DetailBody {
@@ -44,8 +47,51 @@
 .DetailContent {
   width: 61%;
 
-  .ProductImg {
-    width: 100%;
+  .ProductImages {
+    position: relative;
+    .Left {
+      position: absolute;
+      color: gray;
+      top: 44%;
+      left: 0;
+      width: 12%;
+      height: 12%;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .Right {
+      position: absolute;
+      color: gray;
+      top: 44%;
+      right: 0;
+      width: 12%;
+      height: 12%;
+      cursor: pointer;
+      img {
+        width: 100%;
+      }
+    }
+
+    .NumberPerNumber {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      font-size: 16px;
+      font-weight: 200;
+      line-height: 1.13;
+      color: #fff;
+      padding: 6px 12px 6px;
+      border-radius: 19px;
+      background-color: rgba(17, 17, 17, 0.3);
+    }
+
+    .ProductImg {
+      width: 100%;
+    }
   }
 
   .DetailSeller {
@@ -182,67 +228,6 @@
         background-color: blue;
         color: white;
       }
-      // label:before {
-      //   display: none;
-      // }
-
-      // input[type="radio"]:checked + label:before {
-      //   height: 5px;
-      //   width: 5px;
-      //   border: 3px solid black;
-      //   background-color: white;
-      // }
-
-      // .ColorCheckBox {
-      //   margin-right: 10px;
-      //   .pd-radio {
-      //     border-color: #000000;
-      //     margin-top: 12px;
-      //     cursor: pointer;
-      //     input {
-      //       position: fixed;
-      //       width: 0;
-      //       height: 0;
-      //       margin: 0;
-      //       padding: 0;
-      //       opacity: 0;
-      //       z-index: -1;
-      //     }
-      //     .pd-radio__face {
-      //       width: 32px !important;
-      //       height: 32px !important;
-      //       display: block;
-      //       margin: 0 auto;
-      //       padding: 0;
-      //       background: transparent;
-      //       border-radius: 50%;
-      //       border-width: 2px;
-      //       border-style: solid;
-      //       border-color: #fff;
-      //       background-color: #000000;
-      //       .pd-radio__face--color {
-      //         width: 28px !important;
-      //         height: 28px !important;
-      //         display: block;
-      //         border-radius: 50%;
-      //         border: 2px solid #fff;
-      //         background: #000000;
-      //       }
-      //     }
-      //     .pd-radio__text {
-      //       width: 100%;
-      //       white-space: nowrap;
-      //       text-overflow: ellipsis;
-      //       overflow: hidden;
-      //       display: block;
-      //       margin: 4px 0 0;
-      //       font-size: 12px;
-      //       line-height: 1.54;
-      //       text-align: center;
-      //       color: #828282;
-      //     }
-      //   }
-      // }
     }
   }
 
@@ -326,6 +311,7 @@
       }
     }
   }
+
   .DetailPrice {
     display: flex;
     justify-content: space-between;
@@ -347,21 +333,13 @@
   }
 
   .ProductNotify {
-    font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont,
-      "Droid Sans", "Roboto", "Segoe UI", "Helvetica", Arial, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: -0.2px;
     color: #111;
     position: relative;
     height: 40px;
     margin: 16px 0 0;
     text-align: center;
     border-radius: 16px;
-    -webkit-border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0;
     border-style: solid;
     border-width: 2px;
     border-image-slice: 0;
@@ -375,6 +353,7 @@
     background-clip: content-box, border-box;
     background-image: linear-gradient(to bottom, #fff, #fff),
       linear-gradient(to right, #ec1131, #580de2 66%, #0e2ee2);
+
     .Period {
       position: absolute;
       top: 0;
@@ -395,15 +374,6 @@
   }
 
   .CartButton {
-    font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont,
-      "Droid Sans", "Roboto", "Segoe UI", "Helvetica", Arial, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: -0.2px;
-    color: #111;
     .AddButton {
       width: 100%;
       height: 54px;

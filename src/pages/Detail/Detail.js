@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faShareSquare as regularShare } from "@fortawesome/free-regular-svg-icons";
+import { faChevronLeft as Left } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight as Right } from "@fortawesome/free-solid-svg-icons";
 
 function Detail() {
   const [quantity, quantityUpdate] = useState(1);
@@ -34,11 +36,35 @@ function Detail() {
         <div className='DetailBody'>
           <div className='DetailContent'>
             <div className='DetailPreview'>
-              <img
-                src='/images/티셔츠.jpeg'
-                alt='커피'
-                className='ProductImg'
-              />
+              <div className='ProductImages'>
+                <input type='radio' name='slide' id='slide01' checked />
+                <input type='radio' name='slide' id='slide02' />
+                <input type='radio' name='slide' id='slide03' />
+
+                <div className='slidewrap'>
+                  <ul className='slidelist'>
+                    <li>
+                      <label for='slide03' className='Left'>
+                        <img src='/images/left.png' alt='왼쪽 방향' />
+                      </label>
+
+                      <img
+                        src='/images/1.jpeg'
+                        alt='후드티'
+                        className='ProductImg'
+                      />
+                      <label for='slide03' className='Right'>
+                        <img src='/images/right.png' alt='오른쪽 방향' />
+                      </label>
+
+                      <div class='NumberPerNumber'>
+                        <span class='FirstNumber'>1</span> /{" "}
+                        <span class='SecondNumber'>3</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
               <div className='DetailSeller'>
                 <a href='#' className='DetailSellerLink'>
@@ -75,23 +101,6 @@ function Detail() {
             <div className='DetailColor'>
               <p className='ColorMain'>색상</p>
               <ul className='ColorRadioBox'>
-                {/* <li className='ColorCheckBox'>
-                  <label className='pd-radio'>
-                    <input
-                      type='radio'
-                      name='color'
-                      checked=''
-                      data-price='0'
-                      value='24449'
-                    />
-                    <span className='pd-radio__face' title='블랙'>
-                      <span className='pd-radio__face--color'></span>
-                    </span>
-                    <span className='pd-radio__text' title='블랙'>
-                      블랙
-                    </span>
-                  </label>
-                </li> */}
                 <li>
                   <input type='radio' name='color' id='black'></input>
                   <label for='black' className='black'>
@@ -168,8 +177,8 @@ function Detail() {
               </div>
 
               <div className='DetailPrice'>
-                <div className='PricePerItem'>1개 상품 금액</div>
-                <div className='Price'>58,000원</div>
+                <div className='PricePerItem'>{quantity}개 상품 금액</div>
+                <div className='Price'>{58000 * quantity} 원</div>
               </div>
             </div>
 
