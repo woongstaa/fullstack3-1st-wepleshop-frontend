@@ -1,5 +1,5 @@
 import './Top.scss';
-import { GET_PRODUCT_API } from '/Users/hyosangpark/Desktop/wecode/fullstack3-1st-wepleshop-frontend/src/config.js';
+import { GET_PRODUCT_API } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 

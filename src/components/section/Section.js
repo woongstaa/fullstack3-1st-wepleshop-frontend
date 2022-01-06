@@ -1,5 +1,5 @@
-import Top from '/Users/hyosangpark/Desktop/wecode/fullstack3-1st-wepleshop-frontend/src/components/top/Top.js';
-import Footer from '/Users/hyosangpark/Desktop/wecode/fullstack3-1st-wepleshop-frontend/src/components/footer/Footer.js';
+import Top from '../top/Top';
+import Footer from '../footer/Footer';
 
 function Section() {
   return (
