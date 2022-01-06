@@ -1,8 +1,13 @@
-// 테스트용
+import './Home.scss';
+import React from 'react';
+import Nav from '../../components/nav/Nav';
+import Section from '../../components/section/Section.js';
+
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="HomeContainer">
+      <Section />
+      <Nav />
     </div>
   );
 }

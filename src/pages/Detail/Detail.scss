@@ -1,0 +1,476 @@
+@mixin label-detail {
+  font-size: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@mixin size-detail {
+  color: #383838;
+  font-size: 17px;
+  width: 57px;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont, "Droid Sans",
+    "Roboto", "Segoe UI", "Helvetica", Arial, sans-serif;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.body {
+  position: relative;
+  box-sizing: border-box;
+  z-index: 2;
+  margin: 0 auto;
+  padding: 0 80px;
+  max-width: 1360px;
+  width: 100%;
+}
+
+.DetailBody {
+  margin: 7% 80px;
+  display: flex;
+}
+
+.DetailContent {
+  width: 61%;
+
+  .DetailPreview {
+    width: 100%;
+    .slider {
+      position: relative;
+
+      .image {
+        width: 100%;
+        height: width;
+      }
+      .right {
+        position: absolute;
+        top: 46%;
+        right: 3%;
+        font-size: 3rem;
+        color: black;
+        z-index: 10;
+        cursor: pointer;
+        user-select: none;
+      }
+      .left {
+        position: absolute;
+        top: 46%;
+        left: 3%;
+        font-size: 3rem;
+        color: black;
+        z-index: 10;
+        cursor: pointer;
+        user-select: none;
+      }
+      // .slide {
+      //   opacity: 0;
+      //   transition-duration: 1s ease;
+      // }
+
+      // .slide.active {
+      //   opacity: 1;
+      //   transition-duration: 1s;
+      //   transform: scale(1.08);
+      // }
+
+      #hide {
+        display: none;
+      }
+      .NumberPerNumber {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 16px;
+        font-weight: 200;
+        line-height: 1.13;
+        color: #fff;
+        padding: 6px 12px 6px;
+        border-radius: 19px;
+        background-color: rgba(17, 17, 17, 0.3);
+      }
+    }
+  }
+
+  .ProductImg {
+    width: 100%;
+  }
+  .DetailSellerLink {
+    width: 42%;
+  }
+}
+
+.DetailSeller {
+  margin-top: 20px;
+  .DetailSellerLink {
+    display: flex;
+    align-items: center;
+    .DetailSellerIcon {
+      width: 100px;
+      height: 100px;
+      margin-right: 14px;
+      border-radius: 20px;
+    }
+    .DetailSellerInfo {
+      span {
+        margin: 0 0 2px;
+        font-size: 16px;
+        line-height: 1.38;
+        color: #a2a2a2;
+      }
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.56;
+        color: black;
+      }
+    }
+  }
+}
+
+.DetailForm {
+  width: 39%;
+  padding-left: 5%;
+
+  .DetailInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .ProductName {
+      width: 70%;
+
+      span {
+        margin: 0 0 4px;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.33;
+      }
+
+      p {
+        margin: 0 0 6px;
+        font-size: 16px;
+        line-height: 1.38;
+        color: #4e4e4e;
+      }
+
+      .price {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.33;
+        letter-spacing: -0.2px;
+      }
+    }
+
+    .ShareAndHeart {
+      display: flex;
+      justify-content: flex-end;
+      width: 30%;
+      a {
+        margin-right: 12px;
+        font-size: 30px;
+        color: gray;
+      }
+    }
+  }
+
+  .DetailColor {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.38;
+    color: black;
+
+    .ColorMain {
+      margin-bottom: 10px;
+    }
+    .ColorRadioBox {
+      display: flex;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .black {
+        color: black;
+        border: 2px solid black;
+        @include label-detail;
+      }
+      #black:checked + label {
+        background-color: black;
+        color: white;
+      }
+
+      #black:hover + label {
+        background-color: black;
+        color: white;
+      }
+
+      .gray {
+        color: gray;
+        border: 2px solid gray;
+        @include label-detail;
+      }
+      #gray:checked + label {
+        background-color: gray;
+        color: white;
+      }
+      #gray:hover + label {
+        background-color: gray;
+        color: white;
+      }
+
+      .skyblue {
+        color: blue;
+        border: 2px solid blue;
+        @include label-detail;
+      }
+      #skyblue:checked + label {
+        background-color: blue;
+        color: white;
+      }
+      #skyblue:hover + label {
+        background-color: blue;
+        color: white;
+      }
+    }
+  }
+
+  .DetailSize {
+    .SizeChart {
+      margin-top: 2px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .SizeCheckBox {
+        margin-right: 10px;
+        margin-bottom: 12px;
+        input[type="radio"] {
+          display: none;
+        }
+
+        label {
+          @include size-detail;
+          font-size: 15px;
+          font-weight: normal;
+          color: #4e4e4e;
+        }
+        input[type="radio"]:checked + label {
+          border: 2px solid black;
+        }
+        input[type="radio"]:hover + label {
+          border: 2px solid black;
+        }
+      }
+    }
+  }
+
+  .DetailQuantity {
+    margin-top: 15px;
+    .Quantity {
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.38;
+    }
+    .QuantityBox {
+      button {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+        font-weight: 100;
+        cursor: pointer;
+        border: none;
+        text-align: center;
+        padding-bottom: 20px;
+        background-color: #f8f8f8;
+      }
+      input {
+        margin-top: 5px;
+        width: 100px;
+        height: 26px;
+        border: none;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+
+    .GrayLine {
+      margin: 24px 0px 12px;
+      border: 1px solid #f8f8f8;
+    }
+
+    .Guide {
+      font-weight: 0;
+      .GuideText {
+        font-size: 14px;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        letter-spacing: -0.2px;
+        color: #4e4e4e;
+      }
+
+      strong {
+        color: blue;
+      }
+    }
+  }
+
+  .DetailPrice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    .PricePerItem {
+      color: #828282;
+      font-size: 14px;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.43;
+      letter-spacing: -0.2px;
+    }
+    .Price {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.33;
+    }
+  }
+
+  .ProductNotify {
+    color: #111;
+    position: relative;
+    height: 40px;
+    margin: 16px 0 0;
+    text-align: center;
+    border-radius: 16px;
+    border-bottom-right-radius: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-image-slice: 0;
+    border-image-source: linear-gradient(
+      to right,
+      #ec1131,
+      #580de2 66%,
+      #0e2ee2
+    );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-image: linear-gradient(to bottom, #fff, #fff),
+      linear-gradient(to right, #ec1131, #580de2 66%, #0e2ee2);
+
+    .Period {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 7px 10px 5px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.25;
+      text-align: center;
+      opacity: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: opacity 0.15s;
+    }
+  }
+
+  .CartButton {
+    .AddButton {
+      width: 100%;
+      height: 54px;
+      margin: 10px 0 0;
+      padding: 16px 0 14px;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.33;
+      text-align: center;
+      color: #fff;
+      border: none;
+      outline: none;
+      background-color: #111;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 2000px) {
+  .DetailContent {
+    width: 700px;
+
+    .DetailPreview {
+      width: 100%;
+      .slider {
+        position: relative;
+
+        .image {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1201px) {
+  .DetailContent {
+    width: 61%;
+
+    .DetailPreview {
+      width: 100%;
+      .slider {
+        position: relative;
+
+        .image {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .DetailContent {
+    width: 440px;
+    .DetailPreview {
+      width: 440px;
+      .slider {
+        position: relative;
+
+        .image {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .DetailForm {
+    width: 296px;
+    padding-left: 5%;
+  }
+}
