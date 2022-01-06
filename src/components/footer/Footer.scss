@@ -1,0 +1,91 @@
+//풋터
+.footerContainer {
+  box-sizing: border-box;
+  list-style: none;
+  background-color: #f8f8f8;
+  color: gray;
+  font-size: 13px;
+
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+
+  .footerWrapper {
+    padding-right: 6%;
+
+    .footerContents {
+      display: flex;
+      flex-direction: column;
+      padding: 50px 100px;
+
+      .footerCompanyInfo,
+      .footerContact {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+      }
+
+      .infoTitle {
+        color: black;
+        font-weight: bold;
+      }
+
+      .infoContents {
+        display: flex;
+        flex-wrap: wrap;
+
+        .infoContentsDl {
+          display: flex;
+          margin: 10px 20px 0 0;
+
+          .infoContentsDd {
+            margin-left: 5px;
+          }
+        }
+
+        #importantInfo {
+          color: black;
+        }
+      }
+
+      .languageList {
+        display: flex;
+        flex-direction: row;
+
+        li {
+          margin-right: 10px;
+
+          #korean {
+            color: black;
+          }
+        }
+      }
+
+      .footerContactBottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+
+      .contactTopList,
+      .contactBottomList {
+        display: flex;
+        flex-direction: row;
+
+        .fa {
+          font-size: 20px;
+        }
+      }
+
+      .contactTopList > li {
+        margin-right: 10px;
+      }
+
+      .contactBottomList > li {
+        margin-right: 20px;
+      }
+    }
+  }
+}

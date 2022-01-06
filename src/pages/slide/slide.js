@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SlideCard from '../../components/slidecard';
+import SlideCard from './slidecard';
 import './slide.scss';
 
 export default function Slide() {
