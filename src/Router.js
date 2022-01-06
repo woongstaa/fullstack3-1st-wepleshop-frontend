@@ -1,12 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-// import LoginWoong from './pages/woong/Login/Login_woong';
+import Test from './components/top/Top';
+// import Test from './components/footer/Footer';
+// import Test from './components/nav/Nav';
 
 function Router() {
   return (
     <BrowserRouter>
-      <Routes>{/* <Route path="/" element={<LoginWoong />} /> */}</Routes>
+      <Routes>
+        <Route path="/" element={<Test />} />
+      </Routes>
     </BrowserRouter>
   );
 }
