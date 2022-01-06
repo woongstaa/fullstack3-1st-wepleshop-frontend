@@ -1,91 +1,95 @@
 //풋터
+
 .footerContainer {
   box-sizing: border-box;
+  padding-right: 5.714285714285714rem;
   list-style: none;
-  background-color: #f8f8f8;
-  color: gray;
-  font-size: 13px;
 
   a {
     text-decoration: none;
     color: gray;
   }
 
-  .footerWrapper {
-    padding-right: 6%;
-
+  @media screen and (max-width: 1023px) {
     .footerContents {
+      box-sizing: border-box;
+      width: 1023px;
+    }
+  }
+
+  .footerContents {
+    box-sizing: border-box;
+    padding: 2.857142857142857rem 5.714285714285714rem;
+    background-color: #f8f8f8;
+    color: gray;
+    font-size: 13px;
+
+    .footerCompanyInfo,
+    .footerContact {
       display: flex;
       flex-direction: column;
-      padding: 50px 100px;
+      margin-top: 30px;
+    }
 
-      .footerCompanyInfo,
-      .footerContact {
+    .infoTitle {
+      color: black;
+      font-weight: bold;
+    }
+
+    .infoContents {
+      display: flex;
+      flex-wrap: wrap;
+
+      .infoContentsDl {
         display: flex;
-        flex-direction: column;
-        margin-top: 30px;
-      }
+        margin: 10px 20px 0 0;
 
-      .infoTitle {
-        color: black;
-        font-weight: bold;
-      }
-
-      .infoContents {
-        display: flex;
-        flex-wrap: wrap;
-
-        .infoContentsDl {
-          display: flex;
-          margin: 10px 20px 0 0;
-
-          .infoContentsDd {
-            margin-left: 5px;
-          }
+        .infoContentsDd {
+          margin-left: 5px;
         }
+      }
 
-        #importantInfo {
+      #importantInfo {
+        color: black;
+      }
+    }
+
+    .languageList {
+      display: flex;
+      flex-direction: row;
+
+      li {
+        margin-right: 10px;
+
+        #korean {
           color: black;
         }
       }
+    }
 
-      .languageList {
-        display: flex;
-        flex-direction: row;
+    .footerContactBottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
 
-        li {
-          margin-right: 10px;
+    .contactTopList,
+    .contactBottomList {
+      display: flex;
+      flex-direction: row;
 
-          #korean {
-            color: black;
-          }
-        }
+      .contactIcon {
+        font-size: 20px;
       }
+    }
 
-      .footerContactBottom {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 30px;
-      }
+    .contactTopList > li {
+      margin-right: 10px;
+    }
 
-      .contactTopList,
-      .contactBottomList {
-        display: flex;
-        flex-direction: row;
-
-        .fa {
-          font-size: 20px;
-        }
-      }
-
-      .contactTopList > li {
-        margin-right: 10px;
-      }
-
-      .contactBottomList > li {
-        margin-right: 20px;
-      }
+    .contactBottomList > li {
+      margin-right: 20px;
     }
   }
 }

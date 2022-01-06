@@ -1,4 +1,7 @@
 import './Top.scss';
+import { GET_PRODUCT_API } from '/Users/hyosangpark/Desktop/wecode/fullstack3-1st-wepleshop-frontend/src/config.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Top() {
   return (
@@ -20,7 +23,7 @@ function Top() {
                 <a href="#">셀러</a>
               </li>
               <li className="headerListMenu">
-                <a href="#">상품</a>
+                <a href={`${GET_PRODUCT_API}`}>상품</a>
               </li>
               <li className="headerListMenu">
                 <a href="#">공식굿즈</a>
@@ -36,11 +39,11 @@ function Top() {
           <div className="headerRight">
             <div className="cart">
               <a href="#">
-                <i className="fa fa-shopping-basket" />
+                <FontAwesomeIcon icon={faShoppingBasket} className="cartIcon" />
               </a>
             </div>
             <button type="button" className="hamburger">
-              <i className="fa fa-bars" />
+              <FontAwesomeIcon icon={faBars} className="hamburgerIcon" />
             </button>
           </div>
         </div>
