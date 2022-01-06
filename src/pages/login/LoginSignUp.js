@@ -30,7 +30,7 @@ function LoginSignUp({ onClickSignIn }) {
 
   useEffect(() => {
     const emailValidation = emailInput.includes('@');
-    const passwordValidation = passwordInput.length > 5;
+    const passwordValidation = passwordInput.length >= 5;
     const nameValidation = nameInput;
 
     if (emailValidation && passwordValidation && nameValidation) {
@@ -125,6 +125,11 @@ function LoginSignUp({ onClickSignIn }) {
           type="submit"
           onClick={validation ? goToHome : modalClose}
         >
+          {/* onClick 이벤트 내용을 세분화하기(if문 사용?),
+          0. 홈으로 가는 함수
+          1. 이메일 양식 오류 모달창
+          2. 비밀번호 길이 오류 모달창
+          3. 이미 가입된 회원 오류 모달창 */}
           회원가입
         </button>
         {/* {modalSignUpOpen && <ModalSignUp modalSignUpClose={modalSignUpClose} />} */}
