@@ -3,13 +3,11 @@
   position: relative;
   width: 100%;
   background-color: blue;
-  // margin: 0 10%;
 
   .slide-showbox {
-    margin-left: 5.714285714285714rem;
     width: 80%;
     height: 450px;
-    // margin: 0 auto;
+    margin-left: 6.042rem;
     position: relative;
     overflow: hidden;
     background-color: black;
@@ -31,7 +29,7 @@
     justify-content: space-between;
     .prev {
       top: 25%;
-      left: 3%;
+      left: 1%;
       font-size: 70px;
       border: none;
       background: inherit;
@@ -40,7 +38,7 @@
     }
     .next {
       top: 25%;
-      left: 92%;
+      left: 88%;
       font-size: 70px;
       border: none;
       background: inherit;

@@ -1,3 +1,4 @@
+import './Section.scss';
 import Top from '../top/Top';
 import Footer from '../footer/Footer';
 import Slide from '../../pages/slide/slide';
