@@ -6,8 +6,6 @@ import {
   faArrowAltCircleRight as right,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { SliderData } from './SliderData';
-
 const ImageSlider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const [arrowId, arrowIdChange] = useState('nonHide');
@@ -57,7 +55,7 @@ const ImageSlider = ({ slides }) => {
         <span className="all">{length}</span>
       </div>
 
-      {SliderData.map((slide, index) => {
+      {/* {SliderData.map((slide, index) => {
         return (
           <div
             className={index === current ? 'slide active' : 'slide'}
@@ -68,7 +66,7 @@ const ImageSlider = ({ slides }) => {
             )}
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
