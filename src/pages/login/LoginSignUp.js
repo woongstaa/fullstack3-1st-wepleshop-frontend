@@ -4,6 +4,7 @@ import { POST_SIGNUP_API } from '../../config';
 import ModalLogin from '../../components/ModalLogin';
 import ModalPersonal from '../../components/ModalPersonal';
 import ModalTerms from '../../components/ModalTerms';
+import ModalSignUp from '../../components/ModalSignUp';
 
 function LoginSignUp() {
   const [validation, setValidation] = useState(false);
@@ -11,8 +12,9 @@ function LoginSignUp() {
   const [passwordInput, setPasswordInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
-  const [termsModalOpen, setTermsModalOpen] = useState(false);
-  const [personalModalOpen, setPersonalModalOpen] = useState(false);
+  const [modalTermsOpen, setModalTermsOpen] = useState(false);
+  const [modalPersonalOpen, setModalPersonalOpen] = useState(false);
+  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
 
   // 이름/아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
   const handleIdInput = event => {
@@ -50,19 +52,23 @@ function LoginSignUp() {
       }),
     });
 
-    navigate('/');
+    // navigate('/');
   };
 
   const modalClose = () => {
     setModalOpen(!modalOpen);
   };
 
-  const termsModalClose = () => {
-    setTermsModalOpen(!termsModalOpen);
+  const modalTermsClose = () => {
+    setModalTermsOpen(!modalTermsOpen);
   };
 
-  const personalModalClose = () => {
-    setPersonalModalOpen(!personalModalOpen);
+  const modalPersonalClose = () => {
+    setModalPersonalOpen(!modalPersonalOpen);
+  };
+
+  const modalSignUpClose = () => {
+    setModalSignUpOpen(!modalSignUpOpen);
   };
 
   return (
@@ -87,19 +93,19 @@ function LoginSignUp() {
         <label>
           <input className="check" type="checkbox" name="checkAgree" />
           <span className="agree">이용약관 동의</span>
-          <span className="agreeContents" onClick={termsModalClose}>
+          <span className="agreeContents" onClick={modalTermsClose}>
             보기
           </span>
-          {termsModalOpen && <ModalTerms termsModalClose={termsModalClose} />}
+          {modalTermsOpen && <ModalTerms modalTermsClose={modalTermsClose} />}
         </label>
         <label>
           <input className="check" type="checkbox" name="checkAgree" />
           <span className="agree">개인정보수집·이용 동의</span>
-          <span className="agreeContents" onClick={personalModalClose}>
+          <span className="agreeContents" onClick={modalPersonalClose}>
             보기
           </span>
-          {personalModalOpen && (
-            <ModalPersonal personalModalClose={personalModalClose} />
+          {modalPersonalOpen && (
+            <ModalPersonal modalPersonalClose={modalPersonalClose} />
           )}
         </label>
         <label>
@@ -116,11 +122,14 @@ function LoginSignUp() {
         <button
           className="btn"
           type="submit"
-          onClick={validation ? goToHome : modalClose}
+          onClick={validation ? modalSignUpClose : modalClose}
         >
           회원가입
         </button>
-        {modalOpen && <ModalLogin modalClose={modalClose} />}
+        {modalSignUpOpen && <ModalSignUp modalSignUpClose={modalSignUpClose} />}
+        {modalOpen && (
+          <ModalLogin modalClose={modalClose} goToHome={goToHome} />
+        )}
       </div>
     </div>
   );

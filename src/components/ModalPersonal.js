@@ -1,9 +1,9 @@
 import './ModalPersonal.scss';
 
-function PersonalModal({ personalModalClose }) {
+function ModalPersonal({ modalPersonalClose }) {
   const onCloseModal = event => {
     if (event.target === event.currentTarget) {
-      personalModalClose();
+      modalPersonalClose();
     }
   };
 
@@ -39,7 +39,7 @@ function PersonalModal({ personalModalClose }) {
           <p>기타등등</p>
         </div>
 
-        <button className="modalButton" onClick={personalModalClose}>
+        <button className="modalButton" onClick={modalPersonalClose}>
           확인
         </button>
       </div>
@@ -47,4 +47,4 @@ function PersonalModal({ personalModalClose }) {
   );
 }
 
-export default PersonalModal;
+export default ModalPersonal;

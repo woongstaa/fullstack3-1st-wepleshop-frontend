@@ -1,9 +1,9 @@
 import './ModalTerms.scss';
 
-function TermsModal({ termsModalClose }) {
+function ModalTerms({ modalTermsClose }) {
   const onCloseModal = event => {
     if (event.target === event.currentTarget) {
-      termsModalClose();
+      modalTermsClose();
     }
   };
 
@@ -34,7 +34,7 @@ function TermsModal({ termsModalClose }) {
           <p>기타등등</p>
         </div>
 
-        <button className="modalButton" onClick={termsModalClose}>
+        <button className="modalButton" onClick={modalTermsClose}>
           확인
         </button>
       </div>
@@ -42,4 +42,4 @@ function TermsModal({ termsModalClose }) {
   );
 }
 
-export default TermsModal;
+export default ModalTerms;
