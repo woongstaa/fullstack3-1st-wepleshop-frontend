@@ -9,11 +9,11 @@ import ImageSlider from './ImageSlider';
 function Detail() {
   const [productName, productNameSet] = useState('');
   let productColor = [];
-  const [productColorState, productColorChange] = useState([]);
+
   let productColorHex = [];
-  const [productColorHexState, productColorHexChange] = useState([]);
+
   let productSizePerColor = {};
-  let [productSizeState, productSizeChange] = useState([]);
+
   const [productPrice, productPriceSet] = useState(1000);
   let productImgUrl = [];
   const [imgUrl, urlSetting] = useState([]);
@@ -37,16 +37,16 @@ function Detail() {
             productColor.push(Object.values(data[i])[4]);
           }
         }
-        let mocColor = [...productColor];
-        productColorChange(...mocColor); // 제품 색상
+        // let mocColor = [...productColor];
+        // productColorChange(...mocColor); // 제품 색상
 
         for (let i = 0; i < Object.values(data).length; i++) {
           if (productColorHex.indexOf(Object.values(data[i])[5]) === -1) {
             productColorHex.push(Object.values(data[i])[5]);
           }
         }
-        let mocHex = [...productColorHex];
-        productColorHexChange(...mocHex); //  제품 색상 hex
+        // let mocHex = [...productColorHex];
+        // productColorHexChange(...mocHex); //  제품 색상 hex
 
         for (let i = 0; i < data.length; i++) {
           if (productSizePerColor[data[i].colorName] === undefined) {

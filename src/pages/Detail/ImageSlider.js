@@ -49,24 +49,10 @@ const ImageSlider = ({ slides }) => {
           onClick={nextSlide}
         />
       </a>
-
       <div class="NumberPerNumber">
         <span className="now">{current + 1}</span> /{' '}
         <span className="all">{length}</span>
       </div>
-
-      {slides.map((slide, index) => {
-        return (
-          <div
-            className={index === current ? 'slide active' : 'slide'}
-            key={index}
-          >
-            {index === current && (
-              <img src={slide} alt="travel image" className="image" />
-            )}
-          </div>
-        );
-      })}
     </div>
   );
 };
