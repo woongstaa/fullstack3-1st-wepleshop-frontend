@@ -5,16 +5,21 @@ import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare as regularShare } from '@fortawesome/free-regular-svg-icons';
 import ImageSlider from './ImageSlider';
-import { SliderData } from './SliderData';
 
 function Detail() {
   const [productName, productNameSet] = useState('');
   let productColor = [];
+  const [productColorState, productColorChange] = useState([]);
   let productColorHex = [];
+  const [productColorHexState, productColorHexChange] = useState([]);
   let productSizePerColor = {};
+  let [productSizeState, productSizeChange] = useState([]);
   const [productPrice, productPriceSet] = useState(1000);
+  let productImgUrl = [];
+  const [imgUrl, urlSetting] = useState([]);
+  // const [colorHex, colorHexSet] = useState([]);
 
-  const idValue = 1;
+  const [idValue, idSet] = useState(1);
   useEffect(() => {
     fetch('http://localhost:8000/products/details', {
       method: 'POST',
@@ -25,19 +30,23 @@ function Detail() {
     })
       .then(res => res.json())
       .then(data => {
-        productNameSet(Object.values(data[0])[1]);
+        productNameSet(Object.values(data[0])[1]); // 제품 이름
 
         for (let i = 0; i < Object.values(data).length; i++) {
           if (productColor.indexOf(Object.values(data[i])[4]) === -1) {
             productColor.push(Object.values(data[i])[4]);
           }
         }
+        let mocColor = [...productColor];
+        productColorChange(...mocColor); // 제품 색상
 
         for (let i = 0; i < Object.values(data).length; i++) {
           if (productColorHex.indexOf(Object.values(data[i])[5]) === -1) {
             productColorHex.push(Object.values(data[i])[5]);
           }
         }
+        let mocHex = [...productColorHex];
+        productColorHexChange(...mocHex); //  제품 색상 hex
 
         for (let i = 0; i < data.length; i++) {
           if (productSizePerColor[data[i].colorName] === undefined) {
@@ -51,16 +60,26 @@ function Detail() {
               productSizePerColor[data[i].colorName].push(data[i].sizeName);
             }
           }
-        }
-        productPriceSet(data[0].productPrice);
+        } // 제품 사이즈
 
-        console.log('productNames : ', productName);
-        console.log('productColors : ', productColor);
-        console.log('productColorHexs : ', productColorHex);
-        console.log('productSizePerColor : ', productSizePerColor);
-        console.log('productPrice : ', productPrice);
+        productPriceSet(data[0].productPrice); // 제품 가격
+
+        for (let i = 0; i < Object.values(data).length; i++) {
+          if (productImgUrl.indexOf(Object.values(data[i])[7]) === -1) {
+            productImgUrl.push(Object.values(data[i])[7]);
+          }
+        }
+        let img = [...productImgUrl];
+        urlSetting(img); //제품 이미지
+
+        // console.log("productNames : ", productName);
+        // console.log("productColors : ", productColor);
+        // console.log("productColorHexs : ", productColorHex);
+        // console.log("productSizePerColor : ", productSizePerColor);
+        // console.log("productPrice : ", productPrice);
+        // console.log("productImgUrl : ", imgUrl);
       });
-  });
+  }, []);
 
   const [quantity, quantityUpdate] = useState(1);
 
@@ -89,18 +108,18 @@ function Detail() {
         <div className="DetailBody">
           <div className="DetailContent">
             <div className="DetailPreview">
-              <ImageSlider slides={SliderData} />
+              <ImageSlider slides={imgUrl} />
 
               <div className="DetailSeller">
                 <a href="#" className="DetailSellerLink">
                   <img
-                    src="/images/최홍자.jpeg"
+                    src="/images/dok2.jpeg"
                     alt="판매자아이콘"
                     className="DetailSellerIcon"
-                  ></img>
+                  />
                   <div className="DetailSellerInfo">
                     <span>Designed by</span>
-                    <h3>최홍자</h3>
+                    <h3>Dok2</h3>
                   </div>
                 </a>
               </div>
@@ -112,7 +131,7 @@ function Detail() {
               <div className="ProductName">
                 <span>{productName}</span>
                 <p>최고의 제품입니다.</p>
-                <p className="price">{productPrice} 원</p>
+                <p className="price">{productPrice.toLocaleString()} 원</p>
               </div>
               <div className="ShareAndHeart">
                 <a href="#">
@@ -126,20 +145,24 @@ function Detail() {
             <div className="DetailColor">
               <p className="ColorMain">색상</p>
               <ul className="ColorRadioBox">
+                {/* {productColorHex.map((li, index) => {
+                  return <ColorChoice colorhex={li} key={index} />;
+                })} */}
+
                 <li>
-                  <input type="radio" name="color" id="black"></input>
+                  <input type="radio" name="color" id="black" />
                   <label for="black" className="black">
                     블랙
                   </label>
                 </li>
                 <li>
-                  <input type="radio" name="color" id="gray"></input>
+                  <input type="radio" name="color" id="gray" />
                   <label for="gray" className="gray">
                     그레이
                   </label>
                 </li>
                 <li>
-                  <input type="radio" name="color" id="skyblue"></input>
+                  <input type="radio" name="color" id="skyblue" />
                   <label for="skyblue" className="skyblue">
                     블루
                   </label>
@@ -150,33 +173,33 @@ function Detail() {
               <p className="SizeMain">사이즈</p>
               <ul className="SizeChart">
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="xs"></input>
+                  <input type="radio" name="size" id="xs" />
                   <label for="xs" className="xs">
                     XS
                   </label>
                 </li>
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="s"></input>
+                  <input type="radio" name="size" id="s" />
                   <label for="s">S</label>
                 </li>
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="m"></input>
+                  <input type="radio" name="size" id="m" />
                   <label for="m">M</label>
                 </li>
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="l"></input>
+                  <input type="radio" name="size" id="l" />
                   <label for="l">L</label>
                 </li>
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="xl"></input>
+                  <input type="radio" name="size" id="xl" />
                   <label for="xl">XL</label>
                 </li>
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="xxl"></input>
+                  <input type="radio" name="size" id="xxl" />
                   <label for="xxl">XXL</label>
                 </li>
                 <li className="SizeCheckBox">
-                  <input type="radio" name="size" id="xxxl"></input>
+                  <input type="radio" name="size" id="xxxl" />
                   <label for="xxxl">XXXL</label>
                 </li>
               </ul>
@@ -187,14 +210,14 @@ function Detail() {
 
               <div className="QuantityBox">
                 <button onClick={minus}>-</button>
-                <input type="text" readonly="" value={quantity}></input>
+                <input type="text" readonly="" value={quantity} />
                 <button onClick={plus}>+</button>
               </div>
 
-              <div className="GrayLine"></div>
+              <div className="GrayLine" />
 
               <div className="Guide">
-                <span className="Guide_Icon"></span>
+                <span className="Guide_Icon" />
                 <span className="GuideText">
                   지금 주문하면&nbsp;<strong>1/12 ~ 1/19</strong>&nbsp;사이에
                   출발해요!
