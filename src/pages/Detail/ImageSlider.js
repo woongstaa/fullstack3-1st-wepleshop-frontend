@@ -34,6 +34,7 @@ const ImageSlider = ({ slides }) => {
   return (
     <div className="slider">
       <a href="#" className="left">
+        çç
         <FontAwesomeIcon
           icon={left}
           className="left-arrow"
