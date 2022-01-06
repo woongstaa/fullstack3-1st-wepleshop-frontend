@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { POST_SIGNIN_API } from '../../config';
 import ModalLogin from '../../components/ModalLogin';
 
 function LoginSignIn() {
@@ -9,20 +10,14 @@ function LoginSignIn() {
   const [token, setToken] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
-  // 리팩토링
+  // 리팩토링 구현중
   // const [inputs, setInputs] = useState({
   //   email: '',
   //   password: '',
   // });
 
   // const { email, password } = inputs;
-  // 리팩토링 - End
-
-  // const onKeyPress = event => {
-  //   if (event.key === 'Enter') {
-  //     goToHome();
-  //   }
-  // };
+  // End
 
   // 아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
   const handleIdInput = event => {
@@ -35,7 +30,7 @@ function LoginSignIn() {
 
   useEffect(() => {
     const emailValidation = emailInput.includes('@');
-    const passwordValidation = passwordInput.length > 6;
+    const passwordValidation = passwordInput.length > 7;
 
     if (emailValidation && passwordValidation) {
       setValidation(true);
@@ -46,7 +41,7 @@ function LoginSignIn() {
 
   useEffect(() => {
     if (validation === true) {
-      fetch('http://localhost:8000/users/signin', {
+      fetch(POST_SIGNIN_API, {
         method: 'POST',
         headers: { 'Content-type': 'application/json', mode: 'cors' },
         body: JSON.stringify({
@@ -58,7 +53,8 @@ function LoginSignIn() {
         .then(data => setToken(data.token));
     }
   });
-  // End
+
+  sessionStorage.setItem('ID', token);
 
   const navigate = useNavigate();
   const goToHome = () => {
@@ -76,12 +72,7 @@ function LoginSignIn() {
     <div id="loginSignInContainer">
       <div className="inputWrapper">
         <p className="inputTitle">이메일</p>
-        <input
-          type="email"
-          placeholder="이메일"
-          onChange={handleIdInput}
-          // onKeyPress={isToken ? onKeyPress : modalClose}
-        />
+        <input type="email" placeholder="이메일" onChange={handleIdInput} />
       </div>
       <div className="inputWrapper">
         <p className="inputTitle">비밀번호 (6자리 이상)</p>
@@ -89,7 +80,6 @@ function LoginSignIn() {
           type="password"
           placeholder="비밀번호 (6자리 이상)"
           onChange={handlePwInput}
-          // onKeyPress={isToken ? onKeyPress : modalClose}
         />
       </div>
       <div className="submit">

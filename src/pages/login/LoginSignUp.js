@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { POST_SIGNUP_API } from '../../config';
 import ModalLogin from '../../components/ModalLogin';
 import ModalPersonal from '../../components/ModalPersonal';
 import ModalTerms from '../../components/ModalTerms';
@@ -38,8 +39,8 @@ function LoginSignUp() {
   }, [nameInput, emailInput, passwordInput]);
 
   const navigate = useNavigate();
-  const goToHome = () => {
-    fetch('http://localhost:8000/users/signup', {
+  const goToHome = async () => {
+    await fetch(POST_SIGNUP_API, {
       method: 'POST',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
