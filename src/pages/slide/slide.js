@@ -1,23 +1,14 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useEffect, useState } from 'react';
 import SlideCard from '../../components/slidecard';
 import './slide.scss';
 
 export default function Slide() {
-  //카드 정보
-  const [slideInfo, setSlideInfo] = useState(1);
+  const [slideInfo, setSlideInfo] = useState([]);
 
-  //슬라이드 이동 x축
   const [x, setX] = useState(0);
-
-  //카드 매핑 인덱스
-  const [index, setIndex] = useState(0);
-
-  //카드에담기는 정보
-  // const [id, setId] = useState('');
-  // const [imgUrl, setImgUrl] = useState('');
-  // const [title, setTitle] = useState('');
-  // const [description, setDescription] = useState('');
+  const [moving, setMoving] = useState(false);
+  const [index, setIndex] = useState(1);
+  const [originalSize, setOriginalSize] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:8000/products/slide`, {
@@ -28,34 +19,79 @@ export default function Slide() {
       .then(data => setSlideInfo(data));
   }, []);
 
+  // useEffect(() => {
+  //   //인덱스가 마지막 사진에 도달하면
+  //   if (index === slideInfo.length - 1) {
+  //     setImgList(prevList => [
+  //       ...prevList,
+  //       slideInfo[index - (originalSize - 1)],
+  //     ]);
+
+  //     return;
+  //   }
+  //   if (index === 0) {
+  //     setImgList(prevList => [slideInfo[3], ...prevList]);
+  //     setIndex(1);
+  //   }
+  // }, [index]);
+
+  // const goLeft = () => {
+  //   if (moving) return; // 움직이는 중이라면 버튼 액션을 비활성화합니다.
+  //   setX((<변경>) => <변경>);
+  //   setMoving(true);
+  //   setTimeout(() => {
+  //     const lastImg = imgList.pop();
+  //     setImgList(<변경>);
+  //     setX((<변경>) => <변경>);
+  //     setMoving(false);
+  //   }, 500);
+  // };
+
+  // const goRight= () => {
+  //   if (moving) return; // 움직이는 중이라면 버튼 액션을 비활성화합니다.
+  //   setX((<변경>) => <변경>);
+  //   setMoving(true);
+  //   setTimeout(() => {
+  //     const firstImg = imgList.shift();
+  //     setImgList(<변경>);
+  //     setX((<변경>) => <변경>);
+  //     setMoving(false);
+  //   }, 500);
+  // };
+
   useEffect(() => {
-    if (index === imgList.length - 1) {
-      setImgList(prevList => [
+    if (index === slideInfo.length - 1) {
+      setSlideInfo(prevList => [
         ...prevList,
-        imgList[index - (originalSize - 1)],
+        slideInfo[index - (originalSize - 1)],
       ]);
 
       return;
     }
     if (index === 0) {
-      setImgList(prevList => [imgList[3], ...prevList]);
+      setSlideInfo(prevList => [slideInfo[4], ...prevList]);
       setIndex(1);
     }
   }, [index]);
 
   const goLeft = () => {
-    setX(x => x + 100);
+    setX(x => x + 423);
     setIndex(prevIndex => prevIndex - 1);
   };
   const goRight = () => {
-    setX(x => x - 100);
+    setX(x => x - 423);
     setIndex(prevIndex => prevIndex + 1);
+
+    // if (slideInfo === slideInfo.length - 1) {}
   };
 
   return (
     <div className="slide-section">
       <div className="slide-showbox">
-        <ul className="slide-wrapper">
+        <ul
+          className="slide-wrapper"
+          style={{ transform: `translateX(${x}px)` }}
+        >
           <li className="slide-list">
             {slideInfo.productSlide &&
               slideInfo.productSlide.map((e, i) => {

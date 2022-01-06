@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react/cjs/react.development';
 import './slidecard.scss';
 
 const SlideCard = ({ i, imgUrl, title, description }) => {

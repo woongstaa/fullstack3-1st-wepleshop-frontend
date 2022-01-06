@@ -2,17 +2,19 @@
   box-sizing: border-box;
   position: relative;
   .slide-showbox {
-    width: 85%;
+    width: 83%;
     height: 450px;
     margin: 0 auto;
     position: relative;
+    overflow: hidden;
     .slide-wrapper {
       height: 100%;
       display: flex;
-      overflow: hidden;
+
       .slide-list {
         display: flex;
         height: 100%;
+        transition: transform 0.5s;
       }
     }
   }
@@ -22,6 +24,7 @@
     justify-content: space-between;
     .prev {
       top: 25%;
+      left: 3%;
       font-size: 70px;
       border: none;
       background: inherit;
@@ -30,7 +33,7 @@
     }
     .next {
       top: 25%;
-      left: 95%;
+      left: 92%;
       font-size: 70px;
       border: none;
       background: inherit;
