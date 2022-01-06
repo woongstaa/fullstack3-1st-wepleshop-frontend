@@ -2,7 +2,7 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const ItemCard = ({ imgUrl, productName, price, quantity, i }) => {
+const ItemCard = ({ imgUrl, productName, price, quantity, id }) => {
   const [state, setState] = useState();
 
   const clickLike = () => {
@@ -10,7 +10,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, i }) => {
   };
 
   return (
-    <div className="listCard" key={i}>
+    <div className="listCard" key={id}>
       <div className="imgWrapper">
         <Link to="/detail">
           <img className="listImg" src={imgUrl} alt={productName} />
@@ -28,7 +28,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, i }) => {
           <div className="itemStatusSoldOut">매진</div>
         ) : (
           quantity <= 10 && (
-            <div className="itemStatusLessTen">재고 10개 이하</div>
+            <div className="itemStatusLessTen">{`${quantity}개 남음`}</div>
           )
         )}
       </div>
@@ -37,7 +37,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, i }) => {
       </div>
       <div className="itemPrice">
         <span>₩ </span>
-        {price}
+        {price.toLocaleString()}
       </div>
     </div>
   );

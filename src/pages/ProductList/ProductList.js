@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import { IoCloseSharp } from 'react-icons/io5';
 import ItemCard from './ItemCard';
+import CategoryModal from './CategoryModal';
 import './ProductList.scss';
 
 const ProductList = () => {
   const [listData, setListData] = useState();
-  const [categoryId, setCategoryId] = useState('categoryId=1');
+  const [categoryId, setCategoryId] = useState('categoryId=3');
   const [subCategoryId, setSubCategoryId] = useState('');
   const [sortWord, setSortWord] = useState('&sortWord=popular');
   const [state, setState] = useState();
@@ -20,6 +20,18 @@ const ProductList = () => {
     setModal(!modal);
   };
 
+  const convertToMainImgList = listData => {
+    const newListData = listData.list.filter((element, index, callback) => {
+      return (
+        (element.imgUrl.includes('1.jpg') ||
+          element.imgUrl.includes('1.jpeg')) &&
+        index === callback.findIndex(t => t.productId === element.productId)
+      );
+    });
+    listData.list = newListData;
+    return listData;
+  };
+
   useEffect(() => {
     fetch(
       `http://localhost:8000/products/list?${categoryId}${subCategoryId}${sortWord}`,
@@ -29,7 +41,7 @@ const ProductList = () => {
       }
     )
       .then(res => res.json())
-      .then(data => setListData(data));
+      .then(data => setListData(convertToMainImgList(data)));
   }, [categoryId, sortWord, subCategoryId]);
 
   return (
@@ -43,8 +55,8 @@ const ProductList = () => {
               <FaAngleDown className="icon" />
             </div>
             <span>을</span>
-            <div className="btnWrapper">
-              <button onClick={upAndDown}>인기순</button>
+            <div className="btnWrapper" onClick={upAndDown}>
+              <button>인기순</button>
               {state ? (
                 <FaAngleUp className="icon" />
               ) : (
@@ -63,7 +75,7 @@ const ProductList = () => {
             listData.list.map((e, i) => {
               return (
                 <ItemCard
-                  key={i}
+                  key={e.id}
                   imgUrl={e.imgUrl}
                   productName={e.productName}
                   price={e.price}
@@ -74,58 +86,6 @@ const ProductList = () => {
             })}
         </div>
       </div>
-    </div>
-  );
-};
-
-const CategoryModal = ({ isOpen, modal }) => {
-  const [category, setCategory] = useState();
-  const [subCategory, setSubCategory] = useState();
-
-  useEffect(() => {
-    fetch('http://localhost:8000/category', {
-      method: 'GET',
-      headers: { 'Content-type': 'application/json', mode: 'cors' },
-    })
-      .then(res => res.json())
-      .then(data => setCategory(data));
-  }, []);
-
-  useEffect(() => {
-    fetch('http://localhost:8000/category/sub', {
-      method: 'GET',
-      headers: { 'Content-type': 'application/json', mode: 'cors' },
-    })
-      .then(res => res.json())
-      .then(data => setSubCategory(data));
-  }, []);
-
-  return (
-    <div>
-      {modal ? (
-        <div className="modal">
-          <div className="modalWrapper">
-            <div className="modalHeader">
-              <div>카테고리 선택</div>
-              <div className="closeBtn" onClick={isOpen}>
-                <IoCloseSharp />
-              </div>
-            </div>
-            <div className="modalBody">
-              {subCategory &&
-                subCategory.message.map((e, i) => (
-                  <div key={i}>
-                    <div className="category">{e.category}</div>
-                    <button className="subCategory">{e.subCategory}</button>
-                  </div>
-                ))}
-            </div>
-            <div className="modalFooter">
-              <button onClick={isOpen}>확인</button>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 };
