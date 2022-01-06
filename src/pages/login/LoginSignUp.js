@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { POST_SIGNUP_API } from '../../config';
-import ModalLogin from '../../components/ModalLogin';
-import ModalPersonal from '../../components/ModalPersonal';
-import ModalTerms from '../../components/ModalTerms';
-import ModalSignUp from '../../components/ModalSignUp';
+import ModalLogin from '../../components/modalLogin/ModalLogin';
+import ModalPersonal from '../../components/modalLogin/ModalPersonal';
+import ModalTerms from '../../components/modalLogin/ModalTerms';
+// import ModalSignUp from '../../components/ModalSignUp';
 
-function LoginSignUp() {
+function LoginSignUp({ onClickSignIn }) {
   const [validation, setValidation] = useState(false);
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -14,7 +14,7 @@ function LoginSignUp() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTermsOpen, setModalTermsOpen] = useState(false);
   const [modalPersonalOpen, setModalPersonalOpen] = useState(false);
-  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
+  // const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
 
   // 이름/아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
   const handleIdInput = event => {
@@ -30,7 +30,7 @@ function LoginSignUp() {
 
   useEffect(() => {
     const emailValidation = emailInput.includes('@');
-    const passwordValidation = passwordInput.length > 6;
+    const passwordValidation = passwordInput.length > 5;
     const nameValidation = nameInput;
 
     if (emailValidation && passwordValidation && nameValidation) {
@@ -40,9 +40,9 @@ function LoginSignUp() {
     }
   }, [nameInput, emailInput, passwordInput]);
 
-  const navigate = useNavigate();
-  const goToHome = async () => {
-    await fetch(POST_SIGNUP_API, {
+  // const navigate = useNavigate();
+  const goToHome = () => {
+    fetch(POST_SIGNUP_API, {
       method: 'POST',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
@@ -52,6 +52,7 @@ function LoginSignUp() {
       }),
     });
 
+    onClickSignIn();
     // navigate('/');
   };
 
@@ -67,9 +68,9 @@ function LoginSignUp() {
     setModalPersonalOpen(!modalPersonalOpen);
   };
 
-  const modalSignUpClose = () => {
-    setModalSignUpOpen(!modalSignUpOpen);
-  };
+  // const modalSignUpClose = () => {
+  //   setModalSignUpOpen(!modalSignUpOpen);
+  // };
 
   return (
     <div id="loginSignUpContainer">
@@ -122,14 +123,12 @@ function LoginSignUp() {
         <button
           className="btn"
           type="submit"
-          onClick={validation ? modalSignUpClose : modalClose}
+          onClick={validation ? goToHome : modalClose}
         >
           회원가입
         </button>
-        {modalSignUpOpen && <ModalSignUp modalSignUpClose={modalSignUpClose} />}
-        {modalOpen && (
-          <ModalLogin modalClose={modalClose} goToHome={goToHome} />
-        )}
+        {/* {modalSignUpOpen && <ModalSignUp modalSignUpClose={modalSignUpClose} />} */}
+        {modalOpen && <ModalLogin modalClose={modalClose} />}
       </div>
     </div>
   );

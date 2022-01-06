@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { POST_SIGNIN_API } from '../../config';
-import ModalLogin from '../../components/ModalLogin';
+import ModalLogin from '../../components/modalLogin/ModalLogin';
 
 function LoginSignIn() {
   const [validation, setValidation] = useState(false);
