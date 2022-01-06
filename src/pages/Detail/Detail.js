@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./Detail.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
@@ -8,6 +8,60 @@ import ImageSlider from "./ImageSlider";
 import { SliderData } from "./SliderData";
 
 function Detail() {
+  const [productName, productNameSet] = useState("");
+  let productColor = [];
+  let productColorHex = [];
+  let productSizePerColor = {};
+  const [productPrice, productPriceSet] = useState(1000);
+
+  const idValue = 1;
+  useEffect(() => {
+    fetch("http://localhost:8000/products/details", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", mode: "cors" },
+      body: JSON.stringify({
+        id: idValue,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        productNameSet(Object.values(data[0])[1]);
+
+        for (let i = 0; i < Object.values(data).length; i++) {
+          if (productColor.indexOf(Object.values(data[i])[4]) === -1) {
+            productColor.push(Object.values(data[i])[4]);
+          }
+        }
+
+        for (let i = 0; i < Object.values(data).length; i++) {
+          if (productColorHex.indexOf(Object.values(data[i])[5]) === -1) {
+            productColorHex.push(Object.values(data[i])[5]);
+          }
+        }
+
+        for (let i = 0; i < data.length; i++) {
+          if (productSizePerColor[data[i].colorName] === undefined) {
+            productSizePerColor[data[i].colorName] = [data[i].sizeName];
+          } else {
+            if (
+              productSizePerColor[data[i].colorName].indexOf(
+                data[i].sizeName
+              ) === -1
+            ) {
+              productSizePerColor[data[i].colorName].push(data[i].sizeName);
+            }
+          }
+        }
+        productPriceSet(data[0].productPrice);
+
+        console.log("productNames : ", productName);
+        console.log("productColors : ", productColor);
+        console.log("productColorHexs : ", productColorHex);
+        console.log("productSizePerColor : ", productSizePerColor);
+        console.log("productPrice : ", productPrice);
+      });
+  });
+
   const [quantity, quantityUpdate] = useState(1);
 
   const plus = () => {
@@ -56,9 +110,9 @@ function Detail() {
           <div className='DetailForm'>
             <div className='DetailInfo'>
               <div className='ProductName'>
-                <span>Hongja XXX Side printing Hoodie</span>
-                <p>글리머 드라이 기모 후드</p>
-                <p className='price'>58,000 원</p>
+                <span>{productName}</span>
+                <p>최고의 제품입니다.</p>
+                <p className='price'>{productPrice} 원</p>
               </div>
               <div className='ShareAndHeart'>
                 <a href='#'>
@@ -150,7 +204,7 @@ function Detail() {
               <div className='DetailPrice'>
                 <div className='PricePerItem'>{quantity}개 상품 금액</div>
                 <div className='Price'>
-                  {(58000 * quantity).toLocaleString()} 원
+                  {(productPrice * quantity).toLocaleString()} 원
                 </div>
               </div>
             </div>

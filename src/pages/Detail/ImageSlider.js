@@ -9,39 +9,6 @@ import {
 import { SliderData } from "./SliderData";
 
 const ImageSlider = ({ slides }) => {
-  const [product, setProduct] = useState([]);
-  const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-
-  const idValue = 1;
-  useEffect(() => {
-    fetch("http://localhost:8000/products/details", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", mode: "cors" }, // 해당 부분은 여러가지 형태가 있습니다.
-      body: JSON.stringify({
-        id: idValue,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-        console.log(product);
-        // setProductName(product[0].productName);
-        // setProductPrice(product[0].productPrice);
-      });
-  }, []);
-  // console.log(productName);
-  // console.log(productPrice);
-
-  // const productDetailPrice = product[0]["productPrice"];
-  // console.log(productDetailPrice);
-  // const productDetailQuantity = [];
-
-  // for (let i = 0; i < product.length; i++) {
-  //   productDetailQuantity.push(product[i].productQuantity);
-  // }
-  // console.log(productDetailQuantity);
-
   const [current, setCurrent] = useState(0);
   const [arrowId, arrowIdChange] = useState("nonHide");
   const length = slides.length;
@@ -86,8 +53,8 @@ const ImageSlider = ({ slides }) => {
       </a>
 
       <div class='NumberPerNumber'>
-        <span class='now'>{current + 1}</span> /{" "}
-        <span class='all'>{length}</span>
+        <span className='now'>{current + 1}</span> /{" "}
+        <span className='all'>{length}</span>
       </div>
 
       {SliderData.map((slide, index) => {
