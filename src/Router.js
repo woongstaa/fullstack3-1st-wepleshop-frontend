@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/home/Home';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<TopNav />} /> */}
-        {/* <Route path="/" element={<Slide />} />
-        <Route path="/flow" element={<FlowCard />} /> */}
-        <Route path="/" element={<Test />} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );

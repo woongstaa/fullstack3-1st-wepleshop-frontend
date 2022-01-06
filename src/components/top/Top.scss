@@ -1,29 +1,38 @@
 .topContainer {
-  box-sizing: border-box;
   a {
     text-decoration: none;
   }
 
   //헤더
+  @media screen and (max-width: 1023px) {
+    .headerContainer {
+      box-sizing: border-box;
+      width: 1023px;
+    }
+  }
+
   .headerContainer {
-    padding-right: 6%;
+    padding-right: 5.714285714285714rem;
 
     //네브바
     .headerWrapper {
       display: flex;
       justify-content: space-between;
-      padding: 0 6%;
+      max-width: 1360px;
+      width: 100%;
+      padding: 0 5.714285714285714rem;
+      box-sizing: border-box;
 
       //로고, 메뉴
       .headerLeft {
         display: flex;
         align-items: center;
-        // justify-content: flex-end;
+        font-size: 1.25rem;
+
         .headerList {
           display: flex;
           list-style: none;
-          font-size: 20px;
-          letter-spacing: -0.1px;
+
           .headerListMenu {
             display: flex;
             align-items: center;
@@ -32,9 +41,7 @@
             font-weight: bold;
             a {
               color: grey;
-            }
-            a:focus {
-              color: blue;
+              height: 1.313rem;
             }
             #homeMenu {
               color: blue;
@@ -44,10 +51,10 @@
 
         .wepleLogoWrapper {
           display: flex;
-          margin-right: 15px;
+          margin-right: 0.938rem;
 
           h1 {
-            font-size: 28px;
+            font-size: 1.75rem;
             font-weight: bold;
             letter-spacing: 0.5rem;
             color: black;
@@ -55,8 +62,8 @@
 
           .wepleLogo {
             background-image: url('https://img.icons8.com/small/25/000000/globe.png');
-            width: 25px;
-            height: 25px;
+            width: 1.563rem;
+            height: 1.563rem;
           }
         }
       }
@@ -65,18 +72,25 @@
       .headerRight {
         display: flex;
         align-items: center;
-        font-size: 25px;
+        font-size: 1.563rem;
         a {
           color: black;
-        }
-        i {
-          font-size: 23px;
         }
         .hamburger {
           border: none;
           margin-left: 1.5rem;
           background-color: white;
           cursor: pointer;
+
+          .hamburgerIcon {
+            font-size: 1.438rem;
+            color: rgb(70, 70, 70);
+          }
+        }
+
+        .cartIcon {
+          font-size: 1.438rem;
+          color: rgb(70, 70, 70);
         }
       }
     }
