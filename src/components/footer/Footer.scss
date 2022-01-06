@@ -1,95 +1,100 @@
 //풋터
+.Footer {
+  // position: relative;
 
-.footerContainer {
-  box-sizing: border-box;
-  padding-right: 5.714285714285714rem;
-  list-style: none;
+  .footerContainer {
+    // position: absolute;
+    box-sizing: border-box;
+    padding-right: 6.042rem;
+    list-style: none;
+    // bottom: 0;
 
-  a {
-    text-decoration: none;
-    color: gray;
-  }
+    a {
+      text-decoration: none;
+      color: gray;
+    }
 
-  @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 1023px) {
+      .footerContents {
+        box-sizing: border-box;
+        width: 1023px;
+      }
+    }
+
     .footerContents {
       box-sizing: border-box;
-      width: 1023px;
-    }
-  }
+      padding: 2.857142857142857rem 6.042rem;
+      background-color: #f8f8f8;
+      color: gray;
+      font-size: 13px;
 
-  .footerContents {
-    box-sizing: border-box;
-    padding: 2.857142857142857rem 5.714285714285714rem;
-    background-color: #f8f8f8;
-    color: gray;
-    font-size: 13px;
-
-    .footerCompanyInfo,
-    .footerContact {
-      display: flex;
-      flex-direction: column;
-      margin-top: 30px;
-    }
-
-    .infoTitle {
-      color: black;
-      font-weight: bold;
-    }
-
-    .infoContents {
-      display: flex;
-      flex-wrap: wrap;
-
-      .infoContentsDl {
+      .footerCompanyInfo,
+      .footerContact {
         display: flex;
-        margin: 10px 20px 0 0;
-
-        .infoContentsDd {
-          margin-left: 5px;
-        }
+        flex-direction: column;
+        margin-top: 30px;
       }
 
-      #importantInfo {
+      .infoTitle {
         color: black;
+        font-weight: bold;
       }
-    }
 
-    .languageList {
-      display: flex;
-      flex-direction: row;
+      .infoContents {
+        display: flex;
+        flex-wrap: wrap;
 
-      li {
-        margin-right: 10px;
+        .infoContentsDl {
+          display: flex;
+          margin: 10px 20px 0 0;
 
-        #korean {
+          .infoContentsDd {
+            margin-left: 5px;
+          }
+        }
+
+        #importantInfo {
           color: black;
         }
       }
-    }
 
-    .footerContactBottom {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 30px;
-    }
+      .languageList {
+        display: flex;
+        flex-direction: row;
 
-    .contactTopList,
-    .contactBottomList {
-      display: flex;
-      flex-direction: row;
+        li {
+          margin-right: 10px;
 
-      .contactIcon {
-        font-size: 20px;
+          #korean {
+            color: black;
+          }
+        }
       }
-    }
 
-    .contactTopList > li {
-      margin-right: 10px;
-    }
+      .footerContactBottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
 
-    .contactBottomList > li {
-      margin-right: 20px;
+      .contactTopList,
+      .contactBottomList {
+        display: flex;
+        flex-direction: row;
+
+        .contactIcon {
+          font-size: 20px;
+        }
+      }
+
+      .contactTopList > li {
+        margin-right: 10px;
+      }
+
+      .contactBottomList > li {
+        margin-right: 20px;
+      }
     }
   }
 }

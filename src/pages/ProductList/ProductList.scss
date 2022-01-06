@@ -1,11 +1,11 @@
 .ProductList {
+  margin: 80px 0;
+  padding: 0 12.084rem 0 6.042rem;
   z-index: 90;
   font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont, 'Droid Sans',
     'Roboto', 'Segoe UI', 'Helvetica', Arial, sans-serif;
 
   .listWrapper {
-    margin: 5% 5%;
-
     .modal {
       position: fixed;
       top: 0;
@@ -139,8 +139,8 @@
         margin: 0 0.5%;
 
         .imgWrapper {
-          width: 250px;
-          height: 250px;
+          width: 230px;
+          height: 230px;
           margin-bottom: 5%;
           overflow: hidden;
           position: relative;
