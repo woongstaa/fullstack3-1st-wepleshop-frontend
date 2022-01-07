@@ -23,7 +23,7 @@ function Detail() {
   const [imgUrl, urlSetting] = useState([]);
   // const [colorHex, colorHexSet] = useState([]);
 
-  const [idValue, idSet] = useState(2);
+  const [idValue, idSet] = useState(5);
   useEffect(() => {
     fetch('http://localhost:8000/products/details', {
       method: 'POST',
@@ -110,7 +110,7 @@ function Detail() {
                     <div className="DetailSeller">
                       <a href="#" className="DetailSellerLink">
                         <img
-                          src="/images/dok2.jpeg"
+                          src="/images/designers/1.jpeg"
                           alt="판매자아이콘"
                           className="DetailSellerIcon"
                         />

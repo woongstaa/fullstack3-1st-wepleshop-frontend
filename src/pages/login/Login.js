@@ -40,7 +40,11 @@ function Login() {
           </button>
         </div>
       </div>
-      {isLogin ? <LoginSignIn /> : <LoginSignUp />}
+      {isLogin ? (
+        <LoginSignIn />
+      ) : (
+        <LoginSignUp onClickSignIn={onClickSignIn} />
+      )}
     </div>
   );
 }

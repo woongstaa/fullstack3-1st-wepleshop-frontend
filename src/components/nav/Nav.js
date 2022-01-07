@@ -1,4 +1,5 @@
 import './Nav.scss';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
@@ -20,10 +21,10 @@ function Nav() {
           <div className="searchMenu" />
           <span>검색</span>
         </a>
-        <a href="#">
+        <Link to="/login">
           <div className="myPageMenu" />
           <span>마이페이지</span>
-        </a>
+        </Link>
       </div>
       <div className="navLogo">
         <a href="/" className="navLogoWrapper">
