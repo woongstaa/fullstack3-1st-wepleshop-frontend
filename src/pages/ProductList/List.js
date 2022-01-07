@@ -1,12 +1,12 @@
 import Footer from '../../components/footer/Footer';
 import Nav from '../../components/nav/Nav';
-import Top from '../../components/top/Top';
+import TopDetail from '../../components/top/TopDetail';
 import ProductList from './ProductList';
 
 const List = () => {
   return (
     <div>
-      <Top />
+      <TopDetail />
       <Nav />
       <ProductList />
       <Footer />

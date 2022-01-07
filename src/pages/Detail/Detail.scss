@@ -26,8 +26,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont, "Droid Sans",
-    "Roboto", "Segoe UI", "Helvetica", Arial, sans-serif;
+  font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont, 'Droid Sans',
+    'Roboto', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -37,6 +37,14 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.sectionContainer {
+  position: relative;
+
+  .mainWrapper {
+    width: 100%;
+  }
 }
 
 .body {
@@ -212,7 +220,7 @@ a {
     .ColorRadioBox {
       display: flex;
 
-      input[type="radio"] {
+      input[type='radio'] {
         display: none;
       }
 
@@ -270,7 +278,7 @@ a {
       .SizeCheckBox {
         margin-right: 10px;
         margin-bottom: 12px;
-        input[type="radio"] {
+        input[type='radio'] {
           display: none;
         }
 
@@ -280,10 +288,10 @@ a {
           font-weight: normal;
           color: #4e4e4e;
         }
-        input[type="radio"]:checked + label {
+        input[type='radio']:checked + label {
           border: 2px solid black;
         }
-        input[type="radio"]:hover + label {
+        input[type='radio']:hover + label {
           border: 2px solid black;
         }
       }
