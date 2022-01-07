@@ -54,11 +54,9 @@ function LoginSignIn() {
     }
   });
 
-  // sessionStorage에 토큰 저장. 토큰이 사이트 내에서 실제로 어떻게 사용되는지 공부 필요
-  // sessionStorage.setItem('ID', token);
-
   const navigate = useNavigate();
   const goToHome = () => {
+    // sessionStorage에 토큰 저장. 토큰이 사이트 내에서 실제로 어떻게 사용되는지 공부 필요
     sessionStorage.setItem('ID', token);
     navigate('/');
   };
