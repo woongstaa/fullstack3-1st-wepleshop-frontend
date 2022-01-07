@@ -39,6 +39,14 @@ a {
   text-decoration: none;
 }
 
+.sectionContainer {
+  position: relative;
+
+  .mainWrapper {
+    width: 100%;
+  }
+}
+
 .body {
   position: relative;
   box-sizing: border-box;
