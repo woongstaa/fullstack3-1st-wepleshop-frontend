@@ -2,6 +2,7 @@ import './Top.scss';
 import { GET_PRODUCT_API } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Top() {
   return (
@@ -23,7 +24,7 @@ function Top() {
                 <a href="#">셀러</a>
               </li>
               <li className="headerListMenu">
-                <a href={`${GET_PRODUCT_API}`}>상품</a>
+                <Link to="/list">상품</Link>
               </li>
               <li className="headerListMenu">
                 <a href="#">공식굿즈</a>

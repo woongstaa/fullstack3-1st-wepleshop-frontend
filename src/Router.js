@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from '../src/pages/login/Login';
 import Home from '../src/pages/home/Home';
 import Detail from './pages/Detail/Detail';
+import Flow from './pages/flowcard/folwcard';
+import List from './pages/ProductList/List';
 
 function Router() {
   return (
@@ -11,6 +13,8 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/flow" element={<Flow />} />
+        <Route path="/list" element={<List />} />
       </Routes>
     </BrowserRouter>
   );

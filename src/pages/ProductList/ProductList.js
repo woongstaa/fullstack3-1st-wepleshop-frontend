@@ -51,10 +51,10 @@ const ProductList = () => {
         <div className="listHeader">
           <div className="listTitle">
             <div className="btnWrapper" onClick={openModal}>
-              <button>머그컵</button>
+              <button>전체</button>
               <FaAngleDown className="icon" />
             </div>
-            <span>을</span>
+            <span>를&nbsp;</span>
             <div className="btnWrapper" onClick={upAndDown}>
               <button>인기순</button>
               {state ? (
@@ -63,7 +63,7 @@ const ProductList = () => {
                 <FaAngleDown className="icon" />
               )}
             </div>
-            으로 보여줘.
+            <span>으로 보여줘.</span>
           </div>
           <div className="filterBtn">
             <button>스타일 필터</button>

@@ -1,10 +1,10 @@
+// 추후 다시 반영
 import './ModalSignUp.scss';
 
-function ModalSignUp({ modalSignUpClose, goToHome }) {
+function ModalSignUp({ modalSignUpClose }) {
   const onCloseModal = async event => {
     if (event.target === event.currentTarget) {
       modalSignUpClose();
-      await goToHome();
     }
   };
 
