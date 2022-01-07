@@ -25,7 +25,7 @@ function Detail() {
 
   const [imgUrl, urlSetting] = useState([]);
 
-  const [idValue, idSet] = useState(5);
+  const [idValue, idSet] = useState(6);
 
   useEffect(() => {
     fetch('http://localhost:8000/products/details', {
@@ -75,7 +75,7 @@ function Detail() {
         // let img = [...productImgUrl];
         urlSetting(productImgUrl); //제품 이미지
       });
-  }, []);
+  }, [idSet]);
 
   const [quantity, quantityUpdate] = useState(1);
 
@@ -211,7 +211,7 @@ function Detail() {
 
                     <div className="QuantityBox">
                       <button onClick={minus}>-</button>
-                      <input type="text" readOnly="" defaultValue={quantity} />
+                      <input type="text" readOnly="" value={quantity} />
                       <button onClick={plus}>+</button>
                     </div>
 
