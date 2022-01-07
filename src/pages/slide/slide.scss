@@ -13,11 +13,12 @@
     .slide-wrapper {
       height: 100%;
       display: flex;
+      transition: transform 0.5s;
 
       .slide-list {
+        width: 10000px;
         display: flex;
         height: 100%;
-        transition: transform 0.5s;
       }
     }
   }

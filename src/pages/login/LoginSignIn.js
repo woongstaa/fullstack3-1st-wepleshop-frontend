@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { POST_SIGNIN_API } from '../../config';
-import ModalLogin from '../../components/ModalLogin';
+import ModalLogin from '../../components/modalLogin/ModalLogin';
 
 function LoginSignIn() {
   const [validation, setValidation] = useState(false);
@@ -30,7 +30,7 @@ function LoginSignIn() {
 
   useEffect(() => {
     const emailValidation = emailInput.includes('@');
-    const passwordValidation = passwordInput.length > 7;
+    const passwordValidation = passwordInput.length >= 5;
 
     if (emailValidation && passwordValidation) {
       setValidation(true);
@@ -54,10 +54,10 @@ function LoginSignIn() {
     }
   });
 
-  sessionStorage.setItem('ID', token);
-
   const navigate = useNavigate();
   const goToHome = () => {
+    // sessionStorage에 토큰 저장. 토큰이 사이트 내에서 실제로 어떻게 사용되는지 공부 필요
+    sessionStorage.setItem('ID', token);
     navigate('/');
   };
 
@@ -88,6 +88,10 @@ function LoginSignIn() {
           type="submit"
           onClick={isToken ? goToHome : modalClose}
         >
+          {/* onClick 이벤트 내용을 세분화하기(if문 사용?),
+          0. 홈으로 가는 함수
+          1. 이메일 양식 오류 모달창
+          2. 비밀번호 길이 오류 모달창*/}
           로그인
         </button>
         {modalOpen && <ModalLogin modalClose={modalClose} />}
