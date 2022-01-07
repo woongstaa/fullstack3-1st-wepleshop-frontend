@@ -39,7 +39,6 @@
 
         .modalBody {
           margin-top: 5%;
-          // display: flex;
 
           .cateWrapper {
             margin-bottom: 18px;
@@ -72,10 +71,11 @@
             }
           }
         }
+
         .modalFooter {
           position: absolute;
           bottom: 40px;
-          right: 220px;
+          right: 190px;
 
           button {
             color: white;
@@ -111,6 +111,9 @@
           .icon {
             color: gainsboro;
           }
+        }
+        span {
+          margin-top: 1.5px;
         }
       }
 
