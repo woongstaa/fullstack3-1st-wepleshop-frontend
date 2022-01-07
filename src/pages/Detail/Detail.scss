@@ -253,17 +253,128 @@ a {
         color: white;
       }
 
-      .skyblue {
-        color: blue;
-        border: 2px solid blue;
+      .darkgray {
+        color: darkgray;
+        border: 2px solid darkgray;
         @include label-detail;
       }
-      #skyblue:checked + label {
-        background-color: blue;
+      #darkgray:checked + label {
+        background-color: darkgray;
         color: white;
       }
-      #skyblue:hover + label {
-        background-color: blue;
+      #darkgray:hover + label {
+        background-color: darkgray;
+        color: white;
+      }
+
+      .orange {
+        color: orange;
+        border: 2px solid orange;
+        @include label-detail;
+      }
+      #orange:checked + label {
+        background-color: orange;
+        color: white;
+      }
+      #orange:hover + label {
+        background-color: orange;
+        color: white;
+      }
+
+      .ivory {
+        color: rgb(204, 204, 182);
+        border: 2px solid rgb(204, 204, 182);
+        @include label-detail;
+      }
+      #ivory:checked + label {
+        background-color: rgb(204, 204, 182);
+        color: black;
+      }
+      #ivory:hover + label {
+        background-color: rgb(204, 204, 182);
+        color: black;
+      }
+
+      .navy {
+        color: navy;
+        border: 2px solid navy;
+        @include label-detail;
+      }
+      #navy:checked + label {
+        background-color: navy;
+        color: white;
+      }
+      #navy:hover + label {
+        background-color: navy;
+        color: white;
+      }
+
+      .sky {
+        color: skyblue;
+        border: 2px solid skyblue;
+        @include label-detail;
+      }
+      #sky:checked + label {
+        background-color: skyblue;
+        color: white;
+      }
+      #sky:hover + label {
+        background-color: skyblue;
+        color: white;
+      }
+
+      .pink {
+        color: pink;
+        border: 2px solid pink;
+        @include label-detail;
+      }
+      #pink:checked + label {
+        background-color: pink;
+        color: white;
+      }
+      #pink:hover + label {
+        background-color: pink;
+        color: white;
+      }
+
+      .brown {
+        color: brown;
+        border: 2px solid brown;
+        @include label-detail;
+      }
+      #brown:checked + label {
+        background-color: brown;
+        color: white;
+      }
+      #brown:hover + label {
+        background-color: brown;
+        color: white;
+      }
+      .rosegold {
+        color: yellow;
+        border: 2px solid yellow;
+        @include label-detail;
+      }
+      #rosegold:checked + label {
+        background-color: yellow;
+        color: white;
+      }
+      #rosegold:hover + label {
+        background-color: yellow;
+        color: white;
+      }
+
+      .darkgreen {
+        color: darkgreen;
+        border: 2px solid darkgreen;
+        @include label-detail;
+      }
+      #darkgreen:checked + label {
+        background-color: darkgreen;
+        color: white;
+      }
+      #darkgreen:hover + label {
+        background-color: darkgreen;
         color: white;
       }
     }
