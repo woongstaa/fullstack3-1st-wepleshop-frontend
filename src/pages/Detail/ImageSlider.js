@@ -50,7 +50,7 @@ const ImageSlider = ({ slides }) => {
         />
       </a>
 
-      <div class="NumberPerNumber">
+      <div className="NumberPerNumber">
         <span className="now">{current + 1}</span> /{' '}
         <span className="all">{length}</span>
       </div>

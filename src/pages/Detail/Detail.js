@@ -12,6 +12,7 @@ import TopDetail from '../../components/top/TopDetail';
 
 function Detail() {
   const [productName, productNameSet] = useState('');
+
   let productColor = [];
 
   let productColorHex = [];
@@ -19,11 +20,13 @@ function Detail() {
   let productSizePerColor = {};
 
   const [productPrice, productPriceSet] = useState(1000);
+
   let productImgUrl = [];
+
   const [imgUrl, urlSetting] = useState([]);
-  // const [colorHex, colorHexSet] = useState([]);
 
   const [idValue, idSet] = useState(5);
+
   useEffect(() => {
     fetch('http://localhost:8000/products/details', {
       method: 'POST',
@@ -69,8 +72,8 @@ function Detail() {
             productImgUrl.push(Object.values(data[i])[7]);
           }
         }
-        let img = [...productImgUrl];
-        urlSetting(img); //제품 이미지
+        // let img = [...productImgUrl];
+        urlSetting(productImgUrl); //제품 이미지
       });
   }, []);
 
@@ -149,19 +152,19 @@ function Detail() {
                     <ul className="ColorRadioBox">
                       <li>
                         <input type="radio" name="color" id="black" />
-                        <label for="black" className="black">
+                        <label htmlFor="black" className="black">
                           블랙
                         </label>
                       </li>
                       <li>
                         <input type="radio" name="color" id="gray" />
-                        <label for="gray" className="gray">
+                        <label htmlFor="gray" className="gray">
                           그레이
                         </label>
                       </li>
                       <li>
                         <input type="radio" name="color" id="skyblue" />
-                        <label for="skyblue" className="skyblue">
+                        <label htmlFor="skyblue" className="skyblue">
                           블루
                         </label>
                       </li>
@@ -172,33 +175,33 @@ function Detail() {
                     <ul className="SizeChart">
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="xs" />
-                        <label for="xs" className="xs">
+                        <label htmlFor="xs" className="xs">
                           XS
                         </label>
                       </li>
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="s" />
-                        <label for="s">S</label>
+                        <label htmlFor="s">S</label>
                       </li>
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="m" />
-                        <label for="m">M</label>
+                        <label htmlFor="m">M</label>
                       </li>
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="l" />
-                        <label for="l">L</label>
+                        <label htmlFor="l">L</label>
                       </li>
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="xl" />
-                        <label for="xl">XL</label>
+                        <label htmlFor="xl">XL</label>
                       </li>
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="xxl" />
-                        <label for="xxl">XXL</label>
+                        <label htmlFor="xxl">XXL</label>
                       </li>
                       <li className="SizeCheckBox">
                         <input type="radio" name="size" id="xxxl" />
-                        <label for="xxxl">XXXL</label>
+                        <label htmlFor="xxxl">XXXL</label>
                       </li>
                     </ul>
                   </div>
@@ -208,7 +211,7 @@ function Detail() {
 
                     <div className="QuantityBox">
                       <button onClick={minus}>-</button>
-                      <input type="text" readonly="" value={quantity} />
+                      <input type="text" readOnly="" defaultValue={quantity} />
                       <button onClick={plus}>+</button>
                     </div>
 
