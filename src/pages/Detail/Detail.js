@@ -41,16 +41,12 @@ function Detail() {
             productColor.push(Object.values(data[i])[4]);
           }
         }
-        // let mocColor = [...productColor];
-        // productColorChange(...mocColor); // 제품 색상
 
         for (let i = 0; i < Object.values(data).length; i++) {
           if (productColorHex.indexOf(Object.values(data[i])[5]) === -1) {
             productColorHex.push(Object.values(data[i])[5]);
           }
         }
-        // let mocHex = [...productColorHex];
-        // productColorHexChange(...mocHex); //  제품 색상 hex
 
         for (let i = 0; i < data.length; i++) {
           if (productSizePerColor[data[i].colorName] === undefined) {
@@ -64,9 +60,9 @@ function Detail() {
               productSizePerColor[data[i].colorName].push(data[i].sizeName);
             }
           }
-        } // 제품 사이즈
+        }
 
-        productPriceSet(data[0].productPrice); // 제품 가격
+        productPriceSet(data[0].productPrice);
 
         for (let i = 0; i < Object.values(data).length; i++) {
           if (productImgUrl.indexOf(Object.values(data[i])[7]) === -1) {
@@ -75,13 +71,6 @@ function Detail() {
         }
         let img = [...productImgUrl];
         urlSetting(img); //제품 이미지
-
-        // console.log("productNames : ", productName);
-        // console.log("productColors : ", productColor);
-        // console.log("productColorHexs : ", productColorHex);
-        // console.log("productSizePerColor : ", productSizePerColor);
-        // console.log("productPrice : ", productPrice);
-        // console.log("productImgUrl : ", imgUrl);
       });
   }, []);
 
@@ -158,10 +147,6 @@ function Detail() {
                   <div className="DetailColor">
                     <p className="ColorMain">색상</p>
                     <ul className="ColorRadioBox">
-                      {/* {productColorHex.map((li, index) => {
-                  return <ColorChoice colorhex={li} key={index} />;
-                })} */}
-
                       <li>
                         <input type="radio" name="color" id="black" />
                         <label for="black" className="black">
