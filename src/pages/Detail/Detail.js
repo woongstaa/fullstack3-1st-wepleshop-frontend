@@ -23,7 +23,7 @@ function Detail() {
   const [imgUrl, urlSetting] = useState([]);
   // const [colorHex, colorHexSet] = useState([]);
 
-  const [idValue, idSet] = useState(5);
+  const [idValue, idSet] = useState(3);
   useEffect(() => {
     fetch('http://localhost:8000/products/details', {
       method: 'POST',

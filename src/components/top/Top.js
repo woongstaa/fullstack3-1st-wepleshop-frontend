@@ -6,6 +6,8 @@ import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 function Top() {
+  const [] = useState(['blue', 'grey']);
+
   return (
     <div className="topContainer">
       <header className="headerContainer">
