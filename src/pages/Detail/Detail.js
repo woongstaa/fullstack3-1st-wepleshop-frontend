@@ -8,6 +8,7 @@ import ImageSlider from './ImageSlider';
 
 import ColorList from './ColorList';
 import SizeList from './SizeList';
+import queryString from 'query-string';
 import Nav from '../../components/nav/Nav';
 import Footer from '../../components/footer/Footer';
 import TopDetail from '../../components/top/TopDetail';
@@ -21,15 +22,13 @@ function Detail() {
   const [productPrice, productPriceSet] = useState(1000);
   let productImgUrl = [];
   const [imgUrl, urlSetting] = useState([]);
-
-  const [idValue, idSet] = useState(1);
+  const parsedQuery = queryString.parse(window.location.search);
+  const getId = parsedQuery.productId;
+  const [idValue, idSet] = useState(getId);
   useEffect(() => {
-    fetch('http://localhost:8000/products/details', {
+    fetch(`http://localhost:8000/products/details?productId=${idValue}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
-      body: JSON.stringify({
-        id: idValue,
-      }),
     })
       .then(res => res.json())
       .then(data => {
