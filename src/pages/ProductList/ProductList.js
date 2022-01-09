@@ -6,9 +6,9 @@ import './ProductList.scss';
 
 const ProductList = () => {
   const [listData, setListData] = useState();
-  const [categoryId, setCategoryId] = useState('categoryId=3');
-  const [subCategoryId, setSubCategoryId] = useState('');
-  const [sortWord, setSortWord] = useState('&sortWord=popular');
+  const [categoryId, setCategoryId] = useState();
+  const [subCategoryId, setSubCategoryId] = useState();
+  const [sortWord, setSortWord] = useState('popular');
   const [state, setState] = useState();
   const [modal, setModal] = useState(false);
 
@@ -34,7 +34,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:8000/products/list?${categoryId}${subCategoryId}${sortWord}`,
+      `http://localhost:8000/products/list?categoryId=${categoryId}&subCategoryId=${subCategoryId}&sortWord=${sortWord}`,
       {
         method: 'GET',
         headers: { 'Content-type': 'application/json', mode: 'cors' },
