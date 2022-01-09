@@ -2,17 +2,16 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const ItemCard = ({ imgUrl, productName, price, quantity, id }) => {
+const ItemCard = ({ imgUrl, productName, price, quantity, productId }) => {
   const [state, setState] = useState();
 
   const clickLike = () => {
     setState(!state);
   };
-
   return (
-    <div className="listCard" key={id}>
+    <div className="listCard" key={productId}>
       <div className="imgWrapper">
-        <Link to="/detail">
+        <Link to={`/detail?productId=${productId}`}>
           <img className="listImg" src={imgUrl} alt={productName} />
         </Link>
         <div className="likeBtnWrapper">
@@ -33,7 +32,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, id }) => {
         )}
       </div>
       <div className="itemTitle">
-        <Link to="/detail">{productName}</Link>
+        <Link to={`/detail?productId=${productId}`}>{productName}</Link>
       </div>
       <div className="itemPrice">
         <span>₩ </span>

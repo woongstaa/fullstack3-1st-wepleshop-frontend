@@ -6,7 +6,7 @@
 
 ### 개발 인원 및 기간
 
-- 개발기간 : 2021/12/27 ~ 2022/1/14
+- 개발기간 : 2021/12/27 ~ 2022/1/7
 - 개발 인원 : 이진웅, 최종민, 장종현, 박효상, 김영욱
 - [프론트 github 링크](https://github.com/wecode-bootcamp-korea/fullstack3-1st-wepleshop-frontend)
 - [백엔드 github 링크](https://github.com/wecode-bootcamp-korea/fullstack3-1st-wepleshop-backend)
@@ -17,7 +17,8 @@
 
 ### 데모 영상(이미지 클릭)
 
-_유투브 영상 링크나 캡쳐 이미지 넣어주세요._
+<img width="1440" alt="스크린샷 2022-01-09 오후 3 10 41" src="https://user-images.githubusercontent.com/92710433/148671374-b0bd46c7-5d63-497f-bf05-b446d03c026a.png">
+
 
 <br>
 
@@ -25,7 +26,7 @@ _유투브 영상 링크나 캡쳐 이미지 넣어주세요._
 
 ### 적용 기술
 
-> - Front-End : React.js, sass, react-slick, react-modal
+> - Front-End : React.js, sass
 > - Back-End : Node.js, Express, Prisma, nodemon, JWT, Bcrypt, My SQL, CORS
 > - Common : RESTful API
 > - Community Tools : Slack, Zoom, Notion
@@ -35,17 +36,27 @@ _유투브 영상 링크나 캡쳐 이미지 넣어주세요._
 #### 공통
 
 - 회원가입 / 로그인
-- footer / nav
+  - 아이디 패스워드 유효성 검증 기능
+  - 로그인시 백엔드 API를 이용해 토큰 발행
+
+- Top / Footer / Nav 
+  -  각 부분 컴포넌트화하여 재사용 가능하도록 구현
 
 #### 메인 페이지
 
-- 추천 상품, 오늘의 상품, 베스트 상품 모두 각각 api 호출하여 구현
-- 실시간 인기 상품 순위 api 호출하여 구현
-- Carousel 구현
+- 상품 리스트 API 호출하여 UI 구현
+  - 상품 좋아요 기능
+  - 재고 10개 미만일 때 재고 고지 및 품절시 품절 고지
+  - 상품 필터링기능
+
+- Carousel UI 구현 
+  - 외부 라이브러리 없이 자체 구현
+  - 오른쪽 버튼, 왼쪽 버튼 상관없이 제대로 작동
+  - 일정 시간 초과시 자동 애니메이션 기능 (구현 예정) 
 
 #### 상세 페이지
-
-- 제품 사이즈, 색상, 수량 설정
+- 제품 사이즈, 색상, 개수 선택
+- 상세 이미지 슬라이드 구현
 
 ## Reference
 
