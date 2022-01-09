@@ -64,6 +64,7 @@ export default function Slide() {
     setX(x => x - 1);
     setMoving(true);
     const popCard = slideInfo.productSlide.shift();
+    //concat을 push(popCard)로 변경하고 70번 줄을 [...newProductSlide]로 변경
     const newProductSlide = slideInfo.productSlide.concat([popCard]);
     const newSlideInfo = slideInfo;
     newSlideInfo.productSlide = newProductSlide;
