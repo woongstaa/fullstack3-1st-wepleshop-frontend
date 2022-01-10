@@ -82,12 +82,6 @@ function Detail() {
   }
 
   for (let i = 0; i < Object.values(product).length; i++) {
-    if (productColorHex.indexOf(Object.values(product[i])[5]) === -1) {
-      productColorHex.push(Object.values(product[i])[5]);
-    }
-  }
-
-  for (let i = 0; i < Object.values(product).length; i++) {
     if (productSize.indexOf(Object.values(product[i])[6]) === -1) {
       productSize.push(Object.values(product[i])[6]);
     }
