@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { POST_SIGNIN_API } from '../../config';
-import ModalLogin from '../../components/modalLogin/ModalLogin';
-import ModalEmail from '../../components/modalLogin/ModalEmail';
+import ModalLogin from './modal/ModalLogin';
+import ModalEmail from './modal/ModalEmail';
 
 function LoginSignIn() {
   // 로그인/비밀번호 유효성 검증 state

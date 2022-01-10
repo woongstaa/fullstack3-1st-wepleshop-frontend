@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { POST_SIGNUP_API } from '../../config';
-import ModalLogin from '../../components/modalLogin/ModalLogin';
-import ModalPersonal from '../../components/modalLogin/ModalPersonal';
-import ModalTerms from '../../components/modalLogin/ModalTerms';
+import ModalLogin from './modal/ModalLogin';
+import ModalPersonal from './modal/ModalPersonal';
+import ModalTerms from './modal/ModalTerms';
 // import ModalSignUp from '../../components/ModalSignUp';
 
 function LoginSignUp({ onClickSignIn }) {
