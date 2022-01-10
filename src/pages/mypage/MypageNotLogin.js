@@ -9,7 +9,7 @@ function MypageNotLogin() {
         <Link to="/login">
           <button className="myPageButton">로그인</button>
         </Link>
-        <Link to={{ pathname: '/login', state: { isLogin: false } }}>
+        <Link to={{ pathname: '/login', state: { isLoginSignUp: false } }}>
           <button className="myPageButton">회원가입</button>
         </Link>
       </div>
