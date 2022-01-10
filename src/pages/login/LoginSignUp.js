@@ -155,6 +155,12 @@ function LoginSignUp({ onClickSignIn }) {
               return modalPasswordClose();
             } else if (
               nameValidation === true &&
+              emailValidation === false &&
+              passwordValidation === false
+            ) {
+              return modalClose();
+            } else if (
+              nameValidation === true &&
               emailValidation === true &&
               passwordValidation === true
             ) {
