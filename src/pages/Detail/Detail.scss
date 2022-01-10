@@ -29,37 +29,37 @@
   font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont, 'Droid Sans',
     'Roboto', 'Segoe UI', 'Helvetica', Arial, sans-serif;
   font-weight: 400;
-}
 
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-.sectionContainer {
-  position: relative;
-
-  .mainWrapper {
-    width: 100%;
+  ul {
+    list-style: none;
   }
-}
 
-.body {
-  position: relative;
-  box-sizing: border-box;
-  z-index: 2;
-  margin: 0 auto;
-  padding: 0 80px;
-  max-width: 1360px;
-  width: 100%;
-}
+  a {
+    text-decoration: none;
+  }
 
-.DetailBody {
-  margin: 7% 80px;
-  display: flex;
+  .sectionContainer {
+    position: relative;
+
+    .body {
+      position: relative;
+      box-sizing: border-box;
+      z-index: 2;
+      margin: 0 auto;
+      padding: 0 80px;
+      max-width: 1360px;
+      width: 100%;
+    }
+
+    .mainWrapper {
+      width: 100%;
+    }
+  }
+
+  .DetailBody {
+    margin: 7% 80px;
+    display: flex;
+  }
 }
 
 .DetailContent {

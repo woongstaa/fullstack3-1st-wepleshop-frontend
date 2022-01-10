@@ -35,7 +35,7 @@ function Detail() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
-        productId: getId,
+        productId: idValue,
         color: cartColor,
         size: cartSize,
         quantity: quantity,
@@ -109,8 +109,9 @@ function Detail() {
   }
 
   console.log('카트 컬러 :', cartColor);
-  console.log('카트 컬러 :', cartSize);
+  console.log('카트 사이즈 :', cartSize);
   console.log('카트 수량 :', quantity);
+  console.log('ProductID: ', idValue);
 
   return (
     <>
