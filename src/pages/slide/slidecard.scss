@@ -29,6 +29,7 @@
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 10px;
+    word-break: keep-all;
   }
   .card-description {
     width: 90%;
@@ -36,5 +37,6 @@
     text-align: center;
     margin: 0 auto;
     white-space: normal;
+    word-break: keep-all;
   }
 }
