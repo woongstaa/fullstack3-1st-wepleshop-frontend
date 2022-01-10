@@ -26,14 +26,14 @@ function Detail() {
   const getId = parsedQuery.productId;
   const [idValue, idSet] = useState(getId);
 
-  const [cartColor, cartColorChange] = useState('none');
-  const [cartSize, cartSizeChange] = useState('none');
+  const [cartColor, cartColorChange] = useState('None');
+  const [cartSize, cartSizeChange] = useState('None');
   const cartAdd = () => {
     fetch(`http://localhost:8000/products/cart`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
-        productID: getId,
+        productId: getId,
         color: cartColor,
         size: cartSize,
         quantity: quantity,
@@ -114,6 +114,7 @@ function Detail() {
 
   console.log('카트 컬러 :', cartColor);
   console.log('카트 컬러 :', cartSize);
+  console.log('카트 수량 :', quantity);
 
   return (
     <>
