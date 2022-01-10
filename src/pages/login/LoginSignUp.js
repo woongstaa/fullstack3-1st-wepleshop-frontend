@@ -41,8 +41,8 @@ function LoginSignUp({ onClickSignIn }) {
 
   // 이메일/비밀번호 유효성 검증 코드
   useEffect(() => {
-    const nameValidation = nameInput;
-    const emailValidation = emailInput.includes('@');
+    const nameValidation = nameInput.length >= 1;
+    const emailValidation = emailInput.includes('@') && emailInput.length >= 5; // x@x.x
     const passwordValidation = passwordInput.length >= 5;
 
     nameValidation ? setNameValidation(true) : setNameValidation(false);

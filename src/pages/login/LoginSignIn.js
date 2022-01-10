@@ -30,7 +30,7 @@ function LoginSignIn() {
 
   // 이메일/비밀번호 유효성 검증 코드
   useEffect(() => {
-    const emailValidation = emailInput.includes('@');
+    const emailValidation = emailInput.includes('@') && emailInput.length >= 5; // x@x.x
     const passwordValidation = passwordInput.length >= 5;
 
     emailValidation ? setEmailValidation(true) : setEmailValidation(false);
@@ -112,6 +112,5 @@ function LoginSignIn() {
     </div>
   );
 }
-// End
 
 export default LoginSignIn;
