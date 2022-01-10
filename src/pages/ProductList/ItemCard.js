@@ -2,11 +2,32 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const ItemCard = ({ imgUrl, productName, price, quantity, id }) => {
+const ItemCard = ({ imgUrl, productName, price, quantity, id, productId }) => {
   const [state, setState] = useState();
+  const userId = sessionStorage.getItem('token');
 
   const clickLike = () => {
-    setState(!state);
+    if (userId && state === false) {
+      fetch('http://localhost:8000/users/like', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json', mode: 'cors' },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: productId,
+        }),
+      });
+      setState(!state);
+    } else if (userId && state === true) {
+      fetch('http://localhost:8000/users/unlike', {
+        method: 'DELETE',
+        headers: { 'Content-type': 'application/json', mode: 'cors' },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: productId,
+        }),
+      });
+      setState(!state);
+    }
   };
 
   return (
