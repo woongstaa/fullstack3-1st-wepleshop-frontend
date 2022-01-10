@@ -1,4 +1,4 @@
-import './TopDetail.scss';
+import './CartTop.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 import { AiOutlineLeft } from 'react-icons/ai';
