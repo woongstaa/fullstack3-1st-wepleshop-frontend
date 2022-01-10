@@ -5,6 +5,7 @@ import Home from '../src/pages/home/Home';
 import Detail from './pages/Detail/Detail';
 import Flow from './pages/flowcard/folwcard';
 import List from './pages/ProductList/List';
+import Mypage from './pages/mypage/Mypage';
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/flow" element={<Flow />} />
         <Route path="/list" element={<List />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
     </BrowserRouter>
   );

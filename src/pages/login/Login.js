@@ -5,7 +5,11 @@ import './Login.scss';
 import LoginSignIn from './LoginSignIn';
 import LoginSignUp from './LoginSignUp';
 
-function Login() {
+function Login({ match }) {
+  // console.log(history);
+  // console.log(location);
+  console.log('match: ', match);
+
   const [isLogin, setIsLogin] = useState(true);
 
   const onClickSignIn = event => {
