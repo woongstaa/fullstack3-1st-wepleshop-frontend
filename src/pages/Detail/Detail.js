@@ -25,6 +25,32 @@ function Detail() {
   const parsedQuery = queryString.parse(window.location.search);
   const getId = parsedQuery.productId;
   const [idValue, idSet] = useState(getId);
+
+  const [cartColor, cartColorChange] = useState('none');
+  const [cartSize, cartSizeChange] = useState('none');
+  const cartAdd = () => {
+    fetch(`http://localhost:8000/products/cart`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', mode: 'cors' },
+      body: JSON.stringify({
+        productID: getId,
+        color: cartColor,
+        size: cartSize,
+        quantity: quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+
+  const changeRadioColor = e => {
+    cartColorChange(e.target.id);
+  };
+
+  const changeRadioSize = e => {
+    cartSizeChange(e.target.id);
+  };
+
   useEffect(() => {
     fetch(`http://localhost:8000/products/details?productId=${idValue}`, {
       method: 'POST',
@@ -86,6 +112,9 @@ function Detail() {
     }
   }
 
+  console.log('카트 컬러 :', cartColor);
+  console.log('카트 컬러 :', cartSize);
+
   return (
     <>
       <div className="sectionContainer">
@@ -140,7 +169,13 @@ function Detail() {
                     <ul className="ColorRadioBox">
                       {productColor &&
                         productColor.map((e, i) => {
-                          return <ColorList color={e} key={i} />;
+                          return (
+                            <ColorList
+                              color={e}
+                              key={i}
+                              cartColorSet={changeRadioColor}
+                            />
+                          );
                         })}
                     </ul>
                   </div>
@@ -149,7 +184,14 @@ function Detail() {
                     <ul className="SizeChart">
                       {productSize &&
                         productSize.map((e, i) => {
-                          return <SizeList size={e} key={i} />;
+                          return (
+                            <SizeList
+                              size={e}
+                              key={i}
+                              cartSizeSet={changeRadioSize}
+                              // cartSizeSet={cartSizeSet({ e })}
+                            />
+                          );
                         })}
                     </ul>
                   </div>
@@ -192,6 +234,7 @@ function Detail() {
                       className="AddButton"
                       type="button"
                       data-action="cart"
+                      onClick={cartAdd}
                     >
                       <span className="Add">장바구니에 담기</span>
                     </button>
