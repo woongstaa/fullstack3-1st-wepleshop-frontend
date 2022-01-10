@@ -17,17 +17,19 @@ function Detail() {
   const [product, setProduct] = useState([]);
   const [productName, productNameSet] = useState('');
   let productColor = [];
-  let productColorHex = [];
   let productSize = [];
-  const [productPrice, productPriceSet] = useState(1000);
+  const [productPrice, productPriceSet] = useState(100);
+
   let productImgUrl = [];
   const [imgUrl, urlSetting] = useState([]);
+
   const parsedQuery = queryString.parse(window.location.search);
   const getId = parsedQuery.productId;
   const [idValue, idSet] = useState(getId);
 
   const [cartColor, cartColorChange] = useState('None');
   const [cartSize, cartSizeChange] = useState('None');
+
   const cartAdd = () => {
     fetch(`http://localhost:8000/products/cart`, {
       method: 'POST',
@@ -60,7 +62,7 @@ function Detail() {
       .then(data => {
         setProduct(data);
 
-        productNameSet(Object.values(data[0])[1]); // 제품 이름
+        productNameSet(Object.values(data[0])[1]);
         productPriceSet(data[0].productPrice);
 
         for (let i = 0; i < Object.values(data).length; i++) {
@@ -69,7 +71,7 @@ function Detail() {
           }
         }
         let img = [...productImgUrl];
-        urlSetting(img); //제품 이미지
+        urlSetting(img);
       });
   }, []);
 
