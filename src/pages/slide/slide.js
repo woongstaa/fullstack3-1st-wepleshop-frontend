@@ -6,7 +6,7 @@ export default function Slide() {
   const [slideInfo, setSlideInfo] = useState([]);
   const [x, setX] = useState(0);
   const [moving, setMoving] = useState(false);
-
+  // const [autoMove, setAutoMove] = useState();
   useEffect(() => {
     fetch(`http://localhost:8000/products/slide`, {
       method: 'GET',
@@ -17,6 +17,12 @@ export default function Slide() {
         const newJson = data;
         setSlideInfo(newJson);
       });
+  }, []);
+
+  useEffect(() => {
+    setInterval(() => {
+      goRight();
+    }, 4000);
   }, []);
 
   const goLeft = () => {
@@ -55,7 +61,7 @@ export default function Slide() {
               slideInfo.productSlide.map((imgData, idx) => {
                 return (
                   <SlideCard
-                    style={{ transform: `translateX(${x}px)` }}
+                    // style={{ transform: `translateX(${x}px)` }}
                     key={`${imgData.id}`}
                     imgUrl={imgData.img_url}
                     title={imgData.title}
