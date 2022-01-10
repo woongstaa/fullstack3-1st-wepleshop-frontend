@@ -19,11 +19,16 @@ export default function Slide() {
       });
   }, []);
 
-  useEffect(() => {
-    setInterval(() => {
-      goRight();
-    }, 4000);
-  }, []);
+  useEffect(() => {});
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     goRight();
+  //   }, 4000);
+  // }, []);
+
+  // setInterval(() => {
+  //   goRight();
+  // }, 4000);
 
   const goLeft = () => {
     if (moving) return;
