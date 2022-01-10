@@ -2,36 +2,54 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const ItemCard = ({ imgUrl, productName, price, quantity, id, productId }) => {
-  const [state, setState] = useState();
-  const userId = sessionStorage.getItem('token');
+const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
+  const [state, setState] = useState(false);
+  const userId = window.sessionStorage.getItem('ID');
 
   const clickLike = () => {
+    console.log(userId);
     if (userId && state === false) {
       fetch('http://localhost:8000/users/like', {
         method: 'POST',
-        headers: { 'Content-type': 'application/json', mode: 'cors' },
+        headers: {
+          'Content-type': 'application/json',
+          mode: 'cors',
+          // Authorization: 'token',
+        },
         body: JSON.stringify({
           user_id: userId,
           product_id: productId,
         }),
-      });
-      setState(!state);
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          setState(!state);
+        });
     } else if (userId && state === true) {
       fetch('http://localhost:8000/users/unlike', {
         method: 'DELETE',
-        headers: { 'Content-type': 'application/json', mode: 'cors' },
+        headers: {
+          'Content-type': 'application/json',
+          mode: 'cors',
+          // Authorization: 'token',
+        },
         body: JSON.stringify({
           user_id: userId,
           product_id: productId,
         }),
-      });
-      setState(!state);
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res.data);
+          setState(!state);
+        });
     }
+    console.log(state);
   };
 
   return (
-    <div className="listCard" key={id}>
+    <div className="listCard" key={key}>
       <div className="imgWrapper">
         <Link to="/detail">
           <img className="listImg" src={imgUrl} alt={productName} />

@@ -1,0 +1,25 @@
+.sortModal {
+  position: absolute;
+  // top: 660px;
+  // left: 210px;
+  z-index: 100;
+
+  .sortModalWrapper {
+    position: relative;
+    top: 50px;
+    left: 115px;
+    width: 170px;
+    background-color: white;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+
+    div {
+      font-size: 15px;
+      width: 100%;
+      padding: 12px 0;
+      text-align: center;
+      border-bottom: 1px solid black;
+    }
+  }
+}

@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
-import { GET_CATEGORY_API } from '../../config';
 import { Link } from 'react-router-dom';
 
-const CategoryModal = ({ isOpen, modal, category, subCategory }) => {
-  const [state, setState] = useState(false);
-
+const CategoryModal = ({ isOpen, modal }) => {
   return (
     <div>
       {modal ? (
