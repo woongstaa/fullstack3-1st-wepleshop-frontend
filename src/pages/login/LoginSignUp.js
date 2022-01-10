@@ -10,10 +10,10 @@ import ModalSignUp from './modal/ModalSignUp';
 
 function LoginSignUp({ onClickSignIn }) {
   // 로그인/비밀번호 유효성 검증 state
-  // const [validation, setValidation] = useState(false);
   const [nameValidation, setNameValidation] = useState(false);
   const [emailValidation, setEmailValidation] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState(false);
+
   // 사용자 key 입력 state
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
