@@ -12,6 +12,8 @@ function LoginSignIn() {
   // 사용자 key 입력 state
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+
+  // token 저장 state
   const [token, setToken] = useState('');
 
   // modal 관련 state
@@ -30,17 +32,11 @@ function LoginSignIn() {
   useEffect(() => {
     const emailValidation = emailInput.includes('@');
     const passwordValidation = passwordInput.length >= 5;
-    if (emailValidation) {
-      setEmailValidation(true);
-    } else {
-      setEmailValidation(false);
-    }
 
-    if (passwordValidation) {
-      setPasswordValidation(true);
-    } else {
-      setPasswordValidation(false);
-    }
+    emailValidation ? setEmailValidation(true) : setEmailValidation(false);
+    passwordValidation
+      ? setPasswordValidation(true)
+      : setPasswordValidation(false);
   }, [emailInput, passwordInput]);
 
   // 유효성이 검증된 이메일/비밀번호를 백엔드로 보내서 token을 받아오는 코드

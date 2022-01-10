@@ -1,10 +1,9 @@
-// 추후 다시 반영
 import './ModalSignUp.scss';
 
-function ModalSignUp({ modalSignUpClose }) {
+function ModalSignUp({ onClickSignIn }) {
   const onCloseModal = async event => {
     if (event.target === event.currentTarget) {
-      modalSignUpClose();
+      onClickSignIn();
     }
   };
 
@@ -12,7 +11,7 @@ function ModalSignUp({ modalSignUpClose }) {
     <div className="modalLoginContainer" onClick={onCloseModal}>
       <div className="modal">
         <p className="text">가입을 환영합니다.</p>
-        <button className="modalButton" onClick={modalSignUpClose}>
+        <button className="modalButton" onClick={onClickSignIn}>
           확인
         </button>
       </div>
