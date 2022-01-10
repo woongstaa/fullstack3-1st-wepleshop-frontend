@@ -2,6 +2,7 @@ import './TopDetail.scss';
 import { GET_PRODUCT_API } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function TopDetail() {
   return (
@@ -38,9 +39,9 @@ function TopDetail() {
           </nav>
           <div className="headerRight">
             <div className="cart">
-              <a href="#">
+              <Link to="/cart">
                 <FontAwesomeIcon icon={faShoppingBasket} className="cartIcon" />
-              </a>
+              </Link>
             </div>
             <button type="button" className="hamburger">
               <FontAwesomeIcon icon={faBars} className="hamburgerIcon" />

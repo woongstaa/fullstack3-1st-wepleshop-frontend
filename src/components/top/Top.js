@@ -63,9 +63,9 @@ function Top() {
           </nav>
           <div className="headerRight">
             <div className="cart">
-              <a href="#">
+              <Link to="/cart">
                 <FontAwesomeIcon icon={faShoppingBasket} className="cartIcon" />
-              </a>
+              </Link>
             </div>
             <button type="button" className="hamburger">
               <FontAwesomeIcon icon={faBars} className="hamburgerIcon" />
