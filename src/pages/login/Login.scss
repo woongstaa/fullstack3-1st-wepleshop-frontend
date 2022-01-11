@@ -12,6 +12,11 @@
     font-weight: 600;
     text-align: center;
   }
+
+  .logo:hover {
+    cursor: pointer;
+  }
+
   .selectorWrapper {
     display: flex;
     width: 520px;

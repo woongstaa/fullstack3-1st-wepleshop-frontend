@@ -47,11 +47,10 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
     }
     console.log(state);
   };
-
   return (
     <div className="listCard" key={key}>
       <div className="imgWrapper">
-        <Link to="/detail">
+        <Link to={`/detail?productId=${productId}`}>
           <img className="listImg" src={imgUrl} alt={productName} />
         </Link>
         <div className="likeBtnWrapper">
@@ -72,7 +71,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         )}
       </div>
       <div className="itemTitle">
-        <Link to="/detail">{productName}</Link>
+        <Link to={`/detail?productId=${productId}`}>{productName}</Link>
       </div>
       <div className="itemPrice">
         <span>₩ </span>

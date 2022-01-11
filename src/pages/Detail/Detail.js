@@ -6,62 +6,35 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare as regularShare } from '@fortawesome/free-regular-svg-icons';
 import ImageSlider from './ImageSlider';
 
+import ColorList from './ColorList';
+import SizeList from './SizeList';
+import queryString from 'query-string';
 import Nav from '../../components/nav/Nav';
 import Footer from '../../components/footer/Footer';
 import TopDetail from '../../components/top/TopDetail';
 
 function Detail() {
+  const [product, setProduct] = useState([]);
   const [productName, productNameSet] = useState('');
   let productColor = [];
-
   let productColorHex = [];
-
-  let productSizePerColor = {};
-
+  let productSize = [];
   const [productPrice, productPriceSet] = useState(1000);
   let productImgUrl = [];
   const [imgUrl, urlSetting] = useState([]);
-  // const [colorHex, colorHexSet] = useState([]);
-
-  const [idValue, idSet] = useState(5);
+  const parsedQuery = queryString.parse(window.location.search);
+  const getId = parsedQuery.productId;
+  const [idValue, idSet] = useState(getId);
   useEffect(() => {
-    fetch('http://localhost:8000/products/details', {
+    fetch(`http://localhost:8000/products/details?productId=${idValue}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
-      body: JSON.stringify({
-        id: idValue,
-      }),
     })
       .then(res => res.json())
       .then(data => {
+        setProduct(data);
+
         productNameSet(Object.values(data[0])[1]); // 제품 이름
-
-        for (let i = 0; i < Object.values(data).length; i++) {
-          if (productColor.indexOf(Object.values(data[i])[4]) === -1) {
-            productColor.push(Object.values(data[i])[4]);
-          }
-        }
-
-        for (let i = 0; i < Object.values(data).length; i++) {
-          if (productColorHex.indexOf(Object.values(data[i])[5]) === -1) {
-            productColorHex.push(Object.values(data[i])[5]);
-          }
-        }
-
-        for (let i = 0; i < data.length; i++) {
-          if (productSizePerColor[data[i].colorName] === undefined) {
-            productSizePerColor[data[i].colorName] = [data[i].sizeName];
-          } else {
-            if (
-              productSizePerColor[data[i].colorName].indexOf(
-                data[i].sizeName
-              ) === -1
-            ) {
-              productSizePerColor[data[i].colorName].push(data[i].sizeName);
-            }
-          }
-        }
-
         productPriceSet(data[0].productPrice);
 
         for (let i = 0; i < Object.values(data).length; i++) {
@@ -73,6 +46,24 @@ function Detail() {
         urlSetting(img); //제품 이미지
       });
   }, []);
+
+  for (let i = 0; i < Object.values(product).length; i++) {
+    if (productColor.indexOf(Object.values(product[i])[4]) === -1) {
+      productColor.push(Object.values(product[i])[4]);
+    }
+  }
+
+  for (let i = 0; i < Object.values(product).length; i++) {
+    if (productColorHex.indexOf(Object.values(product[i])[5]) === -1) {
+      productColorHex.push(Object.values(product[i])[5]);
+    }
+  }
+
+  for (let i = 0; i < Object.values(product).length; i++) {
+    if (productSize.indexOf(Object.values(product[i])[6]) === -1) {
+      productSize.push(Object.values(product[i])[6]);
+    }
+  }
 
   const [quantity, quantityUpdate] = useState(1);
 
@@ -92,7 +83,7 @@ function Detail() {
       heartshapeChange(solidHeart);
     } else {
       heartshapeChange(regularHeart);
-    } // 하트 버튼 기능
+    }
   }
 
   return (
@@ -147,59 +138,19 @@ function Detail() {
                   <div className="DetailColor">
                     <p className="ColorMain">색상</p>
                     <ul className="ColorRadioBox">
-                      <li>
-                        <input type="radio" name="color" id="black" />
-                        <label for="black" className="black">
-                          블랙
-                        </label>
-                      </li>
-                      <li>
-                        <input type="radio" name="color" id="gray" />
-                        <label for="gray" className="gray">
-                          그레이
-                        </label>
-                      </li>
-                      <li>
-                        <input type="radio" name="color" id="skyblue" />
-                        <label for="skyblue" className="skyblue">
-                          블루
-                        </label>
-                      </li>
+                      {productColor &&
+                        productColor.map((e, i) => {
+                          return <ColorList color={e} key={i} />;
+                        })}
                     </ul>
                   </div>
                   <div className="DetailSize">
                     <p className="SizeMain">사이즈</p>
                     <ul className="SizeChart">
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="xs" />
-                        <label for="xs" className="xs">
-                          XS
-                        </label>
-                      </li>
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="s" />
-                        <label for="s">S</label>
-                      </li>
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="m" />
-                        <label for="m">M</label>
-                      </li>
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="l" />
-                        <label for="l">L</label>
-                      </li>
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="xl" />
-                        <label for="xl">XL</label>
-                      </li>
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="xxl" />
-                        <label for="xxl">XXL</label>
-                      </li>
-                      <li className="SizeCheckBox">
-                        <input type="radio" name="size" id="xxxl" />
-                        <label for="xxxl">XXXL</label>
-                      </li>
+                      {productSize &&
+                        productSize.map((e, i) => {
+                          return <SizeList size={e} key={i} />;
+                        })}
                     </ul>
                   </div>
 
