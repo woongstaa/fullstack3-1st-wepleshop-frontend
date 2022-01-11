@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SizeList = ({ size }) => {
+const SizeList = ({ size, cartSizeSet }) => {
   return (
     <li className="SizeCheckBox">
-      <input type="radio" name="size" id={size} />
+      <input type="radio" name="size" id={size} onChange={cartSizeSet} />
       <label for={size} className={size}>
         {size}
       </label>
