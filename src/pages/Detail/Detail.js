@@ -26,14 +26,12 @@ function Detail() {
   const parsedQuery = queryString.parse(window.location.search);
   const getId = parsedQuery.productId;
   const [idValue, idSet] = useState(getId);
-
+  const userIdValue = sessionStorage.getItem('ID');
   const [cartColor, cartColorChange] = useState('None');
   const [cartSize, cartSizeChange] = useState('None');
 
-  const userIdValue = sessionStorage.getItem('ID');
-
   const cartAdd = () => {
-    fetch(`http://localhost:8000/products/cart`, {
+    fetch(`http://localhost:8000/products/cartadd`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
@@ -65,7 +63,7 @@ function Detail() {
       .then(data => {
         setProduct(data);
 
-        productNameSet(Object.values(data[0])[1]); // 제품 이름
+        productNameSet(Object.values(data[0])[1]);
         productPriceSet(data[0].productPrice);
 
         for (let i = 0; i < Object.values(data).length; i++) {
@@ -74,7 +72,7 @@ function Detail() {
           }
         }
         let img = [...productImgUrl];
-        urlSetting(img); //제품 이미지
+        urlSetting(img);
       });
   }, []);
 
@@ -117,7 +115,7 @@ function Detail() {
   console.log('ProductID: ', idValue);
 
   return (
-    <>
+    <div className="Detail">
       <div className="sectionContainer">
         <Top />
         <div className="mainWrapper">
@@ -190,7 +188,6 @@ function Detail() {
                               size={e}
                               key={i}
                               cartSizeSet={changeRadioSize}
-                              // cartSizeSet={cartSizeSet({ e })}
                             />
                           );
                         })}
@@ -248,7 +245,7 @@ function Detail() {
         <Footer />
       </div>
       <Nav />
-    </>
+    </div>
   );
 }
 

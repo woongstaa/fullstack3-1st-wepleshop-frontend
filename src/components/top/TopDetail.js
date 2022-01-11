@@ -1,15 +1,10 @@
-import './Top.scss';
-import { useState } from 'react';
+import './TopDetail.scss';
 import { GET_PRODUCT_API } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faShoppingBasket,
-  faBars,
-  faBullseye,
-} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function Top() {
+function TopDetail() {
   return (
     <div className="topContainer">
       <header className="headerContainer">
@@ -21,17 +16,15 @@ function Top() {
             </a>
             <ul className="headerList">
               <li className="headerListMenu">
-                <a href="/" id="homeMenu">
-                  홈
-                </a>
+                <a href="/">홈</a>
               </li>
               <li className="headerListMenu">
                 <a href="#">셀러</a>
               </li>
               <li className="headerListMenu">
-                <Link to="/list" id="productMenu">
+                <a href={`${GET_PRODUCT_API}`} id="homeMenu">
                   상품
-                </Link>
+                </a>
               </li>
               <li className="headerListMenu">
                 <a href="#">공식굿즈</a>
@@ -60,4 +53,4 @@ function Top() {
   );
 }
 
-export default Top;
+export default TopDetail;
