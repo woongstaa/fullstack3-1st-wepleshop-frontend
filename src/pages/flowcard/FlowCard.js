@@ -1,6 +1,7 @@
+/* eslint-disable no-unreachable */
 import { useEffect, useState } from 'react/cjs/react.development';
 import './FlowCard.scss';
-import Card from './card';
+import Card from './Card';
 
 export default function FlowCard() {
   const [data, setData] = useState();
@@ -11,9 +12,8 @@ export default function FlowCard() {
       headers: { 'Content-type': 'application/json', mode: 'cors' },
     })
       .then(res => res.json())
-      .then(data => setData(data.list));
+      .then(data => setData(data));
   }, []);
-  console.log(data);
 
   return (
     <div className="flowcard-wrapper">
@@ -21,14 +21,14 @@ export default function FlowCard() {
         <div className="product-card">
           <div className="product-flowcard-toplist">
             {data &&
-              data.map((e, i) => {
-                return <Card key={i} img={e.imgUrl} name={e.productName} />;
+              data.list.map((e, i) => {
+                return <Card key={i} imgUrl={e.imgUrl} />;
               })}
           </div>
           <div className="product-flowcard-bottomlist">
             {data &&
-              data.map((e, i) => {
-                return <Card key={i} img={e.imgUrl} name={e.productName} />;
+              data.list.map((e, i) => {
+                return <Card key={i} imgUrl={e.imgUrl} />;
               })}
           </div>
         </div>

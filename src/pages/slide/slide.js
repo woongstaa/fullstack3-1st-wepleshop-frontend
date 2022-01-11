@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SlideCard from './SlideCard';
-import './Slide.scss';
+import SlideCard from './slidecard';
+import './slide.scss';
 
 export default function Slide() {
   const [slideInfo, setSlideInfo] = useState([]);
@@ -36,7 +36,7 @@ export default function Slide() {
 
   const goLeft = () => {
     if (moving) return;
-    setX(x => x + 1);
+    setX(x => x - 1);
     setMoving(true);
     // setTimeout(() => {
     const popCard = slideInfo.productSlide.pop();
@@ -52,7 +52,7 @@ export default function Slide() {
 
   const goRight = () => {
     if (moving) return;
-    setX(x => x - 1);
+    setX(x => x + 100);
     setMoving(true);
     const popCard = slideInfo.productSlide.shift();
     const newProductSlide = slideInfo.productSlide.concat([popCard]);
@@ -72,7 +72,7 @@ export default function Slide() {
                 return (
                   <SlideCard
                     style={{ transform: `translateX(${x}px)` }}
-                    key={`${imgData.id}`}
+                    key={`${imgData.id}${idx}`}
                     imgUrl={imgData.img_url}
                     title={imgData.title}
                     description={imgData.description}

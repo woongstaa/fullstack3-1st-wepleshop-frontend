@@ -5,7 +5,7 @@ import Home from '../src/pages/home/Home';
 import Detail from './pages/Detail/Detail';
 import Flow from './pages/flowcard/FlowCard';
 import List from './pages/ProductList/List';
-import Card from './pages/flowcard/card';
+import Card from './pages/flowcard/Card';
 import Cart from './pages/Cart/Cart';
 
 function Router() {
