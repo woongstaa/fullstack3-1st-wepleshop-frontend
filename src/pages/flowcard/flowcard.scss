@@ -7,8 +7,8 @@
     // left: calc((-100vw + 6rem) / 2 + 50%);
     // overflow: hidden;
     .product-card {
-      flex-direction: column;
-      height: calc(13rem * 2 + 16px);
+      // flex-direction: column;
+      // height: calc(13rem * 2 + 16px);
 
       .product-flowcard-toplist {
         display: flex;
@@ -23,23 +23,10 @@
         animation-play-state: running;
         animation-name: leftMoveLoop;
         margin-bottom: 30px;
-        // .product-flowcard-item {
-        //   width: 100%;
-        //   img {
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     bottom: 0;
-        //     right: 0;
-        //     margin: auto;
-        //     max-width: 100%;
-        //     max-height: 100%;
-        //   }
-        // }
       }
       .product-flowcard-bottomlist {
         display: flex;
-        will-change: transform;
+        white-space: nowrap;
         animation: rightMoveLoop 45s infinite linear;
         animation-duration: 45s;
         animation-timing-function: linear;
