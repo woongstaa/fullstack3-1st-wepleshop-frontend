@@ -1,0 +1,119 @@
+.Mypage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 904px;
+  margin-top: 30px;
+  padding: 0 6.042rem;
+
+  .myPageTop {
+    margin-left: 20px;
+  }
+  .myPageTopText {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.36;
+    letter-spacing: -0.2px;
+    color: #111;
+  }
+
+  .myPageTopButtons {
+    margin-top: 10px;
+  }
+
+  .myPageButton {
+    all: unset;
+    margin-right: 20px;
+    padding: 6px 13px 5px;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: -0.2px;
+    color: #4e4e4e;
+    border: 0 none;
+    outline: none;
+    border-radius: 17px;
+    background-color: #f8f8f8;
+  }
+
+  .myPageMain {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 24px 100px;
+    min-height: 300px;
+    background-color: #fff;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+  }
+
+  .myPageMainShopping {
+    width: 48%;
+  }
+
+  .myPageMainTitle {
+    margin: 0 0 4px;
+    padding: 0;
+    letter-spacing: -0.3px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.27;
+    letter-spacing: -0.2px;
+    color: #111;
+  }
+
+  .myPageMainMenu {
+    margin-bottom: 30px;
+  }
+
+  .myPageMainItem {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.2px;
+    background-position: 99% 49%;
+    border-top: 1px solid #f8f8f8;
+  }
+
+  .myPageMainButton {
+    display: block;
+    cursor: pointer;
+    padding: 17px 40px 15px 0;
+    color: #000;
+  }
+
+  .myPageMainCustomer {
+    width: 48%;
+  }
+
+  .myPageUserTop {
+    margin: 0 24px 36px;
+  }
+
+  .myPageUser {
+    position: relative;
+  }
+
+  .myPageUserText {
+    margin-bottom: 12px;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+    color: #111;
+    margin: 0 0 10px 5px;
+  }
+
+  .myPageUserButtons {
+    display: flex;
+  }
+
+  .myPageUserButton {
+    margin-right: 6px;
+    padding: 6px 13px 5px;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: -0.2px;
+    color: #4e4e4e;
+    border: 0 none;
+    border-radius: 17px;
+    background-color: #f8f8f8;
+  }
+}
