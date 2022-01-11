@@ -31,7 +31,7 @@ function Detail() {
   const [cartSize, cartSizeChange] = useState('None');
 
   const cartAdd = () => {
-    fetch(`http://localhost:8000/products/cart`, {
+    fetch(`http://localhost:8000/products/cartadd`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
