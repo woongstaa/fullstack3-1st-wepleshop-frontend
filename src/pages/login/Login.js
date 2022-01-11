@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 import LoginSignIn from './LoginSignIn';
 import LoginSignUp from './LoginSignUp';
@@ -15,10 +16,17 @@ function Login() {
     setIsLogin(false);
   };
 
+  const navigate = useNavigate();
+  const goToHome = () => {
+    navigate('/');
+  };
+
   return (
     <div id="loginContainer">
       <div className="title">
-        <h3>WEPLE SHOP</h3>
+        <h3 className="logo" onClick={goToHome}>
+          WEPLE SHOP
+        </h3>
       </div>
       <div className="selectorWrapper">
         <div>

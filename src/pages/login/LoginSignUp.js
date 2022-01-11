@@ -1,22 +1,34 @@
 import { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { POST_SIGNUP_API } from '../../config';
-import ModalLogin from '../../components/modalLogin/ModalLogin';
-import ModalPersonal from '../../components/modalLogin/ModalPersonal';
-import ModalTerms from '../../components/modalLogin/ModalTerms';
-// import ModalSignUp from '../../components/ModalSignUp';
+import ModalLogin from './modal/ModalLogin';
+import ModalPersonal from './modal/ModalPersonal';
+import ModalTerms from './modal/ModalTerms';
+import ModalName from './modal/ModalName';
+import ModalEmail from './modal/ModalEmail';
+import ModalPassword from './modal/ModalPassword';
+import ModalSignUp from './modal/ModalSignUp';
 
 function LoginSignUp({ onClickSignIn }) {
-  const [validation, setValidation] = useState(false);
+  // 로그인/비밀번호 유효성 검증 state
+  const [nameValidation, setNameValidation] = useState(false);
+  const [emailValidation, setEmailValidation] = useState(false);
+  const [passwordValidation, setPasswordValidation] = useState(false);
+
+  // 사용자 key 입력 state
+  const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
-  const [nameInput, setNameInput] = useState('');
+
+  // modal 관련 state
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTermsOpen, setModalTermsOpen] = useState(false);
   const [modalPersonalOpen, setModalPersonalOpen] = useState(false);
-  // const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
+  const [modalNameOpen, setModalNameOpen] = useState(false);
+  const [modalEmailOpen, setModalEmailOpen] = useState(false);
+  const [modalPasswordOpen, setModalPasswordOpen] = useState(false);
+  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
 
-  // 이름/아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
+  // 사용자가 입력한 이메일/비밀번호를 각각의 set 함수에 저장
   const handleIdInput = event => {
     setEmailInput(event.target.value);
   };
@@ -26,21 +38,21 @@ function LoginSignUp({ onClickSignIn }) {
   const handleNameInput = event => {
     setNameInput(event.target.value);
   };
-  // End
 
+  // 이메일/비밀번호 유효성 검증 코드
   useEffect(() => {
-    const emailValidation = emailInput.includes('@');
+    const nameValidation = nameInput.length >= 1;
+    const emailValidation = emailInput.includes('@') && emailInput.length >= 5; // x@x.x
     const passwordValidation = passwordInput.length >= 5;
-    const nameValidation = nameInput;
 
-    if (emailValidation && passwordValidation && nameValidation) {
-      setValidation(true);
-    } else {
-      setValidation(false);
-    }
+    nameValidation ? setNameValidation(true) : setNameValidation(false);
+    emailValidation ? setEmailValidation(true) : setEmailValidation(false);
+    passwordValidation
+      ? setPasswordValidation(true)
+      : setPasswordValidation(false);
   }, [nameInput, emailInput, passwordInput]);
 
-  // const navigate = useNavigate();
+  // 유효성이 검증된 이름/이메일/비밀번호를 백엔드로 전송
   const goToHome = () => {
     fetch(POST_SIGNUP_API, {
       method: 'POST',
@@ -51,26 +63,30 @@ function LoginSignUp({ onClickSignIn }) {
         password: passwordInput,
       }),
     });
-
-    onClickSignIn();
-    // navigate('/');
   };
 
+  // 모달창 조건 코드
   const modalClose = () => {
     setModalOpen(!modalOpen);
   };
-
   const modalTermsClose = () => {
     setModalTermsOpen(!modalTermsOpen);
   };
-
   const modalPersonalClose = () => {
     setModalPersonalOpen(!modalPersonalOpen);
   };
-
-  // const modalSignUpClose = () => {
-  //   setModalSignUpOpen(!modalSignUpOpen);
-  // };
+  const modalNameClose = () => {
+    setModalNameOpen(!modalNameOpen);
+  };
+  const modalEmailClose = () => {
+    setModalEmailOpen(!modalEmailOpen);
+  };
+  const modalPasswordClose = () => {
+    setModalPasswordOpen(!modalPasswordOpen);
+  };
+  const modalSignUpClose = () => {
+    setModalSignUpOpen(!modalSignUpOpen);
+  };
 
   return (
     <div id="loginSignUpContainer">
@@ -119,21 +135,50 @@ function LoginSignUp({ onClickSignIn }) {
         </label>
       </div>
       <div className="submit">
-        {/* 회원가입 완료시 새로운 모달창(회원가입 축하) 구현하고, 다시 로그인 화면으로 가던가 혹은 token 받아서 메인페이지로 바로 갈수 있도록 구현해야함 */}
         <button
           className="btn"
           type="submit"
-          onClick={validation ? goToHome : modalClose}
+          onClick={() => {
+            if (nameValidation === false) {
+              return modalNameClose();
+            } else if (
+              emailValidation === false &&
+              nameValidation === true &&
+              passwordValidation === true
+            ) {
+              return modalEmailClose();
+            } else if (
+              passwordValidation === false &&
+              nameValidation === true &&
+              emailValidation === true
+            ) {
+              return modalPasswordClose();
+            } else if (
+              nameValidation === true &&
+              emailValidation === false &&
+              passwordValidation === false
+            ) {
+              return modalClose();
+            } else if (
+              nameValidation === true &&
+              emailValidation === true &&
+              passwordValidation === true
+            ) {
+              goToHome();
+
+              return modalSignUpClose();
+            }
+          }}
         >
-          {/* onClick 이벤트 내용을 세분화하기(if문 사용?),
-          0. 홈으로 가는 함수
-          1. 이메일 양식 오류 모달창
-          2. 비밀번호 길이 오류 모달창
-          3. 이미 가입된 회원 오류 모달창 */}
           회원가입
         </button>
-        {/* {modalSignUpOpen && <ModalSignUp modalSignUpClose={modalSignUpClose} />} */}
         {modalOpen && <ModalLogin modalClose={modalClose} />}
+        {modalNameOpen && <ModalName modalNameClose={modalNameClose} />}
+        {modalEmailOpen && <ModalEmail modalEmailClose={modalEmailClose} />}
+        {modalPasswordOpen && (
+          <ModalPassword modalPasswordClose={modalPasswordClose} />
+        )}
+        {modalSignUpOpen && <ModalSignUp onClickSignIn={onClickSignIn} />}
       </div>
     </div>
   );

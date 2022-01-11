@@ -1,0 +1,146 @@
+.CartBody {
+  box-sizing: border-box;
+  padding-right: 6.042rem;
+
+  .cart {
+    position: relative;
+    // max-width: 1360px;
+    // width: 100%;
+
+    .CartItemCard {
+      // 카트 카드
+      width: 600px;
+      margin: 20px 0;
+      margin-left: 10%;
+      margin-bottom: 48px;
+
+      .iconWrapper {
+        display: flex;
+        justify-content: end;
+        cursor: pointer;
+
+        .icon {
+          color: gray;
+          font-size: 28px;
+        }
+      }
+
+      .cardWrapper {
+        display: flex;
+
+        .imgWrapper {
+          width: 150px;
+          height: 150px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .cardRight {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 10px 20px;
+
+          .nameAndColor {
+            .productName {
+              font-size: 18px;
+              font-weight: 500;
+            }
+            .productColor {
+              margin-top: 5px;
+            }
+          }
+          .productPrice {
+            font-size: 1rem;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .cardFooter {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #f6f6f6;
+        margin-top: 20px;
+        border-radius: 8px;
+        padding: 15px 30px;
+
+        .size {
+        }
+        .amount {
+        }
+      }
+    }
+
+    .cartSummary {
+      // 카트에 담은 결제 금액
+      position: absolute;
+      top: 10px;
+
+      .summaryWarpper {
+        position: fixed;
+        right: 200px;
+        width: 300px;
+
+        .summaryHeader {
+          font-size: 26px;
+          margin-bottom: 18px;
+          font-weight: 700;
+        }
+
+        .summaryBody {
+          background-color: #f6f6f6;
+          padding: 30px 28px;
+          font-size: 18px;
+          margin-bottom: 16px;
+          border-radius: 8px;
+
+          .calPrice {
+            .calWarpper {
+              display: flex;
+              justify-content: space-between;
+              font-size: 18px;
+              margin-bottom: 8px;
+            }
+          }
+
+          .totalPrice {
+            font-size: 20px;
+            font-weight: 600;
+            padding-top: 14px;
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+
+        .summaryFooter {
+          background-color: black;
+          color: white;
+          width: 100%;
+          border-radius: 8px;
+          border: none;
+          height: 54px;
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .emptyCart {
+    padding: 20% 0;
+    text-align: center;
+    #icon {
+      font-size: 80px;
+      color: #d5d5d5;
+    }
+    .comment {
+      margin-top: 15px;
+      font-size: 24px;
+    }
+  }
+}
