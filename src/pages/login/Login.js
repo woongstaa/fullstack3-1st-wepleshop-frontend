@@ -7,9 +7,7 @@ import LoginSignUp from './LoginSignUp';
 
 function Login() {
   const location = useLocation();
-  const isLoginSignUp = location.state?.isLoginSignUp;
-
-  console.log('isLoginSignUp: ', isLoginSignUp);
+  const isLoginSignUp = location.state.isLoginSignUp;
 
   const isLoginSelector = () => {
     if (isLoginSignUp === undefined) {
