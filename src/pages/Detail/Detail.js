@@ -114,7 +114,7 @@ function Detail() {
   console.log('ProductID: ', idValue);
 
   return (
-    <>
+    <div className="Detail">
       <div className="sectionContainer">
         <TopDetail />
         <div className="mainWrapper">
@@ -245,7 +245,7 @@ function Detail() {
         <Footer />
       </div>
       <Nav />
-    </>
+    </div>
   );
 }
 
