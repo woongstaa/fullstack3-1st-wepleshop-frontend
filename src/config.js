@@ -7,6 +7,7 @@ const GET_CATEGORY_API = `${BASE_URL}/category/sub`;
 const GET_DETAIL_API = `${BASE_URL}/products/details`;
 const POST_SIGNIN_API = `${BASE_URL}/users/signin`;
 const POST_SIGNUP_API = `${BASE_URL}/users/signup`;
+const POST_FINDNAME_API = `${BASE_URL}/users/usernamefind`;
 
 export {
   BASE_URL,
@@ -16,4 +17,5 @@ export {
   GET_DETAIL_API,
   POST_SIGNIN_API,
   POST_SIGNUP_API,
+  POST_FINDNAME_API,
 };

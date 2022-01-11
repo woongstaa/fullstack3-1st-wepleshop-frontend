@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { POST_FINDNAME_API } from '../../config';
 import './Mypage.scss';
 
 function MypageLogin() {
@@ -6,7 +7,7 @@ function MypageLogin() {
   const userIdValue = sessionStorage.getItem('ID');
 
   useEffect(() => {
-    fetch(`http://localhost:8000/users/usernamefind`, {
+    fetch(POST_FINDNAME_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
