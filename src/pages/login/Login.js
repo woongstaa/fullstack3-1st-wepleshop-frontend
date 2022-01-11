@@ -1,12 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Login.scss';
 import LoginSignIn from './LoginSignIn';
 import LoginSignUp from './LoginSignUp';
 
 function Login() {
-  const [isLogin, setIsLogin] = useState(true);
+  const location = useLocation();
+  const isLoginSignUp = location.state?.isLoginSignUp;
+
+  const isLoginSelector = () => {
+    if (isLoginSignUp === undefined) {
+      return true;
+    } else if (isLoginSignUp === false) {
+      return false;
+    }
+  };
+
+  const [isLogin, setIsLogin] = useState(isLoginSelector);
 
   const onClickSignIn = event => {
     setIsLogin(true);
