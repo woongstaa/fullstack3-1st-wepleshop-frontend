@@ -3,6 +3,7 @@ import './SortModal.scss';
 
 const SortModal = ({ sortModal, SORT_URL }) => {
   const navigate = useNavigate();
+
   return (
     <div>
       {sortModal ? (
