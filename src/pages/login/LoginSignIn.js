@@ -1,46 +1,47 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { POST_SIGNIN_API } from '../../config';
-import ModalLogin from '../../components/modalLogin/ModalLogin';
+import ModalLogin from './modal/ModalLogin';
+import ModalEmail from './modal/ModalEmail';
 
 function LoginSignIn() {
-  const [validation, setValidation] = useState(false);
+  // 로그인/비밀번호 유효성 검증 state
+  const [emailValidation, setEmailValidation] = useState(false);
+  const [passwordValidation, setPasswordValidation] = useState(false);
+
+  // 사용자 key 입력 state
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+
+  // token 저장 state
   const [token, setToken] = useState('');
+
+  // modal 관련 state
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalEmailOpen, setModalEmailOpen] = useState(false);
 
-  // 리팩토링 구현중
-  // const [inputs, setInputs] = useState({
-  //   email: '',
-  //   password: '',
-  // });
-
-  // const { email, password } = inputs;
-  // End
-
-  // 아이디/비밀번호 입력 받아오는 코드(리팩토링 필요 : 중복 코드)
+  // 사용자가 입력한 이메일/비밀번호를 각각의 set 함수에 저장
   const handleIdInput = event => {
     setEmailInput(event.target.value);
   };
   const handlePwInput = event => {
     setPasswordInput(event.target.value);
   };
-  // End
 
+  // 이메일/비밀번호 유효성 검증 코드
   useEffect(() => {
-    const emailValidation = emailInput.includes('@');
+    const emailValidation = emailInput.includes('@') && emailInput.length >= 5; // x@x.x
     const passwordValidation = passwordInput.length >= 5;
 
-    if (emailValidation && passwordValidation) {
-      setValidation(true);
-    } else {
-      setValidation(false);
-    }
+    emailValidation ? setEmailValidation(true) : setEmailValidation(false);
+    passwordValidation
+      ? setPasswordValidation(true)
+      : setPasswordValidation(false);
   }, [emailInput, passwordInput]);
 
+  // 유효성이 검증된 이메일/비밀번호를 백엔드로 보내서 token을 받아오는 코드
   useEffect(() => {
-    if (validation === true) {
+    if (emailValidation && passwordValidation) {
       fetch(POST_SIGNIN_API, {
         method: 'POST',
         headers: { 'Content-type': 'application/json', mode: 'cors' },
@@ -54,20 +55,24 @@ function LoginSignIn() {
     }
   });
 
+  // 로그인 버튼 클릭시 조건에 맞으면 sessionStorage에 token을 담고, 메인페이지로 이동
   const navigate = useNavigate();
   const goToHome = () => {
-    // sessionStorage에 토큰 저장. 토큰이 사이트 내에서 실제로 어떻게 사용되는지 공부 필요
     sessionStorage.setItem('ID', token);
     navigate('/');
   };
 
-  const isToken = validation && token !== undefined;
+  // 이메일/비밀번호 조건 및 유효한 token 발급이 된 상태인지를 검증
+  const isToken = emailValidation && passwordValidation && token !== undefined;
 
+  // 모달창 조건 코드
   const modalClose = () => {
     setModalOpen(!modalOpen);
   };
+  const modalEmailClose = () => {
+    setModalEmailOpen(!modalEmailOpen);
+  };
 
-  // 로그인/회원가입 버튼 클릭시 해당 화면 렌더링하는 코드(리팩토링 필요 : 중복 UI)
   return (
     <div id="loginSignInContainer">
       <div className="inputWrapper">
@@ -86,15 +91,20 @@ function LoginSignIn() {
         <button
           className="btn"
           type="submit"
-          onClick={isToken ? goToHome : modalClose}
+          onClick={() => {
+            if (emailValidation === false && passwordValidation === true) {
+              return modalEmailClose();
+            } else if (!isToken) {
+              return modalClose();
+            } else if (isToken) {
+              return goToHome();
+            }
+          }}
         >
-          {/* onClick 이벤트 내용을 세분화하기(if문 사용?),
-          0. 홈으로 가는 함수
-          1. 이메일 양식 오류 모달창
-          2. 비밀번호 길이 오류 모달창*/}
           로그인
         </button>
         {modalOpen && <ModalLogin modalClose={modalClose} />}
+        {modalEmailOpen && <ModalEmail modalEmailClose={modalEmailClose} />}
       </div>
       <div className="forgotPassword">
         <span id="emailPassword">아이디 / 비밀번호 찾기</span>
@@ -102,6 +112,5 @@ function LoginSignIn() {
     </div>
   );
 }
-// End
 
 export default LoginSignIn;
