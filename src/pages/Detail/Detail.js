@@ -26,7 +26,7 @@ function Detail() {
   const parsedQuery = queryString.parse(window.location.search);
   const getId = parsedQuery.productId;
   const [idValue, idSet] = useState(getId);
-
+  const userIdValue = sessionStorage.getItem(‘ID’);
   const [cartColor, cartColorChange] = useState('None');
   const [cartSize, cartSizeChange] = useState('None');
 
@@ -35,6 +35,7 @@ function Detail() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
+        userId: userIdValue,
         productId: idValue,
         color: cartColor,
         size: cartSize,
