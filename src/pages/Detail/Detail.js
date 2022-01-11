@@ -11,20 +11,51 @@ import SizeList from './SizeList';
 import queryString from 'query-string';
 import Nav from '../../components/nav/Nav';
 import Footer from '../../components/footer/Footer';
-import TopDetail from '../../components/top/TopDetail';
+import Top from '../../components/top/Top';
 
 function Detail() {
   const [product, setProduct] = useState([]);
   const [productName, productNameSet] = useState('');
   let productColor = [];
-  let productColorHex = [];
   let productSize = [];
-  const [productPrice, productPriceSet] = useState(1000);
+  const [productPrice, productPriceSet] = useState(100);
+
   let productImgUrl = [];
   const [imgUrl, urlSetting] = useState([]);
+
   const parsedQuery = queryString.parse(window.location.search);
   const getId = parsedQuery.productId;
   const [idValue, idSet] = useState(getId);
+
+  const [cartColor, cartColorChange] = useState('None');
+  const [cartSize, cartSizeChange] = useState('None');
+
+  const userIdValue = sessionStorage.getItem('ID');
+
+  const cartAdd = () => {
+    fetch(`http://localhost:8000/products/cart`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', mode: 'cors' },
+      body: JSON.stringify({
+        userId: userIdValue,
+        productId: idValue,
+        color: cartColor,
+        size: cartSize,
+        quantity: quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+
+  const changeRadioColor = e => {
+    cartColorChange(e.target.id);
+  };
+
+  const changeRadioSize = e => {
+    cartSizeChange(e.target.id);
+  };
+
   useEffect(() => {
     fetch(`http://localhost:8000/products/details?productId=${idValue}`, {
       method: 'POST',
@@ -50,12 +81,6 @@ function Detail() {
   for (let i = 0; i < Object.values(product).length; i++) {
     if (productColor.indexOf(Object.values(product[i])[4]) === -1) {
       productColor.push(Object.values(product[i])[4]);
-    }
-  }
-
-  for (let i = 0; i < Object.values(product).length; i++) {
-    if (productColorHex.indexOf(Object.values(product[i])[5]) === -1) {
-      productColorHex.push(Object.values(product[i])[5]);
     }
   }
 
@@ -86,10 +111,15 @@ function Detail() {
     }
   }
 
+  console.log('카트 컬러 :', cartColor);
+  console.log('카트 사이즈 :', cartSize);
+  console.log('카트 수량 :', quantity);
+  console.log('ProductID: ', idValue);
+
   return (
     <>
       <div className="sectionContainer">
-        <TopDetail />
+        <Top />
         <div className="mainWrapper">
           <div className="body">
             <div>
@@ -140,7 +170,13 @@ function Detail() {
                     <ul className="ColorRadioBox">
                       {productColor &&
                         productColor.map((e, i) => {
-                          return <ColorList color={e} key={i} />;
+                          return (
+                            <ColorList
+                              color={e}
+                              key={i}
+                              cartColorSet={changeRadioColor}
+                            />
+                          );
                         })}
                     </ul>
                   </div>
@@ -149,7 +185,14 @@ function Detail() {
                     <ul className="SizeChart">
                       {productSize &&
                         productSize.map((e, i) => {
-                          return <SizeList size={e} key={i} />;
+                          return (
+                            <SizeList
+                              size={e}
+                              key={i}
+                              cartSizeSet={changeRadioSize}
+                              // cartSizeSet={cartSizeSet({ e })}
+                            />
+                          );
                         })}
                     </ul>
                   </div>
@@ -192,6 +235,7 @@ function Detail() {
                       className="AddButton"
                       type="button"
                       data-action="cart"
+                      onClick={cartAdd}
                     >
                       <span className="Add">장바구니에 담기</span>
                     </button>

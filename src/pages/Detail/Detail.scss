@@ -41,20 +41,19 @@ a {
 
 .sectionContainer {
   position: relative;
+  .body {
+    position: relative;
+    box-sizing: border-box;
+    z-index: 2;
+    margin: 0 auto;
+    padding: 0 80px;
+    max-width: 1360px;
+    width: 100%;
+  }
 
   .mainWrapper {
     width: 100%;
   }
-}
-
-.body {
-  position: relative;
-  box-sizing: border-box;
-  z-index: 2;
-  margin: 0 auto;
-  padding: 0 80px;
-  max-width: 1360px;
-  width: 100%;
 }
 
 .DetailBody {
