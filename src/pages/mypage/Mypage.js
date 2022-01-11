@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/Footer';
 import Nav from '../../components/nav/Nav';
-// import TopDetail from '../../components/top/TopDetail';
 import Top from '../../components/top/Top';
 import MypageNotLogin from './MypageNotLogin';
 import MypageLogin from './MypageLogin';
@@ -16,14 +15,13 @@ function Mypage() {
       <Nav />
       <div className="Mypage">
         {yourID ? <MypageLogin /> : <MypageNotLogin />}
-
         <div className="myPageMain">
           <div className="myPageMainShopping">
             <h2 className="myPageMainTitle">쇼핑정보</h2>
             <div className="myPageMainMenu">
               <ul>
                 <li className="myPageMainItem">
-                  <Link to="/" className="myPageMainButton">
+                  <Link to="/cart" className="myPageMainButton">
                     <span>장바구니</span>
                   </Link>
                 </li>
