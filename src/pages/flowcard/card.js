@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './card.scss';
 
-const flowCard = ({ imgUrl, productName, productId }) => {
+const flowCard = ({ productId, imgUrl, productName }) => {
   return (
     <Link to="/detail" key={productId}>
       <div className="flowcard-wrapper">
