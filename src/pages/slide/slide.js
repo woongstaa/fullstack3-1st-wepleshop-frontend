@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SlideCard from './slidecard';
-import './slide.scss';
+import SlideCard from './SlideCard';
+import './Slide.scss';
 
 export default function Slide() {
   const [slideInfo, setSlideInfo] = useState([]);
@@ -17,17 +17,21 @@ export default function Slide() {
         const newJson = data;
         setSlideInfo(newJson);
       });
+    setInterval(() => {
+      slideInfo.productSlide && goRight();
+    }, 4000);
   }, []);
 
-  useEffect(() => {});
   // useEffect(() => {
+  //   console.log(slideInfo);
   //   setInterval(() => {
-  //     goRight();
+  //     slideInfo.productSlide && goRight();
   //   }, 4000);
   // }, []);
 
   // setInterval(() => {
   //   goRight();
+  //   clearInterval(goRight);
   // }, 4000);
 
   const goLeft = () => {
@@ -45,6 +49,7 @@ export default function Slide() {
     setMoving(false);
     setTimeout(() => {}, 500);
   };
+
   const goRight = () => {
     if (moving) return;
     setX(x => x - 1);

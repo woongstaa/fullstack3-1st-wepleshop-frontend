@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from '../src/pages/login/Login';
 import Home from '../src/pages/home/Home';
 import Detail from './pages/Detail/Detail';
-import Flow from './pages/flowcard/folwcard';
+import Flow from './pages/flowcard/FlowCard';
 import List from './pages/ProductList/List';
+import Card from './pages/flowcard/card';
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/flow" element={<Flow />} />
         <Route path="/list" element={<List />} />
+        <Route path="/card" element={<Card />} />
       </Routes>
     </BrowserRouter>
   );
