@@ -6,6 +6,7 @@ import Detail from './pages/Detail/Detail';
 import Flow from './pages/flowcard/FlowCard';
 import List from './pages/ProductList/List';
 import Card from './pages/flowcard/card';
+import Cart from './pages/Cart/Cart';
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/flow" element={<Flow />} />
         <Route path="/list" element={<List />} />
         <Route path="/card" element={<Card />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
