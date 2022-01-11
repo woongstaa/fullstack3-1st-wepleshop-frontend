@@ -1,28 +1,28 @@
-@mixin label-detail {
-  font-size: 10px;
-  margin-right: 10px;
-  border-radius: 5px;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  cursor: pointer;
-}
-
-@mixin size-detail {
-  color: #383838;
-  font-size: 17px;
-  width: 57px;
-  height: 57px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: #f8f8f8;
-}
-
 .Detail {
+  @mixin label-detail {
+    font-size: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  @mixin size-detail {
+    color: #383838;
+    font-size: 17px;
+    width: 57px;
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f8f8f8;
+  }
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
