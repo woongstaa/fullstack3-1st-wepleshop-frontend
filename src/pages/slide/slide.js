@@ -71,7 +71,7 @@ export default function Slide() {
               slideInfo.productSlide.map((imgData, idx) => {
                 return (
                   <SlideCard
-                    // style={{ transform: `translateX(${x}px)` }}
+                    style={{ transform: `translateX(${x}px)` }}
                     key={`${imgData.id}`}
                     imgUrl={imgData.img_url}
                     title={imgData.title}

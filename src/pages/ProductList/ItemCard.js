@@ -2,14 +2,53 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const ItemCard = ({ imgUrl, productName, price, quantity, productId }) => {
-  const [state, setState] = useState();
+const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
+  const [state, setState] = useState(false);
+  const userId = window.sessionStorage.getItem('ID');
 
   const clickLike = () => {
-    setState(!state);
+    console.log(userId);
+    if (userId && state === false) {
+      fetch('http://localhost:8000/users/like', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          mode: 'cors',
+          // Authorization: 'token',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: productId,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          setState(!state);
+        });
+    } else if (userId && state === true) {
+      fetch('http://localhost:8000/users/unlike', {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+          mode: 'cors',
+          // Authorization: 'token',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: productId,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res.data);
+          setState(!state);
+        });
+    }
+    console.log(state);
   };
   return (
-    <div className="listCard" key={productId}>
+    <div className="listCard" key={key}>
       <div className="imgWrapper">
         <Link to={`/detail?productId=${productId}`}>
           <img className="listImg" src={imgUrl} alt={productName} />

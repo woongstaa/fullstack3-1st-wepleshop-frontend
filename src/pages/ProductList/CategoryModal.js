@@ -1,31 +1,7 @@
-import { useState, useEffect } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
-import { GET_CATEGORY_API } from '../../config';
 import { Link } from 'react-router-dom';
 
-const CategoryModal = ({ isOpen, modal, category, subCategory }) => {
-  const [state, setState] = useState(false);
-
-  const changeColor = () => {
-    setState(!state);
-  };
-
-  // useEffect(() => {
-  //   fetch(GET_CATEGORY_API, {
-  //     method: 'GET',
-  //     headers: { 'Content-type': 'application/json', mode: 'cors' },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => setSubCategory(data));
-  // }, []);
-
-  const [filter, setFilter] = useState();
-
-  const cateFilter = () => {
-    category = 1;
-    subCategory = 1;
-  };
-
+const CategoryModal = ({ isOpen, modal }) => {
   return (
     <div>
       {modal ? (
