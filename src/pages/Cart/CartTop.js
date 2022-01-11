@@ -1,8 +1,8 @@
-import './CartTop.scss';
+import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 import { AiOutlineLeft } from 'react-icons/ai';
-import { useNavigate, Link } from 'react-router-dom';
+import './CartTop.scss';
 
 function CartTop() {
   const navigate = useNavigate();

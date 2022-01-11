@@ -1,11 +1,14 @@
+import { useEffect, useState } from 'react/cjs/react.development';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
-import './CartBody.scss';
-import { useState } from 'react/cjs/react.development';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { IoCloseSharp } from 'react-icons/io5';
+import './CartBody.scss';
 
 const CartBody = () => {
   const [cart, setCart] = useState(true);
+  const [data, setData] = useState();
+  const userId = sessionStorage.getItem('ID');
+
   const shipFee = 2500;
 
   const isEmpty = () => {
@@ -14,9 +17,11 @@ const CartBody = () => {
 
   const sumPrice = () => {
     let result = 0;
-    let sum = cartMock.map((e, i) => {
-      return e.price;
-    });
+    let sum =
+      data &&
+      data.cart.map((e, i) => {
+        return e.price;
+      });
     for (let i = 0; i < sum.length; i++) {
       result = result + sum[i];
     }
@@ -25,32 +30,57 @@ const CartBody = () => {
 
   const sumAmount = () => {
     let result = 0;
-    let sum = cartMock.map((e, i) => {
-      return e.amount;
-    });
+    let sum =
+      data &&
+      data.cart.map((e, i) => {
+        return e.amount;
+      });
     for (let i = 0; i < sum.length; i++) {
       result = result + sum[i];
     }
     return result;
   };
 
+  const convertToMainImgList = data => {
+    const newData = data.filter((element, index, callback) => {
+      return (
+        element.imgUrl.includes('1.jpg') || element.imgUrl.includes('1.jpeg')
+      );
+    });
+    data.list = newData;
+    return data;
+  };
+
+  useEffect(() => {
+    fetch('http://localhost:8000/products/cartget', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json', mode: 'cors' },
+      body: JSON.stringify({ userId: userId }),
+    })
+      .then(res => res.json())
+      .then(data => setData(data));
+  }, []);
+
   return (
     <div className="CartBody">
-      {cart ? (
+      {data && data.message === 'ProductCartGet Fail' ? (
         <div className="cart">
-          {cartMock.map((e, i) => {
-            return (
-              <CartItemCard
-                imgUrl={e.imgUrl}
-                key={e.productId}
-                productName={e.productName}
-                price={e.price}
-                size={e.size}
-                amount={e.amount}
-                color={e.color}
-              />
-            );
-          })}
+          {console.log(userId)}
+          {console.log(data)}
+          {data &&
+            data.cart.map((e, i) => {
+              return (
+                <CartItemCard
+                  key={e.id}
+                  // imgUrl={e.imgUrl}
+                  // productName={e.productName}
+                  // price={e.price}
+                  size={e.size}
+                  amount={e.quantity}
+                  color={e.color}
+                />
+              );
+            })}
 
           <div className="cartSummary">
             <div className="summaryWarpper">
@@ -59,20 +89,20 @@ const CartBody = () => {
                 <div className="calPrice">
                   <div className="calWarpper">
                     <div>총 수량</div>
-                    <div>{sumAmount()}개</div>
+                    {/* <div>{sumAmount()}개</div> */}
                   </div>
                   <div className="calWarpper">
                     <div>가격</div>
-                    <div>{sumPrice().toLocaleString()}원</div>
+                    {/* <div>{sumPrice().toLocaleString()}원</div> */}
                   </div>
                   <div className="calWarpper">
                     <div>배송비</div>
-                    <div>{shipFee.toLocaleString()}원</div>
+                    {/* <div>{shipFee.toLocaleString()}원</div> */}
                   </div>
                 </div>
                 <div className="totalPrice">
                   <div>합계</div>
-                  <div>{(sumPrice() + shipFee).toLocaleString()}원</div>
+                  {/* <div>{(sumPrice() + shipFee).toLocaleString()}원</div> */}
                 </div>
               </div>
               <button className="summaryFooter">주문서 작성</button>
@@ -110,18 +140,7 @@ const cartMock = [
   },
 ];
 
-const CartItemCard = ({
-  imgUrl,
-  productName,
-  price,
-  size,
-  amount,
-  color,
-  setSumAmount,
-  setSumPrice,
-}) => {
-  const sumAmout = () => {};
-
+const CartItemCard = ({ imgUrl, productName, price, size, amount, color }) => {
   return (
     <div className="CartItemCard">
       <div className="iconWrapper">
@@ -129,14 +148,14 @@ const CartItemCard = ({
       </div>
       <div className="cardWrapper">
         <div className="imgWrapper">
-          <img src={imgUrl} alt={productName} />
+          {/* <img src={imgUrl} alt={productName} /> */}
         </div>
         <div className="cardRight">
           <div className="nameAndColor">
-            <div className="productName">{productName}</div>
+            {/* <div className="productName">{productName}</div> */}
             <div className="productColor">{color}</div>
           </div>
-          <div className="productPrice">{price.toLocaleString()}원</div>
+          {/* <div className="productPrice">{price}원</div> */}
         </div>
       </div>
       <div className="cardFooter">
