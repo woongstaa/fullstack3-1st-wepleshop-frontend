@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import ItemCard from './ItemCard';
 import CategoryModal from './CategoryModal';
+import SortModal from './SortModal';
 import './ProductList.scss';
-import { useLocation, Link } from 'react-router-dom';
 
 const ProductList = () => {
   const [listData, setListData] = useState();
   const [state, setState] = useState();
   const [modal, setModal] = useState(false);
-  const [categoryName, setCategoryName] = useState();
+  const [sortModal, setSortModal] = useState(false);
+  const [categoryName, setCategoryName] = useState('');
 
   const useParams = () => {
     return new URLSearchParams(useLocation().search);
@@ -26,6 +28,10 @@ const ProductList = () => {
     setModal(!modal);
   };
 
+  const openSortModal = () => {
+    setSortModal(!sortModal);
+  };
+
   const convertToMainImgList = listData => {
     const newListData = listData.list.filter((element, index, callback) => {
       return (
@@ -38,91 +44,86 @@ const ProductList = () => {
     return listData;
   };
 
+  const URL = `http://localhost:8000/products/list?categoryId=${query.get(
+    'categoryId'
+  )}&subCategoryId=${query.get('subCategoryId')}&sortWord=${query.get(
+    'sortWord'
+  )}`;
+
+  const SORT_URL = `?categoryId=${query.get(
+    'categoryId'
+  )}&subCategoryId=${query.get('subCategoryId')}`;
+
   useEffect(() => {
-    fetch(
-      `http://localhost:8000/products/list?categoryId=${query.get(
-        'categoryId'
-      )}&subCategoryId=${query.get('subCategoryId')}&sortWord=${query.get(
-        'sortWord'
-      )}`,
-      {
-        method: 'GET',
-        headers: { 'Content-type': 'application/json', mode: 'cors' },
-      }
-    )
+    fetch(URL, {
+      method: 'GET',
+      headers: { 'Content-type': 'application/json', mode: 'cors' },
+    })
       .then(res => res.json())
       .then(data => {
         setListData(convertToMainImgList(data));
       });
-  }, [query]);
+  }, [location]);
 
-  const changeName = () => {
-    if (query.get('categoryId') === 1) {
-      setCategoryName('의류');
-    } else if (
-      query.get('categoryId') === 1 &&
-      query.get('subCategoryId') === 1
-    ) {
+  //필터링 버튼
+  useEffect(() => {
+    if (query.get('categoryId') === '1' && query.get('subCategoryId') === '1') {
       setCategoryName('패딩');
     } else if (
-      query.get('categoryId') === 1 &&
-      query.get('subCategoryId') === 2
+      query.get('categoryId') === '1' &&
+      query.get('subCategoryId') === '2'
     ) {
       setCategoryName('후드/집업');
     } else if (
-      query.get('categoryId') === 1 &&
-      query.get('subCategoryId') === 3
+      query.get('categoryId') === '1' &&
+      query.get('subCategoryId') === '3'
     ) {
       setCategoryName('티셔츠');
     } else if (
-      query.get('categoryId') === 2 &&
-      query.get('subCategoryId') === 4
+      query.get('categoryId') === '2' &&
+      query.get('subCategoryId') === '4'
     ) {
       setCategoryName('머그컵');
     } else if (
-      query.get('categoryId') === 2 &&
-      query.get('subCategoryId') === 5
+      query.get('categoryId') === '2' &&
+      query.get('subCategoryId') === '5'
     ) {
       setCategoryName('텀블러');
     } else if (
-      query.get('categoryId') === 3 &&
-      query.get('subCategoryId') === 6
+      query.get('categoryId') === '3' &&
+      query.get('subCategoryId') === '6'
     ) {
       setCategoryName('사무용품');
     } else if (
-      query.get('categoryId') === 3 &&
-      query.get('subCategoryId') === 7
+      query.get('categoryId') === '3' &&
+      query.get('subCategoryId') === '7'
     ) {
       setCategoryName('스티커');
     } else {
       setCategoryName('전체');
     }
-  };
-
+  }, [location]);
   return (
     <div className="ProductList">
       <div className="listWrapper">
-        <CategoryModal
-          isOpen={openModal}
-          modal={modal}
-          category={query.get('categoryId')}
-          subCategory={query.get('subCategoryId')}
-          categoryName={categoryName}
-        />
+        <SortModal sortModal={sortModal} SORT_URL={SORT_URL} />
+        <CategoryModal isOpen={openModal} modal={modal} />
         <div className="listHeader">
           <div className="listTitle">
             <div className="btnWrapper" onClick={openModal}>
-              <button>전체</button>
+              <button>{categoryName}</button>
               <FaAngleDown className="icon" />
             </div>
             <span>를&nbsp;</span>
-            <div className="btnWrapper" onClick={upAndDown}>
-              <button>인기순</button>
-              {state ? (
-                <FaAngleUp className="icon" />
-              ) : (
-                <FaAngleDown className="icon" />
-              )}
+            <div onClick={upAndDown}>
+              <div className="btnWrapper" onClick={openSortModal}>
+                <button>인기순</button>
+                {state ? (
+                  <FaAngleUp className="icon" />
+                ) : (
+                  <FaAngleDown className="icon" />
+                )}
+              </div>
             </div>
             <span>으로 보여줘.</span>
           </div>
@@ -137,6 +138,7 @@ const ProductList = () => {
               return (
                 <ItemCard
                   key={e.id}
+                  // key={e.productId}
                   imgUrl={e.imgUrl}
                   productName={e.productName}
                   price={e.price}

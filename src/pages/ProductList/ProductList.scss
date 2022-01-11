@@ -88,6 +88,7 @@
         }
       }
     }
+
     .listHeader {
       .listTitle {
         font-family: sans-serif;
@@ -106,12 +107,14 @@
             background-color: white;
             font-size: 28px;
             font-weight: 700;
+            cursor: pointer;
           }
 
           .icon {
             color: gainsboro;
           }
         }
+
         span {
           margin-top: 1.5px;
         }
