@@ -1,22 +1,36 @@
 .CartBody {
   box-sizing: border-box;
   padding-right: 6.042rem;
+  min-height: 500px;
+
+  //빈 카트
+  .emptyCart {
+    padding: 20% 0;
+    text-align: center;
+
+    #icon {
+      font-size: 80px;
+      color: #d5d5d5;
+    }
+
+    .comment {
+      margin-top: 15px;
+      font-size: 24px;
+    }
+  }
 
   .cart {
     position: relative;
-    // max-width: 1360px;
-    // width: 100%;
 
+    // 카트 카드
     .CartItemCard {
-      // 카트 카드
       width: 600px;
       margin: 20px 0;
       margin-left: 10%;
       margin-bottom: 48px;
 
       .iconWrapper {
-        display: flex;
-        justify-content: end;
+        text-align: right;
         cursor: pointer;
 
         .icon {
@@ -68,16 +82,11 @@
         margin-top: 20px;
         border-radius: 8px;
         padding: 15px 30px;
-
-        .size {
-        }
-        .amount {
-        }
       }
     }
 
+    // 카트에 담은 결제 금액
     .cartSummary {
-      // 카트에 담은 결제 금액
       position: absolute;
       top: 10px;
 
@@ -128,19 +137,6 @@
           cursor: pointer;
         }
       }
-    }
-  }
-
-  .emptyCart {
-    padding: 20% 0;
-    text-align: center;
-    #icon {
-      font-size: 80px;
-      color: #d5d5d5;
-    }
-    .comment {
-      margin-top: 15px;
-      font-size: 24px;
     }
   }
 }
