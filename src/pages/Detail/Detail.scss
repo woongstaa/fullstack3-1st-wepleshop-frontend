@@ -390,17 +390,17 @@
           background-color: darkgreen;
           color: white;
         }
-        .rainbow {
-          color: rgb(187, 92, 166);
-          border: 2px solid rgb(187, 92, 166);
+        .multi {
+          color: rgb(200, 81, 174);
+          border: 2px solid rgb(200, 81, 174);
           @include label-detail;
         }
-        #rainbow:checked + label {
-          background-color: rgb(187, 92, 166);
+        #multi:checked + label {
+          background-color: rgb(200, 81, 174);
           color: white;
         }
-        #rainbow:hover + label {
-          background-color: rgb(187, 92, 166);
+        #multi:hover + label {
+          background-color: rgb(200, 81, 174);
           color: white;
         }
       }
