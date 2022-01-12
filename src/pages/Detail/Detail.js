@@ -66,7 +66,7 @@ function Detail() {
       .then(res => res.json())
       .then(data => {
         setProduct(data);
-
+        console.log('data', data);
         productNameSet(Object.values(data[0])[1]);
         productPriceSet(data[0].productPrice);
         cartImgChange(data[0].imgUrl);
