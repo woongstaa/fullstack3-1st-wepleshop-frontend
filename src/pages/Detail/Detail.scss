@@ -41,6 +41,14 @@
   .sectionContainer {
     position: relative;
 
+    .headerListMenu > #homeMenu {
+      color: grey !important;
+    }
+
+    .headerListMenu > #productMenu {
+      color: blue;
+    }
+
     .body {
       position: relative;
       box-sizing: border-box;
