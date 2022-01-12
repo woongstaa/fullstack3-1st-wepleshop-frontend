@@ -29,6 +29,7 @@ function Detail() {
   const userIdValue = sessionStorage.getItem('ID');
   const [cartColor, cartColorChange] = useState('None');
   const [cartSize, cartSizeChange] = useState('None');
+  const [cartImg, cartImgChange] = useState('None');
 
   const cartAdd = () => {
     fetch(`http://localhost:8000/products/cartadd`, {
@@ -38,8 +39,11 @@ function Detail() {
         userId: userIdValue,
         productId: idValue,
         color: cartColor,
-        size: cartSize,
         quantity: quantity,
+        size: cartSize,
+        name: productName,
+        price: productPrice,
+        image: cartImg,
       }),
     })
       .then(res => res.json())
@@ -65,7 +69,7 @@ function Detail() {
 
         productNameSet(Object.values(data[0])[1]);
         productPriceSet(data[0].productPrice);
-
+        cartImgChange(data[0].imgUrl);
         for (let i = 0; i < Object.values(data).length; i++) {
           if (productImgUrl.indexOf(Object.values(data[i])[7]) === -1) {
             productImgUrl.push(Object.values(data[i])[7]);
@@ -87,7 +91,6 @@ function Detail() {
       productSize.push(Object.values(product[i])[6]);
     }
   }
-
   const [quantity, quantityUpdate] = useState(1);
 
   const plus = () => {
@@ -113,6 +116,9 @@ function Detail() {
   console.log('카트 사이즈 :', cartSize);
   console.log('카트 수량 :', quantity);
   console.log('ProductID: ', idValue);
+  console.log('카트 이미지 : ', cartImg);
+  console.log('카트 아이템 이름 : ', productName);
+  console.log('카트 아이템 가격 : ', productPrice);
 
   return (
     <div className="Detail">
