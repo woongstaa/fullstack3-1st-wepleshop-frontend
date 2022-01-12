@@ -91,7 +91,6 @@ function Detail() {
       productSize.push(Object.values(product[i])[6]);
     }
   }
-
   const [quantity, quantityUpdate] = useState(1);
 
   const plus = () => {
@@ -117,6 +116,9 @@ function Detail() {
   console.log('카트 사이즈 :', cartSize);
   console.log('카트 수량 :', quantity);
   console.log('ProductID: ', idValue);
+  console.log('카트 이미지 : ', cartImg);
+  console.log('카트 아이템 이름 : ', productName);
+  console.log('카트 아이템 가격 : ', productPrice);
 
   return (
     <div className="Detail">
