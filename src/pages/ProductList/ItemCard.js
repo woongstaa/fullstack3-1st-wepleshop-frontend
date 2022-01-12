@@ -1,31 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { useEffect } from 'react/cjs/react.development';
 
 const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
   const [state, setState] = useState(false);
+  const [condition, setCondition] = useState(true);
   const userId = window.sessionStorage.getItem('ID');
 
-  useEffect(() => {
-    fetch('http://localhost:8000/users/likeandunlike', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        mode: 'cors',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        // localStorage.getItem('like');
-      });
-  }, []);
+  const clickLikes = () => {
+    setCondition(false);
+    setState(!state);
+  };
 
-  const clickLike = () => {
-    console.log(userId);
-    if (userId && state === false) {
-      fetch('http://localhost:8000/users/likeandunlike', {
+  useEffect(() => {
+    if (userId && state === true && condition === false) {
+      fetch('http://localhost:8000/users/like', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -38,14 +27,11 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         }),
       })
         .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          setState(!state);
-          // localStorage.setItem('like');
-          // sessionStorage.getItem('like');
+        .then(res => {
+          console.log(res);
         });
-    } else if (userId && state === true) {
-      fetch('http://localhost:8000/users/likeandunlike', {
+    } else if (userId && state === false && condition === false) {
+      fetch('http://localhost:8000/users/unlike', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -58,14 +44,12 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         }),
       })
         .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          setState(!state);
-          // localStorage.removeItem('like');
+        .then(res => {
+          console.log(res.data);
         });
     }
-    console.log(state);
-  };
+  }, [state]);
+
   return (
     <div className="listCard" key={key}>
       <div className="imgWrapper">
@@ -73,7 +57,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
           <img className="listImg" src={imgUrl} alt={productName} />
         </Link>
         <div className="likeBtnWrapper">
-          <button className="likeBtn" onClick={clickLike}>
+          <button className="likeBtn" onClick={clickLikes}>
             {state ? (
               <FaHeart className="liked" />
             ) : (
