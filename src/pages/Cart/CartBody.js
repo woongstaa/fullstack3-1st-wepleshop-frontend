@@ -1,20 +1,30 @@
+import { useEffect, useState } from 'react/cjs/react.development';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
-import './CartBody.scss';
-import { useState } from 'react/cjs/react.development';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { IoCloseSharp } from 'react-icons/io5';
+import './CartBody.scss';
 
 const CartBody = () => {
-  const [cart, setCart] = useState(true);
+  const [data, setData] = useState([]);
+  const userId = sessionStorage.getItem('ID');
+
   const shipFee = 2500;
 
-  const isEmpty = () => {
-    setCart(!cart);
-  };
+  useEffect(() => {
+    fetch('http://localhost:8000/products/cartget', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json', mode: 'cors' },
+      body: JSON.stringify({ userId: userId }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        setData(data.cart);
+      });
+  }, []);
 
   const sumPrice = () => {
     let result = 0;
-    let sum = cartMock.map((e, i) => {
+    let sum = data.map((e, i) => {
       return e.price;
     });
     for (let i = 0; i < sum.length; i++) {
@@ -25,8 +35,8 @@ const CartBody = () => {
 
   const sumAmount = () => {
     let result = 0;
-    let sum = cartMock.map((e, i) => {
-      return e.amount;
+    let sum = data.map((e, i) => {
+      return e.quantity;
     });
     for (let i = 0; i < sum.length; i++) {
       result = result + sum[i];
@@ -36,22 +46,28 @@ const CartBody = () => {
 
   return (
     <div className="CartBody">
-      {cart ? (
+      {data === undefined ? (
+        <div className="emptyCart">
+          <FontAwesomeIcon icon={faShoppingBasket} id="icon" />
+          <div className="comment">비어있는 장바구니를 채워주세요!</div>
+        </div>
+      ) : (
         <div className="cart">
-          {cartMock.map((e, i) => {
+          {data.map((e, i) => {
             return (
               <CartItemCard
-                imgUrl={e.imgUrl}
-                key={e.productId}
-                productName={e.productName}
-                price={e.price}
-                size={e.size}
-                amount={e.amount}
-                color={e.color}
+                key={data[i].id}
+                imgUrl={data[i].image}
+                productName={data[i].name}
+                price={data[i].price}
+                size={data[i].size}
+                quantity={data[i].quantity}
+                color={data[i].color}
+                userId={userId}
+                productId={data[i].product_id}
               />
             );
           })}
-
           <div className="cartSummary">
             <div className="summaryWarpper">
               <div className="summaryHeader">결제 금액</div>
@@ -79,53 +95,41 @@ const CartBody = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div className="emptyCart">
-          <FontAwesomeIcon icon={faShoppingBasket} id="icon" />
-          <div className="comment">비어있는 장바구니를 채워주세요!</div>
-        </div>
       )}
     </div>
   );
 };
-
-const cartMock = [
-  {
-    productId: 1,
-    imgUrl: '/images/clothes/item1/1.jpeg',
-    productName: 'Black Noise Hooddie For Narcissist',
-    price: 60000,
-    size: 'XS',
-    amount: 1,
-    color: 'Black',
-  },
-  {
-    productId: 2,
-    imgUrl: '/images/clothes/item2/1.jpeg',
-    productName: 'White Noise Hooddie For Narcissist',
-    price: 80000,
-    size: 'S',
-    amount: 1,
-    color: 'White',
-  },
-];
 
 const CartItemCard = ({
   imgUrl,
   productName,
   price,
   size,
-  amount,
+  quantity,
   color,
-  setSumAmount,
-  setSumPrice,
+  userId,
+  productId,
 }) => {
-  const sumAmout = () => {};
-
+  const deleteFromCart = () => {
+    fetch('http://localhost:8000/products/cartdelete', {
+      method: 'DELETE',
+      headers: { 'Content-type': 'application/json', mode: 'cors' },
+      body: JSON.stringify({
+        userId: userId,
+        productId: productId,
+        color: color,
+        size: size,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
+  };
   return (
     <div className="CartItemCard">
       <div className="iconWrapper">
-        <IoCloseSharp className="icon" />
+        <IoCloseSharp className="icon" onClick={deleteFromCart} />
       </div>
       <div className="cardWrapper">
         <div className="imgWrapper">
@@ -136,12 +140,12 @@ const CartItemCard = ({
             <div className="productName">{productName}</div>
             <div className="productColor">{color}</div>
           </div>
-          <div className="productPrice">{price.toLocaleString()}원</div>
+          <div className="productPrice">{price}원</div>
         </div>
       </div>
       <div className="cardFooter">
         <div className="size">{size}</div>
-        <div className="amount">{amount}개</div>
+        <div className="amount">{quantity}개</div>
       </div>
     </div>
   );

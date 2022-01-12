@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
@@ -50,12 +51,16 @@ const ProductList = () => {
     'sortWord'
   )}`;
 
+  const BASIC_URL = `http://localhost:8000/products/list?categoryId=${query.get(
+    'categoryId'
+  )}&subCategoryId=${query.get('subCategoryId')}&sortWord=popular`;
+
   const SORT_URL = `?categoryId=${query.get(
     'categoryId'
   )}&subCategoryId=${query.get('subCategoryId')}`;
 
   useEffect(() => {
-    fetch(URL, {
+    fetch(BASIC_URL, {
       method: 'GET',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
     })
@@ -79,6 +84,8 @@ const ProductList = () => {
       query.get('subCategoryId') === '3'
     ) {
       setCategoryName('티셔츠');
+    } else if (query.get('categoryId') === '1') {
+      setCategoryName('의류');
     } else if (
       query.get('categoryId') === '2' &&
       query.get('subCategoryId') === '4'
@@ -89,6 +96,8 @@ const ProductList = () => {
       query.get('subCategoryId') === '5'
     ) {
       setCategoryName('텀블러');
+    } else if (query.get('categoryId') === '2') {
+      setCategoryName('리빙');
     } else if (
       query.get('categoryId') === '3' &&
       query.get('subCategoryId') === '6'
@@ -99,6 +108,8 @@ const ProductList = () => {
       query.get('subCategoryId') === '7'
     ) {
       setCategoryName('스티커');
+    } else if (query.get('categoryId') === '3') {
+      setCategoryName('문구');
     } else {
       setCategoryName('전체');
     }
@@ -106,8 +117,8 @@ const ProductList = () => {
   return (
     <div className="ProductList">
       <div className="listWrapper">
-        <SortModal sortModal={sortModal} SORT_URL={SORT_URL} />
-        <CategoryModal isOpen={openModal} modal={modal} />
+        <SortModal sortModal={sortModal} SORT_URL={SORT_URL} /> {/*정렬 모달*/}
+        <CategoryModal isOpen={openModal} modal={modal} /> {/*카테고리 모달*/}
         <div className="listHeader">
           <div className="listTitle">
             <div className="btnWrapper" onClick={openModal}>

@@ -1,9 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './SortModal.scss';
 
 const SortModal = ({ sortModal, SORT_URL }) => {
-  const navigate = useNavigate();
-
   return (
     <div>
       {sortModal ? (
