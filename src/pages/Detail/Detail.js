@@ -11,7 +11,7 @@ import SizeList from './SizeList';
 import queryString from 'query-string';
 import Nav from '../../components/nav/Nav';
 import Footer from '../../components/footer/Footer';
-import TopDetail from '../../components/top/TopDetail';
+import Top from '../../components/top/Top';
 
 function Detail() {
   const [product, setProduct] = useState([]);
@@ -66,7 +66,7 @@ function Detail() {
       .then(res => res.json())
       .then(data => {
         setProduct(data);
-
+        console.log('data', data);
         productNameSet(Object.values(data[0])[1]);
         productPriceSet(data[0].productPrice);
         cartImgChange(data[0].imgUrl);
@@ -123,7 +123,7 @@ function Detail() {
   return (
     <div className="Detail">
       <div className="sectionContainer">
-        <TopDetail />
+        <Top />
         <div className="mainWrapper">
           <div className="body">
             <div>
@@ -194,7 +194,6 @@ function Detail() {
                               size={e}
                               key={i}
                               cartSizeSet={changeRadioSize}
-                              // cartSizeSet={cartSizeSet({ e })}
                             />
                           );
                         })}
