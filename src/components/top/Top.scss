@@ -1,6 +1,9 @@
 .topContainer {
   a {
     text-decoration: none;
+    font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont,
+      'Droid Sans', 'Roboto', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+    font-weight: 400;
   }
 
   //헤더
@@ -43,7 +46,7 @@
               height: 1.313rem;
             }
             #homeMenu {
-              // color: blue;
+              color: blue;
             }
           }
         }
