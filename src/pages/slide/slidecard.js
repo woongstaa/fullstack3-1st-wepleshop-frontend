@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './slidecard.scss';
+import './SlideCard.scss';
 
 const SlideCard = ({ id, imgUrl, title, description }) => {
   return (

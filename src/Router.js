@@ -5,7 +5,7 @@ import Home from '../src/pages/home/Home';
 import Detail from './pages/Detail/Detail';
 import Flow from './pages/flowcard/FlowCard';
 import List from './pages/ProductList/List';
-import Card from './pages/flowcard/Card';
+import Card from './pages/flowcard/card';
 import Cart from './pages/Cart/Cart';
 import Mypage from './pages/mypage/Mypage';
 
