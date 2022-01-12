@@ -384,6 +384,33 @@
           background-color: darkgreen;
           color: white;
         }
+
+        .darkgreen {
+          color: darkgreen;
+          border: 2px solid darkgreen;
+          @include label-detail;
+        }
+        #darkgreen:checked + label {
+          background-color: darkgreen;
+          color: white;
+        }
+        #darkgreen:hover + label {
+          background-color: darkgreen;
+          color: white;
+        }
+        .multi {
+          color: rgb(200, 81, 174);
+          border: 2px solid rgb(200, 81, 174);
+          @include label-detail;
+        }
+        #multi:checked + label {
+          background-color: rgb(200, 81, 174);
+          color: white;
+        }
+        #multi:hover + label {
+          background-color: rgb(200, 81, 174);
+          color: white;
+        }
       }
     }
 
