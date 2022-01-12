@@ -36,7 +36,7 @@ export default function Slide() {
 
   const goLeft = () => {
     if (moving) return;
-    setX(x => x + 1);
+    setX(x => x - 1);
     setMoving(true);
     // setTimeout(() => {
     const popCard = slideInfo.productSlide.pop();
@@ -52,7 +52,7 @@ export default function Slide() {
 
   const goRight = () => {
     if (moving) return;
-    setX(x => x - 1);
+    setX(x => x + 100);
     setMoving(true);
     const popCard = slideInfo.productSlide.shift();
     const newProductSlide = slideInfo.productSlide.concat([popCard]);
@@ -71,8 +71,8 @@ export default function Slide() {
               slideInfo.productSlide.map((imgData, idx) => {
                 return (
                   <SlideCard
-                    // style={{ transform: `translateX(${x}px)` }}
-                    key={`${imgData.id}`}
+                    style={{ transform: `translateX(${x}px)` }}
+                    key={`${imgData.id}${idx}`}
                     imgUrl={imgData.img_url}
                     title={imgData.title}
                     description={imgData.description}

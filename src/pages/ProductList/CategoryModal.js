@@ -1,5 +1,5 @@
-import { IoCloseSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { IoCloseSharp } from 'react-icons/io5';
 
 const CategoryModal = ({ isOpen, modal }) => {
   return (

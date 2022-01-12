@@ -7,7 +7,8 @@
   width: 6.042rem;
   height: 100%;
   padding: 10px;
-  border: 1px solid rgb(238, 238, 238);
+  background-color: #fff;
+  border: 1px solid #f8f8f8;
   right: 0;
   top: 0;
   a > div {
@@ -33,6 +34,9 @@
       text-decoration: none;
       color: gray;
       font-size: 13px;
+      font-family: AppleSDGothicNeo, -apple-system, BlinkMacSystemFont,
+        'Droid Sans', 'Roboto', 'Segoe UI', 'Helvetica', Arial, sans-serif;
+      font-weight: 400;
 
       .shoppingMenu {
         background-image: url('https://img.icons8.com/small/32/000000/small-business.png');

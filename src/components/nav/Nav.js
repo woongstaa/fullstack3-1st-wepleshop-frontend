@@ -21,7 +21,7 @@ function Nav() {
           <div className="searchMenu" />
           <span>검색</span>
         </a>
-        <Link to="/login">
+        <Link to="/mypage">
           <div className="myPageMenu" />
           <span>마이페이지</span>
         </Link>
