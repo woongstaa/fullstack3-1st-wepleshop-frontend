@@ -1,6 +1,6 @@
 /* eslint-disable no-unreachable */
 import { useEffect, useState } from 'react/cjs/react.development';
-import './FlowCard.scss';
+import './flowcard.scss';
 import Card from './Card';
 
 export default function FlowCard() {
