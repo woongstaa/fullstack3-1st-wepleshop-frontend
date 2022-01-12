@@ -15,13 +15,13 @@ export default function FlowCard() {
     })
       .then(res => res.json())
       .then(data => setData(data.flowlist));
-    for (let i = 0; i < Object.values(data).length; i++) {
-      if (productImgUrl.indexOf(Object.values(data[i])[7]) === -1) {
-        productImgUrl.push(Object.values(data[i])[7]);
-      }
-    }
-    let img = [...productImgUrl];
-    urlSetting(img);
+    // for (let i = 0; i < Object.values(data).length; i++) {
+    //   if (productImgUrl.indexOf(Object.values(data[i])[7]) === -1) {
+    //     productImgUrl.push(Object.values(data[i])[7]);
+    //   }
+    // }
+    // let img = [...productImgUrl];
+    // urlSetting(img);
   }, []);
 
   return (
@@ -30,7 +30,7 @@ export default function FlowCard() {
         <div className="product-card">
           <div className="product-flowcard-toplist">
             {data &&
-              data.list.map((e, i) => {
+              data.map((e, i) => {
                 return (
                   <Card key={i} imgUrl={e.imgUrl} productName={e.productName} />
                 );
@@ -38,7 +38,7 @@ export default function FlowCard() {
           </div>
           <div className="product-flowcard-bottomlist">
             {data &&
-              data.list.map((e, i) => {
+              data.map((e, i) => {
                 return <Card key={i} imgUrl={e.imgUrl} />;
               })}
           </div>
