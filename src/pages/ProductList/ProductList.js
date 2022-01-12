@@ -114,6 +114,7 @@ const ProductList = () => {
       setCategoryName('전체');
     }
   }, [location]);
+
   return (
     <div className="ProductList">
       <div className="listWrapper">
@@ -149,12 +150,11 @@ const ProductList = () => {
               return (
                 <ItemCard
                   key={e.id}
-                  // key={e.productId}
                   imgUrl={e.imgUrl}
                   productName={e.productName}
                   price={e.price}
-                  productId={e.productId}
                   quantity={e.quantity}
+                  productId={e.productId}
                 />
               );
             })}

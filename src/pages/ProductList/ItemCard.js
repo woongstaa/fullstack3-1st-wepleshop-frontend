@@ -1,20 +1,36 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { useEffect } from 'react/cjs/react.development';
 
 const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
   const [state, setState] = useState(false);
   const userId = window.sessionStorage.getItem('ID');
 
+  useEffect(() => {
+    fetch('http://localhost:8000/users/likeandunlike', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        mode: 'cors',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        // localStorage.getItem('like');
+      });
+  }, []);
+
   const clickLike = () => {
     console.log(userId);
     if (userId && state === false) {
-      fetch('http://localhost:8000/users/like', {
+      fetch('http://localhost:8000/users/likeandunlike', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
           mode: 'cors',
-          // Authorization: 'token',
+          Authorization: 'token',
         },
         body: JSON.stringify({
           user_id: userId,
@@ -22,17 +38,19 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         }),
       })
         .then(res => res.json())
-        .then(res => {
-          console.log(res);
+        .then(data => {
+          console.log(data);
           setState(!state);
+          // localStorage.setItem('like');
+          // sessionStorage.getItem('like');
         });
     } else if (userId && state === true) {
-      fetch('http://localhost:8000/users/unlike', {
-        method: 'DELETE',
+      fetch('http://localhost:8000/users/likeandunlike', {
+        method: 'POST',
         headers: {
           'Content-type': 'application/json',
           mode: 'cors',
-          // Authorization: 'token',
+          Authorization: 'token',
         },
         body: JSON.stringify({
           user_id: userId,
@@ -40,9 +58,10 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         }),
       })
         .then(res => res.json())
-        .then(res => {
-          console.log(res.data);
+        .then(data => {
+          console.log(data);
           setState(!state);
+          // localStorage.removeItem('like');
         });
     }
     console.log(state);
