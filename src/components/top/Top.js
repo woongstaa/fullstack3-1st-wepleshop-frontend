@@ -2,22 +2,14 @@ import './Top.scss';
 import { useState } from 'react';
 import { GET_PRODUCT_API } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+  faShoppingBasket,
+  faBars,
+  faBullseye,
+} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 function Top() {
-  const [menuColor, setMenuColor] = useState(['blue', 'grey']);
-
-  const updateColor = idx => {
-    for (let i = 0; i < menuColor.length; i++) {
-      if (i === idx) {
-        menuColor[i] = 'blue';
-      } else {
-        menuColor[i] = 'grey';
-      }
-    }
-  };
-
   return (
     <div className="topContainer">
       <header className="headerContainer">
@@ -29,12 +21,7 @@ function Top() {
             </a>
             <ul className="headerList">
               <li className="headerListMenu">
-                <a
-                  href="/"
-                  id="homeMenu"
-                  onClick={() => updateColor(0)}
-                  style={{ color: menuColor[0] }}
-                >
+                <a href="/" id="homeMenu">
                   홈
                 </a>
               </li>
@@ -42,11 +29,7 @@ function Top() {
                 <a href="#">셀러</a>
               </li>
               <li className="headerListMenu">
-                <Link
-                  to="/list"
-                  onClick={() => updateColor(1)}
-                  style={{ color: menuColor[1] }}
-                >
+                <Link to="/list" id="productMenu">
                   상품
                 </Link>
               </li>
