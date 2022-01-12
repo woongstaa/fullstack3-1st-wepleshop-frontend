@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { useEffect } from 'react/cjs/react.development';
 
 const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
   const [state, setState] = useState(false);
