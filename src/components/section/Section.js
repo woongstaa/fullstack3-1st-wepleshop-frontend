@@ -3,6 +3,7 @@ import Top from '../top/Top';
 import Footer from '../footer/Footer';
 import Slide from '../../pages/slide/slide';
 import ProductList from '../../pages/ProductList/ProductList';
+import FlowCard from '../../pages/flowcard/FlowCard';
 
 function Section() {
   return (
@@ -10,6 +11,7 @@ function Section() {
       <Top />
       <div className="mainWrapper">
         <Slide />
+        <FlowCard />
         <ProductList />
       </div>
       <Footer />

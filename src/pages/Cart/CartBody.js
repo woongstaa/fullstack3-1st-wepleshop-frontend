@@ -2,16 +2,19 @@ import { useEffect, useState } from 'react/cjs/react.development';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { IoCloseSharp } from 'react-icons/io5';
+import { POST_CART_API } from '../../config';
+import { DELETE_CART_API } from '../../config';
 import './CartBody.scss';
 
 const CartBody = () => {
   const [data, setData] = useState([]);
+  const [render, setRender] = useState(0);
   const userId = sessionStorage.getItem('ID');
 
   const shipFee = 2500;
 
   useEffect(() => {
-    fetch('http://localhost:8000/products/cartget', {
+    fetch(POST_CART_API, {
       method: 'POST',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
       body: JSON.stringify({ userId: userId }),
@@ -20,9 +23,11 @@ const CartBody = () => {
       .then(data => {
         setData(data.cart);
       });
-  }, []);
+  }, [render]);
 
+  // 가격 합계
   const sumPrice = () => {
+    console.log(data);
     let result = 0;
     let sum = data.map((e, i) => {
       return e.price;
@@ -33,6 +38,7 @@ const CartBody = () => {
     return result;
   };
 
+  // 카트에 담긴 아이템 갯수
   const sumAmount = () => {
     let result = 0;
     let sum = data.map((e, i) => {
@@ -46,7 +52,8 @@ const CartBody = () => {
 
   return (
     <div className="CartBody">
-      {data === undefined ? (
+      {console.log(data)}
+      {data === undefined || data.length === 0 ? (
         <div className="emptyCart">
           <FontAwesomeIcon icon={faShoppingBasket} id="icon" />
           <div className="comment">비어있는 장바구니를 채워주세요!</div>
@@ -56,15 +63,17 @@ const CartBody = () => {
           {data.map((e, i) => {
             return (
               <CartItemCard
-                key={data[i].id}
-                imgUrl={data[i].image}
-                productName={data[i].name}
-                price={data[i].price}
-                size={data[i].size}
-                quantity={data[i].quantity}
-                color={data[i].color}
+                key={e.id}
+                imgUrl={e.image}
+                productName={e.name}
+                price={e.price}
+                size={e.size}
+                quantity={e.quantity}
+                color={e.color}
                 userId={userId}
-                productId={data[i].product_id}
+                productId={e.product_id}
+                render={render}
+                setRender={setRender}
               />
             );
           })}
@@ -109,9 +118,11 @@ const CartItemCard = ({
   color,
   userId,
   productId,
+  setRender,
+  render,
 }) => {
   const deleteFromCart = () => {
-    fetch('http://localhost:8000/products/cartdelete', {
+    fetch(DELETE_CART_API, {
       method: 'DELETE',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
@@ -124,6 +135,8 @@ const CartItemCard = ({
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        setRender(render - 1);
+        console.log(render);
       });
   };
   return (

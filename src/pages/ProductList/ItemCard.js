@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { useEffect } from 'react/cjs/react.development';
 
 const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
   const [state, setState] = useState(false);
@@ -19,7 +20,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         headers: {
           'Content-type': 'application/json',
           mode: 'cors',
-          // Authorization: 'token',
+          Authorization: 'token',
         },
         body: JSON.stringify({
           user_id: userId,
@@ -36,7 +37,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
         headers: {
           'Content-type': 'application/json',
           mode: 'cors',
-          // Authorization: 'token',
+          Authorization: 'token',
         },
         body: JSON.stringify({
           user_id: userId,

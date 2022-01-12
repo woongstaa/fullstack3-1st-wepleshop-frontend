@@ -13,12 +13,12 @@
     .slide-wrapper {
       height: 100%;
       display: flex;
-      transition: transform 0.5s;
 
       .slide-list {
         width: 10000px;
         display: flex;
         height: 100%;
+        transition: transform 0.5s;
       }
     }
   }
@@ -37,7 +37,7 @@
     }
     .next {
       top: 25%;
-      left: 88%;
+      left: 88.5%;
       font-size: 70px;
       border: none;
       background: inherit;
