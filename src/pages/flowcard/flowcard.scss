@@ -1,13 +1,15 @@
 .flowcard-wrapper {
   box-sizing: border-box;
   position: relative;
-  height: calc(14rem * 2 + 16px);
+  // height: calc(14rem * 2 + 16px);
   .product-card-container {
-    width: calc(100vw - 10px);
-    height: calc(13rem * 2 + 16px);
-    left: calc((-100vw + 6rem) / 2 + 50%);
-    overflow: hidden;
+    // width: calc(100vw - 10px);
+    // left: calc((-100vw + 6rem) / 2 + 50%);
+    // overflow: hidden;
     .product-card {
+      // flex-direction: column;
+      // height: calc(13rem * 2 + 16px);
+
       .product-flowcard-toplist {
         display: flex;
         white-space: nowrap;
@@ -20,35 +22,23 @@
         animation-fill-mode: none;
         animation-play-state: running;
         animation-name: leftMoveLoop;
-        .product-flowcard-item {
-          width: 100%;
-          img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            margin: auto;
-            max-width: 100%;
-            max-height: 100%;
-          }
-        }
+        margin-bottom: 30px;
       }
-    }
-    .product-flowcard-bottomlist {
-      display: flex;
-      will-change: transform;
-      animation: rightMoveLoop 45s infinite linear;
-      animation-duration: 45s;
-      animation-timing-function: linear;
-      animation-delay: 0s;
-      animation-iteration-count: infinite;
-      animation-direction: normal;
-      animation-fill-mode: none;
-      animation-play-state: running;
-      animation-name: rightMoveLoop;
-      .product-flowcard-item {
-        width: 100%;
+      .product-flowcard-bottomlist {
+        display: flex;
+        white-space: nowrap;
+        animation: rightMoveLoop 45s infinite linear;
+        animation-duration: 45s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        animation-name: rightMoveLoop;
+        // .product-flowcard-item {
+        //   width: 100%;
+        // }
       }
     }
   }
