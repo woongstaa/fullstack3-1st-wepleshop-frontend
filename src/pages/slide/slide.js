@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SlideCard from './SlideCard';
-import './Slide.scss';
+import SlideCard from './slidecard';
+import './slide.scss';
 
 export default function Slide() {
   const [slideInfo, setSlideInfo] = useState([]);

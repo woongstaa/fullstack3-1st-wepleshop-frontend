@@ -9,6 +9,7 @@
     .product-card {
       // flex-direction: column;
       // height: calc(13rem * 2 + 16px);
+      overflow: hidden;
 
       .product-flowcard-toplist {
         display: flex;
