@@ -5,8 +5,8 @@ import Card from './Card';
 
 export default function FlowCard() {
   const [data, setData] = useState();
-  let productImgUrl = [];
-  const [imgUrl, urlSetting] = useState([]);
+  // let productImgUrl = [];
+  // const [imgUrl, urlSetting] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/products/flow`, {
