@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare as regularShare } from '@fortawesome/free-regular-svg-icons';
+import { POST_ADD_CART_API, POST_DETAIL_API } from '../../config';
 import ImageSlider from './ImageSlider';
 
 import ColorList from './ColorList';
@@ -32,7 +33,7 @@ function Detail() {
   const [cartImg, cartImgChange] = useState('None');
 
   const cartAdd = () => {
-    fetch(`http://localhost:8000/products/cartadd`, {
+    fetch(POST_ADD_CART_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
       body: JSON.stringify({
@@ -45,9 +46,7 @@ function Detail() {
         price: productPrice,
         image: cartImg,
       }),
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    });
   };
 
   const changeRadioColor = e => {
@@ -59,14 +58,13 @@ function Detail() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/products/details?productId=${idValue}`, {
+    fetch(`${POST_DETAIL_API}?productId=${idValue}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', mode: 'cors' },
     })
       .then(res => res.json())
       .then(data => {
         setProduct(data);
-        console.log('data', data);
         productNameSet(Object.values(data[0])[1]);
         productPriceSet(data[0].productPrice);
         cartImgChange(data[0].imgUrl);

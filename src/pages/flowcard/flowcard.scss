@@ -1,14 +1,9 @@
 .flowcard-wrapper {
   box-sizing: border-box;
   position: relative;
-  // height: calc(14rem * 2 + 16px);
+
   .product-card-container {
-    // width: calc(100vw - 10px);
-    // left: calc((-100vw + 6rem) / 2 + 50%);
-    // overflow: hidden;
     .product-card {
-      // flex-direction: column;
-      // height: calc(13rem * 2 + 16px);
       overflow: hidden;
 
       .product-flowcard-toplist {
@@ -37,9 +32,6 @@
         animation-fill-mode: none;
         animation-play-state: running;
         animation-name: rightMoveLoop;
-        // .product-flowcard-item {
-        //   width: 100%;
-        // }
       }
     }
   }
