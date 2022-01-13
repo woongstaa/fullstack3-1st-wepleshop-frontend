@@ -25,22 +25,6 @@
 
 마지막 이유는 충분한 유저를 가진 사이트는 유지/보수 측면에서도 충분히 배울점이 있다고 생각했습니다. 자료 조사를 하면서 훌륭한 사이트들이 많이 있었습니다. 그 중에서도 마플샵이 특별하다고 여겨서 선택한 것은 아니지만, 마플샵은 트랜드를 담고 있으며 과하지 않는 동적인 이미지들과 유튜브를 연계하여 제품을 소개하는 것이 흥미로웠고, 기본적인 CRUD와 API로 구현이 가능하다고 판단해서 선정하게 되었습니다.
 
-### 데모 영상(이미지 클릭)
-
-- 메인 페이지
-
-<img width="1427" alt="스크린샷 2022-01-12 오후 7 13 42" src="https://user-images.githubusercontent.com/70682567/149121009-7e8ea0f8-e1a2-4d1d-bf4e-a5bec7792cf4.png">
-<br>
-<br>
-<br>
-<img width="1427" alt="스크린샷 2022-01-12 오후 6 48 52" src="https://user-images.githubusercontent.com/70682567/149118227-81a815ce-91d6-4b34-9efb-791bf41661d2.png">
-
-- 디테일 페이지
-
-<img width="1427" alt="스크린샷 2022-01-12 오후 6 50 12" src="https://user-images.githubusercontent.com/70682567/149118268-0c062a94-a1c2-440e-8bd9-0018b0d22daa.png">
-
-
-
 ## 적용 기술 및 구현 기능
 
 ### 적용 기술
@@ -82,6 +66,19 @@
 - 상세 페이지에서 불러온 데이터를 UI로 구현
 - 로그인시 부여된 토큰을 이용해 장바구니 추가 및 삭제 기능 구현
 - 장바구니에 담긴 상품의 계산 기능
+
+### 결과물 스크린샷, 영상
+
+- 메인 페이지
+
+<img width="1427" alt="스크린샷 2022-01-12 오후 7 13 42" src="https://user-images.githubusercontent.com/70682567/149121009-7e8ea0f8-e1a2-4d1d-bf4e-a5bec7792cf4.png">
+<br>
+<img width="1427" alt="스크린샷 2022-01-12 오후 6 48 52" src="https://user-images.githubusercontent.com/70682567/149118227-81a815ce-91d6-4b34-9efb-791bf41661d2.png">
+
+- 디테일 페이지
+
+<img width="1427" alt="스크린샷 2022-01-12 오후 6 50 12" src="https://user-images.githubusercontent.com/70682567/149118268-0c062a94-a1c2-440e-8bd9-0018b0d22daa.png">
+
 
 ## Reference
 
