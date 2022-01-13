@@ -138,7 +138,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       column-gap: 2px;
-      // justify-items: center;
       justify-content: space-between;
 
       .listCard {
@@ -180,18 +179,12 @@
                 width: 18px;
                 height: 18px;
                 color: #d5d5d5;
-                // display: flex;
-                // justify-content: center;
-                // align-items: center;
               }
 
               .liked {
                 width: 18px;
                 height: 18px;
                 color: red;
-                // display: flex;
-                // justify-content: center;
-                // align-items: center;
               }
             }
           }

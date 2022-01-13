@@ -6,7 +6,6 @@ export default function Slide() {
   const [slideInfo, setSlideInfo] = useState([]);
   const [x, setX] = useState(0);
   const [moving, setMoving] = useState(false);
-  // const [autoMove, setAutoMove] = useState();
   useEffect(() => {
     fetch(`http://localhost:8000/products/slide`, {
       method: 'GET',
@@ -22,30 +21,15 @@ export default function Slide() {
     }, 4000);
   }, []);
 
-  // useEffect(() => {
-  //   console.log(slideInfo);
-  //   setInterval(() => {
-  //     slideInfo.productSlide && goRight();
-  //   }, 4000);
-  // }, []);
-
-  // setInterval(() => {
-  //   goRight();
-  //   clearInterval(goRight);
-  // }, 4000);
-
   const goLeft = () => {
     if (moving) return;
     setX(x => x - 1);
     setMoving(true);
-    // setTimeout(() => {
     const popCard = slideInfo.productSlide.pop();
     const newProductSlide = [popCard].concat(slideInfo.productSlide);
     const newSlideInfo = slideInfo;
     newSlideInfo.productSlide = newProductSlide;
     setSlideInfo(newSlideInfo);
-    // setSlideInfo([...slideInfo, popCard]); // slideInfo 배열
-    // setX(x => x + 300);
     setMoving(false);
     setTimeout(() => {}, 500);
   };

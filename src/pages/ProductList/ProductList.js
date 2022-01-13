@@ -1,7 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { GET_LIST_API } from '../../config';
+
 import ItemCard from './ItemCard';
 import CategoryModal from './CategoryModal';
 import SortModal from './SortModal';
@@ -45,13 +46,13 @@ const ProductList = () => {
     return listData;
   };
 
-  const URL = `http://localhost:8000/products/list?categoryId=${query.get(
+  const URL = `${GET_LIST_API}?categoryId=${query.get(
     'categoryId'
   )}&subCategoryId=${query.get('subCategoryId')}&sortWord=${query.get(
     'sortWord'
   )}`;
 
-  const BASIC_URL = `http://localhost:8000/products/list?categoryId=${query.get(
+  const BASIC_URL = `${GET_LIST_API}?categoryId=${query.get(
     'categoryId'
   )}&subCategoryId=${query.get('subCategoryId')}&sortWord=popular`;
 

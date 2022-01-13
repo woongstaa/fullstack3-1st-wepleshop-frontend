@@ -1,12 +1,6 @@
 import './Top.scss';
-import { useState } from 'react';
-import { GET_PRODUCT_API } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faShoppingBasket,
-  faBars,
-  faBullseye,
-} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 function Top() {

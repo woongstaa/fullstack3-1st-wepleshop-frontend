@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { POST_LIKE_API, POST_UNLIKE_API } from '../../config';
 
 const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
   const [state, setState] = useState(false);
@@ -14,7 +15,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
 
   useEffect(() => {
     if (userId && state === true && condition === false) {
-      fetch('http://localhost:8000/users/like', {
+      fetch(POST_LIKE_API, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -25,13 +26,9 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
           user_id: userId,
           product_id: productId,
         }),
-      })
-        .then(res => res.json())
-        .then(res => {
-          console.log(res);
-        });
+      });
     } else if (userId && state === false && condition === false) {
-      fetch('http://localhost:8000/users/unlike', {
+      fetch(POST_UNLIKE_API, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -42,11 +39,7 @@ const ItemCard = ({ imgUrl, productName, price, quantity, key, productId }) => {
           user_id: userId,
           product_id: productId,
         }),
-      })
-        .then(res => res.json())
-        .then(res => {
-          console.log(res.data);
-        });
+      });
     }
   }, [state]);
 

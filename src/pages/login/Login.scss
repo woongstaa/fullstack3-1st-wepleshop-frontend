@@ -20,7 +20,6 @@
   .selectorWrapper {
     display: flex;
     width: 520px;
-    // border: 1px solid black;
   }
 
   .btn {
@@ -41,18 +40,6 @@
     font-weight: 600;
     border-bottom: 1px solid #111;
   }
-
-  // #btnSignIn:hover {
-  //   cursor: pointer;
-  //   // font-weight: 600;
-  //   // border-bottom: 1px solid #111;
-  // }
-
-  // #btnSignUp:hover {
-  //   cursor: pointer;
-  //   // font-weight: 600;
-  //   // border-bottom: 1px solid #111;
-  // }
 }
 
 #loginSignInContainer {
@@ -130,7 +117,6 @@
   }
 
   .agreeEmail {
-    // display: flex;
     box-sizing: border-box;
     margin: 10px 0 24px;
   }
