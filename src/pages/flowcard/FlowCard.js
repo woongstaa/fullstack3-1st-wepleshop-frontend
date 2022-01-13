@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useEffect, useState } from 'react';
 import { GET_FLOW_API } from '../../config';
 import './flowcard.scss';
 import Card from './card';
