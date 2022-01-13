@@ -1,0 +1,171 @@
+#loginContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: column;
+
+  .title {
+    margin: 75px 0px 50px 0px;
+    width: 520px;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .logo:hover {
+    cursor: pointer;
+  }
+
+  .selectorWrapper {
+    display: flex;
+    width: 520px;
+  }
+
+  .btn {
+    all: unset;
+    width: 260px;
+    height: 50px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+  }
+
+  .btn.active {
+    font-weight: 600;
+    border-bottom: 1px solid #111;
+  }
+}
+
+#loginSignInContainer {
+  width: 520px;
+
+  .inputTitle {
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 100%;
+    padding: 16px 24px 14px;
+    margin: 0 0 24px;
+    color: #111;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 52px;
+    color: #fff;
+    border: 0 none;
+    box-sizing: border-box;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 4px;
+    background-color: #111;
+  }
+  .btn:hover {
+    cursor: pointer;
+  }
+
+  .forgotPassword {
+    font-size: 14px;
+    text-align: center;
+    color: #111;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
+
+#loginSignUpContainer {
+  width: 520px;
+
+  .inputTitle {
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.38;
+    letter-spacing: -0.2px;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 100%;
+    padding: 16px 24px 14px;
+    margin: 0 0 24px;
+    color: #111;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  .agreeEmail {
+    box-sizing: border-box;
+    margin: 10px 0 24px;
+  }
+
+  label {
+    display: flex;
+    font-size: 14px;
+    letter-spacing: -0.2px;
+    color: #111;
+  }
+
+  .check {
+    margin: 0 0 15px 0;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+  span {
+    padding: 2px 0 0 0;
+  }
+
+  .agree {
+    margin-right: 5px;
+  }
+
+  .btn {
+    width: 100%;
+    height: 52px;
+    color: #fff;
+    border: 0 none;
+    box-sizing: border-box;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 4px;
+    background-color: #111;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+  }
+
+  .agreeContents {
+    text-decoration: underline;
+  }
+
+  .agreeContents:hover {
+    cursor: pointer;
+  }
+}

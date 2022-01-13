@@ -1,0 +1,55 @@
+.flowcard-wrapper {
+  box-sizing: border-box;
+  position: relative;
+
+  .product-card-container {
+    .product-card {
+      overflow: hidden;
+
+      .product-flowcard-toplist {
+        display: flex;
+        white-space: nowrap;
+        animation: leftMoveLoop 45s infinite linear;
+        animation-duration: 45s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        animation-name: leftMoveLoop;
+        margin-bottom: 30px;
+      }
+      .product-flowcard-bottomlist {
+        display: flex;
+        white-space: nowrap;
+        animation: rightMoveLoop 45s infinite linear;
+        animation-duration: 45s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        animation-name: rightMoveLoop;
+      }
+    }
+  }
+  @keyframes leftMoveLoop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-225rem);
+    }
+  }
+
+  @keyframes rightMoveLoop {
+    0% {
+      transform: translateX(-225rem);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}

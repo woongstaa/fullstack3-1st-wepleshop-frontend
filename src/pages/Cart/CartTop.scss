@@ -1,0 +1,75 @@
+.topContainer {
+  //헤더
+  @media screen and (max-width: 1023px) {
+    .headerContainer {
+      box-sizing: border-box;
+      width: 1023px;
+    }
+  }
+
+  //네브바
+  .headerContainer {
+    padding-right: 6.042rem;
+
+    //네브 왼쪽
+    .headerWrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 6.042rem;
+      box-sizing: border-box;
+
+      //로고, 메뉴
+      .headerLeft {
+        display: flex;
+        align-items: center;
+        font-size: 1.25rem;
+        height: 5rem;
+
+        button {
+          border: none;
+          background-color: white;
+          margin-right: 10px;
+          cursor: pointer;
+
+          .icon {
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+
+        h1 {
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  //네브 오른쪽 장바구니, 햄버거
+  .headerRight {
+    display: flex;
+    align-items: center;
+    font-size: 1.563rem;
+
+    a {
+      color: black;
+    }
+    .hamburger {
+      border: none;
+      margin-left: 1.5rem;
+      background-color: white;
+      cursor: pointer;
+
+      .hamburgerIcon {
+        font-size: 1.438rem;
+        color: rgb(70, 70, 70);
+      }
+    }
+
+    .cartIcon {
+      font-size: 1.438rem;
+      color: rgb(70, 70, 70);
+    }
+  }
+}
