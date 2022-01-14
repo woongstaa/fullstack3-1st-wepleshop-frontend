@@ -6,6 +6,7 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare as regularShare } from '@fortawesome/free-regular-svg-icons';
 import { POST_ADD_CART_API, POST_DETAIL_API } from '../../config';
 import ImageSlider from './ImageSlider';
+import { useNavigate } from 'react-router';
 
 import ColorList from './ColorList';
 import SizeList from './SizeList';
@@ -15,6 +16,7 @@ import Footer from '../../components/footer/Footer';
 import Top from '../../components/top/Top';
 
 function Detail() {
+  const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const [productName, productNameSet] = useState('');
   let productColor = [];
@@ -33,20 +35,25 @@ function Detail() {
   const [cartImg, cartImgChange] = useState('None');
 
   const cartAdd = () => {
-    fetch(POST_ADD_CART_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', mode: 'cors' },
-      body: JSON.stringify({
-        userId: userIdValue,
-        productId: idValue,
-        color: cartColor,
-        quantity: quantity,
-        size: cartSize,
-        name: productName,
-        price: productPrice,
-        image: cartImg,
-      }),
-    });
+    if (cartColor !== 'None' && cartSize !== 'None') {
+      fetch(POST_ADD_CART_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', mode: 'cors' },
+        body: JSON.stringify({
+          userId: userIdValue,
+          productId: idValue,
+          color: cartColor,
+          quantity: quantity,
+          size: cartSize,
+          name: productName,
+          price: productPrice,
+          image: cartImg,
+        }),
+      });
+      navigate('/cart');
+    } else {
+      alert('사이즈 또는 색상을 선택해주세요.');
+    }
   };
 
   const changeRadioColor = e => {
