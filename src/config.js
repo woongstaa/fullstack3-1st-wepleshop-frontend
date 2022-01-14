@@ -1,9 +1,10 @@
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const GET_PRODUCT_API = `${BASE_URL}/products`;
 const GET_LIST_API = `${BASE_URL}/products/list`;
 const GET_CATEGORY_API = `${BASE_URL}/category/sub`;
 const GET_FLOW_API = `${BASE_URL}/products/flow`;
+const GET_SLIDE_API = `${BASE_URL}/products/slide`;
 const POST_DETAIL_API = `${BASE_URL}/products/details`;
 const POST_SIGNIN_API = `${BASE_URL}/users/signin`;
 const POST_SIGNUP_API = `${BASE_URL}/users/signup`;
@@ -23,6 +24,7 @@ export {
   GET_CATEGORY_API,
   GET_LIST_API,
   GET_FLOW_API,
+  GET_SLIDE_API,
   POST_DETAIL_API,
   POST_SIGNIN_API,
   POST_SIGNUP_API,

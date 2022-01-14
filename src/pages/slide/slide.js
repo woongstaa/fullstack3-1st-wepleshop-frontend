@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { GET_SLIDE_API } from '../../config';
 import SlideCard from './slidecard';
 import './slide.scss';
 
@@ -7,7 +8,7 @@ export default function Slide() {
   const [x, setX] = useState(0);
   const [moving, setMoving] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:8000/products/slide`, {
+    fetch(GET_SLIDE_API, {
       method: 'GET',
       headers: { 'Content-type': 'application/json', mode: 'cors' },
     })
