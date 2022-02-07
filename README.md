@@ -8,8 +8,8 @@
 
 - 개발기간 : 2021/12/27 ~ 2022/1/7
 - 개발 인원 : 이진웅, 최종민, 장종현, 박효상, 김영욱
-- [프론트 github 링크](https://github.com/wecode-bootcamp-korea/fullstack3-1st-wepleshop-frontend)
-- [백엔드 github 링크](https://github.com/wecode-bootcamp-korea/fullstack3-1st-wepleshop-backend)
+- [프론트 github 링크](https://github.com/woongstaa/fullstack3-1st-wepleshop-frontend)
+- [백엔드 github 링크](https://github.com/woongstaa/fullstack3-1st-wepleshop-backend)
 
 ### 프로젝트 선정이유
 
@@ -28,44 +28,49 @@
 ## 적용 기술 및 구현 기능
 
 ### 적용 기술
- - Front-End : React.js, Sass
- - Back-End : Node.js, Express, Prisma, nodemon, JWT, Bcrypt, My SQL, CORS
- - Common : RESTful API
- - Community Tools : Slack, Zoom, Notion
+
+- Front-End : React.js, Sass
+- Back-End : Node.js, Express, Prisma, nodemon, JWT, Bcrypt, My SQL, CORS
+- Common : RESTful API
+- Community Tools : Slack, Zoom, Notion
 
 ### 구현 기능
 
+- MySQL을 이용해 데이터베이스 관리
 
-#### 공통
-- 회원가입 / 로그인 / 마이페이지
-  - 아이디 패스워드 유효성 검증 기능 및 실패시 모달창 생성
-  - 로그인시 백엔드 API를 이용해 토큰 발행
+- 로그인, 회원가입 API
 
-- Top / Footer / Nav
-  - 각 부분 컴포넌트화하여 재사용 가능하도록 구현
+  - 유효성 검증 기능
+  - JWT을 활용한 토큰 발행
+  - Bcrypt를 활용한 비밀번호 암호화
+  - 로그인시 token을 이용하여 사용자 이름 호출 구현
 
-#### 메인 페이지
-- 상품 리스트 API 호출하여 UI 구현
-  - 상품 좋아요 기능
-  - 재고 10개 미만일 때 재고 고지 및 품절시 품절 고지
-  - 상품 필터링기능
+- 카테고리 API
+  - 1차 카테고리, 2차 카테고리 리스트
+- 상품 리스트 & 필터링 & 정렬 API
 
-- Carousel UI 구현
-  - 외부 라이브러리 없이 자체 구현
-  - 오른쪽 버튼, 왼쪽 버튼 상관없이 제대로 작동
+  - 쿼리파라미터를 이용한 상품 리스트 필터링 구현
 
-- 애니메이션 슬라이드 UI구현
-  - 좌우로 무한히 이동하는 슬라이드
+- 상품 상세 API
 
-#### 상세 페이지
-- 제품별 색상, 사이즈, 가격 적용 및 선택 기능 구현
-  - 선택된 데이터 장바구니에 추가
-- 제품 이미지 슬라이드 / 좋아요 기능 구현
+  - 특정 상품의 재고, 색상, 사이즈, 이미지 호출
 
-#### 장바구니 페이지
-- 상세 페이지에서 불러온 데이터를 UI로 구현
-- 로그인시 부여된 토큰을 이용해 장바구니 추가 및 삭제 기능 구현
-- 장바구니에 담긴 상품의 계산 기능
+- Carousel API
+
+  - 슬라이드 이미지, 타이틀, 디스크립션 호출
+
+- 애니메이션 슬라이드 API
+
+  - 이미지, alt값 호출
+
+- 장바구니 API
+
+  - 디테일 페이지에서 제품 정보를 받아 장바구니에 추가
+  - 중복되는 제품 장바구니 추가시 수량을 추가
+  - 장바구니 내 제품의 삭제 및 수량 변경 기능 구현
+
+- 좋아요 API
+  - 유저 정보와 제품 정보에 따른 좋아요 기능 구현
 
 ### 결과물 스크린샷, 영상
 
@@ -78,7 +83,6 @@
 - 디테일 페이지
 
 <img width="1427" alt="스크린샷 2022-01-12 오후 6 50 12" src="https://user-images.githubusercontent.com/70682567/149118268-0c062a94-a1c2-440e-8bd9-0018b0d22daa.png">
-
 
 ## Reference
 
