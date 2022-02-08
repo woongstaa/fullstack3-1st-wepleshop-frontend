@@ -68,6 +68,8 @@
 
 ### 결과물 스크린샷, 영상
 
+[동영상 링크](https://youtu.be/ajVi4Gv-ouk)
+
 - 메인 페이지
 
 <img width="1427" alt="스크린샷 2022-01-12 오후 7 13 42" src="https://user-images.githubusercontent.com/70682567/149121009-7e8ea0f8-e1a2-4d1d-bf4e-a5bec7792cf4.png">
